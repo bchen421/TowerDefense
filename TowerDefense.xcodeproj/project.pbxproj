@@ -133,6 +133,8 @@
 		8F65B21B171C43CD0065AA48 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F65B21A171C43CD0065AA48 /* AppDelegate.m */; };
 		8F65B21E171C43CD0065AA48 /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F65B21D171C43CD0065AA48 /* HelloWorldLayer.m */; };
 		8F65B221171C43CD0065AA48 /* IntroLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F65B220171C43CD0065AA48 /* IntroLayer.m */; };
+		8F65B22C171C44760065AA48 /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F65B22B171C44760065AA48 /* GameManager.m */; };
+		8F65B233171C44CC0065AA48 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F65B232171C44CC0065AA48 /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -398,6 +400,10 @@
 		8F65B21D171C43CD0065AA48 /* HelloWorldLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloWorldLayer.m; sourceTree = "<group>"; };
 		8F65B21F171C43CD0065AA48 /* IntroLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntroLayer.h; sourceTree = "<group>"; };
 		8F65B220171C43CD0065AA48 /* IntroLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntroLayer.m; sourceTree = "<group>"; };
+		8F65B229171C44760065AA48 /* GameConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameConstants.h; sourceTree = "<group>"; };
+		8F65B22A171C44760065AA48 /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameManager.h; sourceTree = "<group>"; };
+		8F65B22B171C44760065AA48 /* GameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameManager.m; sourceTree = "<group>"; };
+		8F65B232171C44CC0065AA48 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Resources/Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -424,6 +430,7 @@
 			isa = PBXGroup;
 			children = (
 				8F65B0A1171C43CC0065AA48 /* TowerDefense */,
+				8F65B227171C44470065AA48 /* Product Files */,
 				8F65B08E171C43CC0065AA48 /* Frameworks */,
 				8F65B08D171C43CC0065AA48 /* Products */,
 			);
@@ -456,15 +463,11 @@
 		8F65B0A1171C43CC0065AA48 /* TowerDefense */ = {
 			isa = PBXGroup;
 			children = (
-				8F65B219171C43CD0065AA48 /* AppDelegate.h */,
-				8F65B21A171C43CD0065AA48 /* AppDelegate.m */,
-				8F65B21C171C43CD0065AA48 /* HelloWorldLayer.h */,
-				8F65B21D171C43CD0065AA48 /* HelloWorldLayer.m */,
-				8F65B21F171C43CD0065AA48 /* IntroLayer.h */,
-				8F65B220171C43CD0065AA48 /* IntroLayer.m */,
-				8F65B0A2171C43CC0065AA48 /* Resources */,
-				8F65B0BC171C43CC0065AA48 /* libs */,
-				8F65B215171C43CD0065AA48 /* Supporting Files */,
+				8F65B22D171C44AB0065AA48 /* Constants */,
+				8F65B22E171C44B00065AA48 /* Singletons */,
+				8F65B22F171C44B50065AA48 /* Scenes */,
+				8F65B230171C44B90065AA48 /* Layers */,
+				8F65B231171C44BE0065AA48 /* Game Assets */,
 			);
 			path = TowerDefense;
 			sourceTree = "<group>";
@@ -472,6 +475,7 @@
 		8F65B0A2171C43CC0065AA48 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8F65B232171C44CC0065AA48 /* Default-568h@2x.png */,
 				8F65B0A3171C43CC0065AA48 /* Default.png */,
 				8F65B0A5171C43CC0065AA48 /* Default-Landscape~ipad.png */,
 				8F65B0A7171C43CC0065AA48 /* fps_images.png */,
@@ -487,6 +491,7 @@
 				8F65B0BA171C43CC0065AA48 /* iTunesArtwork */,
 			);
 			name = Resources;
+			path = TowerDefense;
 			sourceTree = "<group>";
 		};
 		8F65B0BC171C43CC0065AA48 /* libs */ = {
@@ -500,6 +505,7 @@
 				8F65B1E3171C43CD0065AA48 /* kazmath */,
 			);
 			name = libs;
+			path = TowerDefense;
 			sourceTree = "<group>";
 		};
 		8F65B0BD171C43CC0065AA48 /* cocos2d */ = {
@@ -830,6 +836,77 @@
 				8F65B217171C43CD0065AA48 /* main.m */,
 			);
 			name = "Supporting Files";
+			path = TowerDefense;
+			sourceTree = "<group>";
+		};
+		8F65B227171C44470065AA48 /* Product Files */ = {
+			isa = PBXGroup;
+			children = (
+				8F65B0A2171C43CC0065AA48 /* Resources */,
+				8F65B0BC171C43CC0065AA48 /* libs */,
+				8F65B215171C43CD0065AA48 /* Supporting Files */,
+			);
+			name = "Product Files";
+			sourceTree = "<group>";
+		};
+		8F65B22D171C44AB0065AA48 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				8F65B229171C44760065AA48 /* GameConstants.h */,
+			);
+			name = Constants;
+			sourceTree = "<group>";
+		};
+		8F65B22E171C44B00065AA48 /* Singletons */ = {
+			isa = PBXGroup;
+			children = (
+				8F65B22A171C44760065AA48 /* GameManager.h */,
+				8F65B22B171C44760065AA48 /* GameManager.m */,
+				8F65B219171C43CD0065AA48 /* AppDelegate.h */,
+				8F65B21A171C43CD0065AA48 /* AppDelegate.m */,
+			);
+			name = Singletons;
+			sourceTree = "<group>";
+		};
+		8F65B22F171C44B50065AA48 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Scenes;
+			sourceTree = "<group>";
+		};
+		8F65B230171C44B90065AA48 /* Layers */ = {
+			isa = PBXGroup;
+			children = (
+				8F65B235171C45060065AA48 /* Intro */,
+				8F65B234171C44FF0065AA48 /* HelloWorld */,
+			);
+			name = Layers;
+			sourceTree = "<group>";
+		};
+		8F65B231171C44BE0065AA48 /* Game Assets */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Game Assets";
+			sourceTree = "<group>";
+		};
+		8F65B234171C44FF0065AA48 /* HelloWorld */ = {
+			isa = PBXGroup;
+			children = (
+				8F65B21C171C43CD0065AA48 /* HelloWorldLayer.h */,
+				8F65B21D171C43CD0065AA48 /* HelloWorldLayer.m */,
+			);
+			name = HelloWorld;
+			sourceTree = "<group>";
+		};
+		8F65B235171C45060065AA48 /* Intro */ = {
+			isa = PBXGroup;
+			children = (
+				8F65B21F171C43CD0065AA48 /* IntroLayer.h */,
+				8F65B220171C43CD0065AA48 /* IntroLayer.m */,
+			);
+			name = Intro;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -895,6 +972,7 @@
 				8F65B0B8171C43CC0065AA48 /* Icon@2x.png in Resources */,
 				8F65B0BB171C43CC0065AA48 /* iTunesArtwork in Resources */,
 				8F65B1F9171C43CD0065AA48 /* ChangeLog in Resources */,
+				8F65B233171C44CC0065AA48 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1009,6 +1087,7 @@
 				8F65B21B171C43CD0065AA48 /* AppDelegate.m in Sources */,
 				8F65B21E171C43CD0065AA48 /* HelloWorldLayer.m in Sources */,
 				8F65B221171C43CD0065AA48 /* IntroLayer.m in Sources */,
+				8F65B22C171C44760065AA48 /* GameManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

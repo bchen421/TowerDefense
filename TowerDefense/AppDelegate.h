@@ -1,6 +1,6 @@
 //
 //  AppDelegate.h
-//  TowerDefense
+//  Tower Defense
 //
 //  Created by Benjamin Chen on 4/15/13.
 //  Copyright __MyCompanyName__ 2013. All rights reserved.
