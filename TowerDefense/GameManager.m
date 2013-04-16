@@ -7,6 +7,7 @@
 //
 
 #import "GameManager.h"
+#import "MainMenuScene.h"
 #import "IntroLayer.h"
 
 @implementation GameManager
@@ -20,6 +21,14 @@ static GameManager * _sharedGameManager = nil;
     
     switch (currentScene)
     {
+        case kMainMenuScene:
+            levelSize = screenSize;
+            break;
+            
+        case kIntroScene:
+            levelSize = screenSize;
+            break;
+
         case kSandboxScene:
             levelSize = screenSize;
             break;
@@ -51,11 +60,11 @@ static GameManager * _sharedGameManager = nil;
         case kIntroScene:
             sceneToRun = [IntroLayer node];
             break;
-        /*
+        
         case kMainMenuScene:
             sceneToRun = [MainMenuScene node];
             break;
-        
+        /*
         case kSandboxScene:
             sceneToRun = [SandboxScene node];
             break;
