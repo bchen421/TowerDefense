@@ -8,6 +8,7 @@
 
 #import "GameManager.h"
 #import "MainMenuScene.h"
+#import "SandboxScene.h"
 #import "IntroLayer.h"
 
 @implementation GameManager
@@ -64,11 +65,11 @@ static GameManager * _sharedGameManager = nil;
         case kMainMenuScene:
             sceneToRun = [MainMenuScene node];
             break;
-        /*
+        
         case kSandboxScene:
             sceneToRun = [SandboxScene node];
             break;
-             
+        /*
         case kTiledScene:
             sceneToRun = [TiledScene node];
             break;

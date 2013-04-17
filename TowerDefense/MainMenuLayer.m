@@ -26,11 +26,12 @@
     
     CCLabelBMFont *tiledSceneLabel = [CCLabelBMFont labelWithString:@"Tiled Scene" fntFile:@"MainMenuFonts.fnt"];
     CCMenuItemLabel *playTiledScene = [CCMenuItemLabel itemWithLabel:tiledSceneLabel target:self selector:@selector(playScene:)];
-    [playTiledScene setTag:kMainMenuScene];
+    [playTiledScene setTag:kTiledScene];
     
     mainMenu = [CCMenu menuWithItems:playSandboxScene,playTiledScene, playIntroScene, nil];
-    [mainMenu alignItemsVerticallyWithPadding:screenSize.height * 0.010];
-    [mainMenu setPosition:ccp(screenSize.width / 2 + 200.0, screenSize.height / 2 - 150.0)];
+    [mainMenu alignItemsVerticallyWithPadding:screenSize.height * 0.001];
+    NSLog(@"Width: %g, Height: %g", screenSize.width, screenSize.height);
+    [mainMenu setPosition:ccp(screenSize.height - 100.0, 75.0)];
     
     [self addChild:mainMenu z:1];
 }

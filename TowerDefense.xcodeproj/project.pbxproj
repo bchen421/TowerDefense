@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8F0AF0BA171E5E4400050CB3 /* SandboxScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F0AF0B9171E5E4400050CB3 /* SandboxScene.m */; };
+		8F0AF0BD171E5EC500050CB3 /* SandboxLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F0AF0BC171E5EC500050CB3 /* SandboxLayer.m */; };
 		8F65B090171C43CC0065AA48 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F65B08F171C43CC0065AA48 /* QuartzCore.framework */; };
 		8F65B092171C43CC0065AA48 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F65B091171C43CC0065AA48 /* OpenGLES.framework */; };
 		8F65B094171C43CC0065AA48 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F65B093171C43CC0065AA48 /* OpenAL.framework */; };
@@ -143,9 +145,15 @@
 		8FBE24D0171D8598001D38BB /* MainMenuFonts.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FBE24CE171D8598001D38BB /* MainMenuFonts.png */; };
 		8FBE24D3171D8794001D38BB /* MainMenuFonts-hd.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 8FBE24D1171D8794001D38BB /* MainMenuFonts-hd.fnt */; };
 		8FBE24D4171D8794001D38BB /* MainMenuFonts-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FBE24D2171D8794001D38BB /* MainMenuFonts-hd.png */; };
+		8FFAFB42171ED42F001CD885 /* sandboxAtlas.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FFAFB40171ED42F001CD885 /* sandboxAtlas.plist */; };
+		8FFAFB43171ED42F001CD885 /* sandboxAtlas.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FFAFB41171ED42F001CD885 /* sandboxAtlas.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8F0AF0B8171E5E4400050CB3 /* SandboxScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SandboxScene.h; sourceTree = "<group>"; };
+		8F0AF0B9171E5E4400050CB3 /* SandboxScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SandboxScene.m; sourceTree = "<group>"; };
+		8F0AF0BB171E5EC500050CB3 /* SandboxLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SandboxLayer.h; sourceTree = "<group>"; };
+		8F0AF0BC171E5EC500050CB3 /* SandboxLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SandboxLayer.m; sourceTree = "<group>"; };
 		8F65B08C171C43CC0065AA48 /* TowerDefense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TowerDefense.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F65B08F171C43CC0065AA48 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		8F65B091171C43CC0065AA48 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -422,6 +430,8 @@
 		8FBE24CE171D8598001D38BB /* MainMenuFonts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MainMenuFonts.png; sourceTree = "<group>"; };
 		8FBE24D1171D8794001D38BB /* MainMenuFonts-hd.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "MainMenuFonts-hd.fnt"; sourceTree = "<group>"; };
 		8FBE24D2171D8794001D38BB /* MainMenuFonts-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MainMenuFonts-hd.png"; sourceTree = "<group>"; };
+		8FFAFB40171ED42F001CD885 /* sandboxAtlas.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sandboxAtlas.plist; sourceTree = "<group>"; };
+		8FFAFB41171ED42F001CD885 /* sandboxAtlas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sandboxAtlas.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -444,6 +454,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8F0AF0B0171E59A900050CB3 /* Sandbox */ = {
+			isa = PBXGroup;
+			children = (
+				8F0AF0B8171E5E4400050CB3 /* SandboxScene.h */,
+				8F0AF0B9171E5E4400050CB3 /* SandboxScene.m */,
+			);
+			name = Sandbox;
+			sourceTree = "<group>";
+		};
+		8F0AF0B4171E59FB00050CB3 /* Sandbox */ = {
+			isa = PBXGroup;
+			children = (
+				8F0AF0BB171E5EC500050CB3 /* SandboxLayer.h */,
+				8F0AF0BC171E5EC500050CB3 /* SandboxLayer.m */,
+			);
+			name = Sandbox;
+			sourceTree = "<group>";
+		};
+		8F0AF0BF171E633800050CB3 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Shared;
+			sourceTree = "<group>";
+		};
 		8F65B083171C43CC0065AA48 = {
 			isa = PBXGroup;
 			children = (
@@ -889,6 +924,7 @@
 		8F65B22F171C44B50065AA48 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				8F0AF0B0171E59A900050CB3 /* Sandbox */,
 				8FBE24BE171D7F59001D38BB /* MainMenu */,
 			);
 			name = Scenes;
@@ -897,6 +933,8 @@
 		8F65B230171C44B90065AA48 /* Layers */ = {
 			isa = PBXGroup;
 			children = (
+				8F0AF0BF171E633800050CB3 /* Shared */,
+				8F0AF0B4171E59FB00050CB3 /* Sandbox */,
 				8FBE24BF171D7F63001D38BB /* MainMenu */,
 				8F65B235171C45060065AA48 /* Intro */,
 				8F65B234171C44FF0065AA48 /* HelloWorld */,
@@ -907,6 +945,7 @@
 		8F65B231171C44BE0065AA48 /* Game Assets */ = {
 			isa = PBXGroup;
 			children = (
+				8FFAFB3F171ED409001CD885 /* Sprite Sheets */,
 				8FBE24C6171D80C3001D38BB /* Images */,
 				8FBE24C7171D80D0001D38BB /* Font Maps */,
 			);
@@ -975,6 +1014,15 @@
 				8FBE24CA171D8124001D38BB /* background.png */,
 			);
 			name = Backgrounds;
+			sourceTree = "<group>";
+		};
+		8FFAFB3F171ED409001CD885 /* Sprite Sheets */ = {
+			isa = PBXGroup;
+			children = (
+				8FFAFB40171ED42F001CD885 /* sandboxAtlas.plist */,
+				8FFAFB41171ED42F001CD885 /* sandboxAtlas.png */,
+			);
+			name = "Sprite Sheets";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1047,6 +1095,8 @@
 				8FBE24D0171D8598001D38BB /* MainMenuFonts.png in Resources */,
 				8FBE24D3171D8794001D38BB /* MainMenuFonts-hd.fnt in Resources */,
 				8FBE24D4171D8794001D38BB /* MainMenuFonts-hd.png in Resources */,
+				8FFAFB42171ED42F001CD885 /* sandboxAtlas.plist in Resources */,
+				8FFAFB43171ED42F001CD885 /* sandboxAtlas.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1164,6 +1214,8 @@
 				8F65B22C171C44760065AA48 /* GameManager.m in Sources */,
 				8FBE24C2171D7F8E001D38BB /* MainMenuScene.m in Sources */,
 				8FBE24C5171D7FC6001D38BB /* MainMenuLayer.m in Sources */,
+				8F0AF0BA171E5E4400050CB3 /* SandboxScene.m in Sources */,
+				8F0AF0BD171E5EC500050CB3 /* SandboxLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
