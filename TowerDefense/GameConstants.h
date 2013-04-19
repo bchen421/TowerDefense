@@ -26,9 +26,9 @@ typedef enum
 
 typedef enum
 {
-    kAwesomeBlossom,
     kGenericMonster,
     kOrc,
+    kBigOrc,
 } MonsterID;
 
 typedef enum

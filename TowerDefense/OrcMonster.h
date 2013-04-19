@@ -16,6 +16,6 @@
 }
 
 +(MonsterObject *)spawnOrc;
-
++(MonsterObject *)spawnBigOrc;
 
 @end

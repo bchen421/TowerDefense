@@ -17,11 +17,20 @@
     
 }
 
-#pragma mark - Monster Factory
+#pragma mark - Orc Factory
 +(MonsterObject *)spawnOrc
 {
     MonsterObject *newOrc = [[OrcMonster alloc] initWithSpriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"orc.png"]];
     [newOrc setScale:0.75];
+    
+    [newOrc scheduleUpdate];
+    return newOrc;
+}
+
++(MonsterObject *)spawnBigOrc
+{
+    MonsterObject *newOrc = [[OrcMonster alloc] initWithSpriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"orc.png"]];
+    [newOrc setScale:1.0];
     
     [newOrc scheduleUpdate];
     return newOrc;
