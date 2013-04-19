@@ -6,13 +6,39 @@
 //
 //
 
+// Layer Headers
 #import "GameManager.h"
 #import "MainMenuScene.h"
 #import "SandboxScene.h"
 #import "IntroLayer.h"
 
+// Monster Headers
+#import "OrcMonster.h"
+
+
 @implementation GameManager
 static GameManager * _sharedGameManager = nil;
+
+#pragma mark - Monster Spawning
+-(MonsterObject *)spawnMonster:(MonsterID)monsterID
+{
+    MonsterObject *newMonster = nil;
+    
+    switch (monsterID)
+    {
+        case kOrc:
+            newMonster = [OrcMonster spawnOrc];
+            break;
+            
+        default:
+            CCLOG(@"Unknown Monster ID");
+            return nil;
+            break;
+    }
+    
+    return newMonster;
+}
+
 
 #pragma mark - Scene Management
 -(CGSize)getDimensionsOfCurrentScene
@@ -20,7 +46,7 @@ static GameManager * _sharedGameManager = nil;
     CGSize screenSize = [[CCDirector sharedDirector] winSize];
     CGSize levelSize;
     
-    switch (currentScene)
+    switch (_currentScene)
     {
         case kMainMenuScene:
             levelSize = screenSize;
@@ -48,8 +74,8 @@ static GameManager * _sharedGameManager = nil;
 
 -(void)runGameScene:(GameSceneID)sceneID
 {
-    GameSceneID oldScene = currentScene;
-    currentScene = sceneID;
+    GameSceneID oldScene = _currentScene;
+    _currentScene = sceneID;
     
     id sceneToRun = nil;
     switch (sceneID)
@@ -81,7 +107,7 @@ static GameManager * _sharedGameManager = nil;
     }
     if (sceneToRun == nil)
     {
-        currentScene = oldScene;
+        _currentScene = oldScene;
         return;
     }
     
@@ -127,7 +153,7 @@ static GameManager * _sharedGameManager = nil;
     {
         // Game Manager initialized
         CCLOG(@"Game Manager Singleton, init");
-        currentScene = kNoScene;
+        _currentScene = kNoScene;
     }
     return self;
 }

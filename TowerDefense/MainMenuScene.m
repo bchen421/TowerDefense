@@ -11,14 +11,16 @@
 
 @implementation MainMenuScene
 
+@synthesize mainMenulayer = _mainMenuLayer;
+
 #pragma mark - Initialization
 - (id)init
 {
     self = [super init];
     if (self)
     {
-        mainMenuLayer = [MainMenuLayer node];
-        [self addChild:mainMenuLayer];
+        _mainMenuLayer = [MainMenuLayer node];
+        [self addChild:_mainMenuLayer];
     }
     
     return self;

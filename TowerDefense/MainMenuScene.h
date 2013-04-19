@@ -11,7 +11,9 @@
 
 @interface MainMenuScene : CCScene
 {
-    MainMenuLayer *mainMenuLayer;
+    MainMenuLayer *_mainMenuLayer;
 }
+
+@property (readonly) MainMenuLayer *mainMenulayer;
 
 @end

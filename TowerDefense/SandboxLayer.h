@@ -9,11 +9,9 @@
 #import "cocos2d.h"
 
 @interface SandboxLayer : CCLayer
-
 {
-    CCSpriteBatchNode *sceneSpriteBatchNode;    
+    
 }
 
-@property (readwrite, retain) CCSpriteBatchNode *sceneSpriteBatchNode;
 
 @end

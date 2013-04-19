@@ -7,15 +7,15 @@
             <key>orc.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{14,30}}</string>
+                <string>{{2,2},{26,58}}</string>
                 <key>offset</key>
-                <string>{0,1}</string>
+                <string>{0,3}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{1,0},{14,30}}</string>
+                <string>{{3,0},{26,58}}</string>
                 <key>sourceSize</key>
-                <string>{16,32}</string>
+                <string>{32,64}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -23,13 +23,13 @@
             <key>format</key>
             <integer>2</integer>
             <key>realTextureFileName</key>
-            <string>sandboxAtlas.png</string>
+            <string>sandboxAtlas-hd.png</string>
             <key>size</key>
             <string>{32,64}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:f6dd0243b7749dafcb87303545b1ff60$</string>
+            <string>$TexturePacker:SmartUpdate:037a8fd65817ece32ea4a283f62e6272$</string>
             <key>textureFileName</key>
-            <string>sandboxAtlas.png</string>
+            <string>sandboxAtlas-hd.png</string>
         </dict>
     </dict>
 </plist>

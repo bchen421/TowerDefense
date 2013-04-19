@@ -11,7 +11,11 @@
 
 @interface SandboxScene : CCScene
 {
-    SandboxLayer *sandboxLayer;
+    CCSpriteBatchNode *_sceneSpriteBatchNode;
+    SandboxLayer *_gameplayLayer;
 }
+
+@property (readwrite, retain) CCSpriteBatchNode *sceneSpriteBatchNode;
+@property (readonly) SandboxLayer *gameplayLayer;
 
 @end

@@ -20,14 +20,16 @@ typedef enum
 
 typedef enum
 {
-    kGenericObject,
-    kPlayerObject,
-    kEnemyObject,
-    kGoblinObject,
-    kSkeletonEnemy,
-    kTrainingDummyObject,
-    kShadowSprite
-} GameObjectID;
+    kGenericGameObject,
+    kMonsterObject
+} GameObjectType;
+
+typedef enum
+{
+    kAwesomeBlossom,
+    kGenericMonster,
+    kOrc,
+} MonsterID;
 
 typedef enum
 {
