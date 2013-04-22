@@ -10,12 +10,6 @@
 
 @implementation SandboxLayer
 
-
--(void)update:(ccTime)deltaTime
-{
-    
-}
-
 #pragma mark - Initialization
 -(id)init
 {
@@ -27,8 +21,8 @@
         CCSprite *backgroundImage;
         backgroundImage = [CCSprite spriteWithFile:@"background.png"];
         [backgroundImage setPosition: CGPointMake(screenSize.width/2, screenSize.height/2)];
-        
-        [self addChild:backgroundImage z:-1 tag:0];
+                
+        [self addChild:backgroundImage z:0];
     }
     return self;
 }

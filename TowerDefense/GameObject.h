@@ -11,9 +11,12 @@
 
 @interface GameObject : CCSprite
 {
-    GameObjectType _objectType;
+    GameObjectType _gameObjectType;
+    GameObjectState _gameObjectState;
 }
+@property (nonatomic, readwrite) GameObjectType gameObjectType;
+@property (nonatomic, readwrite) GameObjectState gameObjectState;
 
-@property (readonly) GameObjectType objectType;
+-(void)updateStateWithDeltaTime:(ccTime)deltaTime andListOfGameObjects:(CCArray*)listOfGameObjects;
 
 @end

@@ -10,8 +10,6 @@
 
 @interface SandboxLayer : CCLayer
 {
-    
 }
-
 
 @end

@@ -11,10 +11,9 @@
 @implementation OrcMonster
 
 #pragma  mark - Update Methods
-
--(void)update:(ccTime)deltaTime
+-(void)updateStateWithDeltaTime:(ccTime)deltaTime andListOfGameObjects:(CCArray*)listOfGameObjects
 {
-    
+    [super updateStateWithDeltaTime:deltaTime andListOfGameObjects:listOfGameObjects];
 }
 
 #pragma mark - Orc Factory
@@ -22,8 +21,8 @@
 {
     MonsterObject *newOrc = [[OrcMonster alloc] initWithSpriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"orc.png"]];
     [newOrc setScale:0.75];
+    [newOrc setMonsterID:kOrc];
     
-    [newOrc scheduleUpdate];
     return newOrc;
 }
 
@@ -31,18 +30,19 @@
 {
     MonsterObject *newOrc = [[OrcMonster alloc] initWithSpriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"orc.png"]];
     [newOrc setScale:1.0];
+    [newOrc setMonsterID:kBigOrc];
     
-    [newOrc scheduleUpdate];
     return newOrc;
 }
 
 #pragma mark - Initialization
--(id)init
+-(id)initWithSpriteFrame:(CCSpriteFrame*)spriteFrame
 {
-    if ((self = [super init]))
+    if (self = [super initWithSpriteFrame:spriteFrame])
     {
         _monsterID = kOrc;
     }
+    
     return self;
 }
 

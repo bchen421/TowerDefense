@@ -6,9 +6,6 @@
 //
 //
 
-#ifndef Tower_Defense_GameConstants_h
-#define Tower_Defense_GameConstants_h
-
 typedef enum
 {
     kNoScene,
@@ -21,7 +18,7 @@ typedef enum
 typedef enum
 {
     kGenericGameObject,
-    kMonsterObject
+    kMonsterObject,
 } GameObjectType;
 
 typedef enum
@@ -34,21 +31,7 @@ typedef enum
 typedef enum
 {
     kStateIdle,
-    kStateWalking,
-    kStateRoll,
-    kStateRunning,
-    kStateDefending,
-    kStateAttacking,
-    kStateTakingDamage,
-    kStateDead,
-    kStatePursuing,
-    kStateInRange,
-    kStateBlockingAttack,
-    kStatePause,
-    kStateUpStartup,
-    kStateUpAttack,
-    kStateUpRecovery,
-    kStateRightAttack
+    kStateMoving,
 } GameObjectState;
 
 typedef enum
@@ -72,5 +55,3 @@ typedef enum
     kRecoveryAction,
     kPursueAction
 } actionTags;
-
-#endif

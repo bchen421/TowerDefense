@@ -14,6 +14,6 @@
     MonsterID _monsterID;
 }
 
-@property (readonly) MonsterID monsterID;
+@property (nonatomic,readwrite) MonsterID monsterID;
 
 @end
