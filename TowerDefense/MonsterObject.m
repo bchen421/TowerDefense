@@ -8,16 +8,21 @@
 
 #import "MonsterObject.h"
 #import "GameConstants.h"
+#import "GameManager.h"
 
 @implementation MonsterObject
-@synthesize monsterID = _monsterID;
+@synthesize monsterID = _monsterID, monsterState = _monsterState, movementSpeed = _movementSpeed, goalLocation = _goalLocation;
 
-#pragma  mark - Update Methods
+#pragma mark - State Management Methods
 -(void)updateStateWithDeltaTime:(ccTime)deltaTime andListOfGameObjects:(CCArray*)listOfGameObjects
 {
     [super updateStateWithDeltaTime:deltaTime andListOfGameObjects:listOfGameObjects];
 }
 
+-(void)changeState:(MonsterState)newState
+{
+    CCLOG(@"STUB METHOD, PLEASE OVERRIDE ME");
+}
 
 #pragma mark - Initialization
 -(id)initWithSpriteFrame:(CCSpriteFrame*)spriteFrame
@@ -26,6 +31,9 @@
     {
         _gameObjectType = kMonsterObject;
         _monsterID = kGenericMonster;
+        _monsterState = nil;
+        _movementSpeed = 50.0;
+        _goalLocation = CGPointMake(0.0, 0.0);
     }
     return self;
 }

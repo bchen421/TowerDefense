@@ -32,7 +32,7 @@ typedef enum
 {
     kStateIdle,
     kStateMoving,
-} GameObjectState;
+} MonsterState;
 
 typedef enum
 {

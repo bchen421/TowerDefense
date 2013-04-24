@@ -152,6 +152,7 @@
 		8FBE24D0171D8598001D38BB /* MainMenuFonts.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FBE24CE171D8598001D38BB /* MainMenuFonts.png */; };
 		8FBE24D3171D8794001D38BB /* MainMenuFonts-hd.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 8FBE24D1171D8794001D38BB /* MainMenuFonts-hd.fnt */; };
 		8FBE24D4171D8794001D38BB /* MainMenuFonts-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FBE24D2171D8794001D38BB /* MainMenuFonts-hd.png */; };
+		8FCBD19F172769D1008A75AC /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCBD19E172769D1008A75AC /* GameScene.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -445,6 +446,8 @@
 		8FBE24CE171D8598001D38BB /* MainMenuFonts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MainMenuFonts.png; sourceTree = "<group>"; };
 		8FBE24D1171D8794001D38BB /* MainMenuFonts-hd.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "MainMenuFonts-hd.fnt"; sourceTree = "<group>"; };
 		8FBE24D2171D8794001D38BB /* MainMenuFonts-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MainMenuFonts-hd.png"; sourceTree = "<group>"; };
+		8FCBD19D172769D0008A75AC /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
+		8FCBD19E172769D1008A75AC /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -959,6 +962,8 @@
 		8F65B22F171C44B50065AA48 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				8FCBD19D172769D0008A75AC /* GameScene.h */,
+				8FCBD19E172769D1008A75AC /* GameScene.m */,
 				8F0AF0B0171E59A900050CB3 /* Sandbox */,
 				8FBE24BE171D7F59001D38BB /* MainMenu */,
 			);
@@ -1258,6 +1263,7 @@
 				8F076973171F825E00232389 /* GameObject.m in Sources */,
 				8F216E2D1720F84900A0730D /* MonsterObject.m in Sources */,
 				8F216E301720FA2400A0730D /* OrcMonster.m in Sources */,
+				8FCBD19F172769D1008A75AC /* GameScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

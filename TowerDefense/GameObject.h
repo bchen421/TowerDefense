@@ -8,14 +8,14 @@
 
 #import "CCSprite.h"
 #import "GameConstants.h"
+#import "GameScene.h"
 
 @interface GameObject : CCSprite
 {
     GameObjectType _gameObjectType;
-    GameObjectState _gameObjectState;
 }
 @property (nonatomic, readwrite) GameObjectType gameObjectType;
-@property (nonatomic, readwrite) GameObjectState gameObjectState;
+
 
 -(void)updateStateWithDeltaTime:(ccTime)deltaTime andListOfGameObjects:(CCArray*)listOfGameObjects;
 

@@ -11,7 +11,7 @@
 #import "GameManager.h"
 
 @implementation SandboxScene
-@synthesize startLocation = _startLocation, endLocation = _endLocation, sceneSpriteBatchNode = _sceneSpriteBatchNode, gameplayLayer = _gameplayLayer;
+@synthesize gameplayLayer = _gameplayLayer;
 
 #pragma mark - Scene Update Management
 -(void)update:(ccTime)deltaTime
@@ -23,25 +23,16 @@
     }
 }
 
-#pragma mark - Monster Spawning
--(void)spawnMonster:(MonsterID)monsterID atLocation:(CGPoint)location
-{    
-    MonsterObject *testMonster = [[GameManager sharedManager] spawnMonster:monsterID];
-    [testMonster setPosition:location];
-    
-    [[self sceneSpriteBatchNode] addChild:testMonster z:10];
-}
-
-
 #pragma mark - Initialization
 -(id)init
 {
     self = [super init];
     if (self)
     {
-        // Setup Default Start Location
+        // Setup Default Start and End Locations
         CGSize screenSize = [[CCDirector sharedDirector] winSize];
-        _startLocation = CGPointMake(screenSize.width/2, screenSize.height - 100);
+        _startLocation01 = CGPointMake(screenSize.width/2, screenSize.height - 25.0);
+        _goalLocation01 = CGPointMake(screenSize.width/2, 0);
         
         // Setup layers in scene
         _gameplayLayer = [SandboxLayer node];
@@ -57,7 +48,9 @@
         [self scheduleUpdate];
         
         // Temp location for monster spawning for now
-        [self spawnMonster:kOrc atLocation:self.startLocation];
+        [self spawnMonster:kOrc atLocation:[self startLocation01] withGoalLocation:[self goalLocation01]];
+        [self spawnMonster:kOrc atLocation:CGPointMake(screenSize.width/2 - 50.0, screenSize.height - 25.0) withGoalLocation:CGPointMake(screenSize.width/2 - 50.0, 0)];
+        [self spawnMonster:kBigOrc atLocation:CGPointMake(screenSize.width/2 - 75.0, screenSize.height - 25.0) withGoalLocation:CGPointMake(screenSize.width/2 - 75.0, 0)];
     }
     
     return self;

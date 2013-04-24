@@ -10,7 +10,7 @@
 #import "GameConstants.h"
 
 @implementation GameObject
-@synthesize gameObjectType = _gameObjectType, gameObjectState = _gameObjectState;
+@synthesize gameObjectType = _gameObjectType;
 
 #pragma mark - GameObject Update Management
 -(void)updateStateWithDeltaTime:(ccTime)deltaTime andListOfGameObjects:(CCArray*)listOfGameObjects
@@ -24,7 +24,6 @@
     if ((self = [super initWithSpriteFrame:spriteFrame]))
     {
         _gameObjectType = kGenericGameObject;
-        _gameObjectState = kStateIdle;
     }
     return self;
 }

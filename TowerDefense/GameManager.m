@@ -20,7 +20,7 @@
 static GameManager * _sharedGameManager = nil;
 
 #pragma mark - Monster Factory
--(MonsterObject *)spawnMonster:(MonsterID)monsterID
+-(MonsterObject *)spawnMonster:(MonsterID)monsterID withGoalLocation:(CGPoint)goalLocation
 {
     MonsterObject *newMonster = nil;
     
@@ -39,6 +39,7 @@ static GameManager * _sharedGameManager = nil;
             break;
     }
     
+    [newMonster setGoalLocation:goalLocation];
     return newMonster;
 }
 
@@ -49,7 +50,7 @@ static GameManager * _sharedGameManager = nil;
     CGSize screenSize = [[CCDirector sharedDirector] winSize];
     CGSize levelSize;
     
-    switch (_currentScene)
+    switch (_currentSceneID)
     {
         case kMainMenuScene:
             levelSize = screenSize;
@@ -77,8 +78,8 @@ static GameManager * _sharedGameManager = nil;
 
 -(void)runGameScene:(GameSceneID)sceneID
 {
-    GameSceneID oldScene = _currentScene;
-    _currentScene = sceneID;
+    GameSceneID oldSceneID = _currentSceneID;
+    _currentSceneID = sceneID;
     
     id sceneToRun = nil;
     switch (sceneID)
@@ -110,7 +111,7 @@ static GameManager * _sharedGameManager = nil;
     }
     if (sceneToRun == nil)
     {
-        _currentScene = oldScene;
+        _currentSceneID = oldSceneID;
         return;
     }
     
@@ -121,6 +122,28 @@ static GameManager * _sharedGameManager = nil;
     else
     {
         [[CCDirector sharedDirector] replaceScene:sceneToRun];
+    }
+}
+
+-(GameScene *)getCurrentRunningGameScene;
+{
+    switch (_currentSceneID)
+    {
+        case kNoScene:
+            return nil;
+            break;
+            
+        case kIntroScene:
+            return nil;
+            break;
+            
+        case kMainMenuScene:
+            return nil;
+            break;
+            
+        default:
+            return (GameScene *)[[CCDirector sharedDirector] runningScene];
+            break;
     }
 }
 
@@ -156,7 +179,7 @@ static GameManager * _sharedGameManager = nil;
     {
         // Game Manager initialized
         CCLOG(@"Game Manager Singleton, init");
-        _currentScene = kNoScene;
+        _currentSceneID = kNoScene;
     }
     return self;
 }
