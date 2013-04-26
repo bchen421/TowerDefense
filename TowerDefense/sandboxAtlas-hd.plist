@@ -7,7 +7,7 @@
             <key>orc.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{26,58}}</string>
+                <string>{{2,132},{26,58}}</string>
                 <key>offset</key>
                 <string>{0,3}</string>
                 <key>rotated</key>
@@ -17,6 +17,32 @@
                 <key>sourceSize</key>
                 <string>{32,64}</string>
             </dict>
+            <key>projectile.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,192},{8,8}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{8,8}}</string>
+                <key>sourceSize</key>
+                <string>{8,8}</string>
+            </dict>
+            <key>tower.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,2},{128,128}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{128,128}}</string>
+                <key>sourceSize</key>
+                <string>{128,128}</string>
+            </dict>
         </dict>
         <key>metadata</key>
         <dict>
@@ -25,9 +51,9 @@
             <key>realTextureFileName</key>
             <string>sandboxAtlas-hd.png</string>
             <key>size</key>
-            <string>{32,64}</string>
+            <string>{256,256}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:037a8fd65817ece32ea4a283f62e6272$</string>
+            <string>$TexturePacker:SmartUpdate:d7fe41044e8505ade33210c51b27269b$</string>
             <key>textureFileName</key>
             <string>sandboxAtlas-hd.png</string>
         </dict>

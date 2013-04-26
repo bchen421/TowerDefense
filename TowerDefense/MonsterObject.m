@@ -31,7 +31,7 @@
     {
         _gameObjectType = kMonsterObject;
         _monsterID = kGenericMonster;
-        _monsterState = nil;
+        _monsterState = kMonsterIdle;
         _movementSpeed = 50.0;
         _goalLocation = CGPointMake(0.0, 0.0);
     }

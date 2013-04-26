@@ -8,9 +8,10 @@
 
 #import "cocos2d.h"
 #import "GameConstants.h"
-@class GameScene;
 
 #import "MonsterObject.h"
+
+@class GameScene;
 
 @interface GameManager : NSObject
 {
@@ -27,5 +28,8 @@
 
 // Monster Management
 -(MonsterObject *)spawnMonster:(MonsterID)monsterID withGoalLocation:(CGPoint)goalLocation;
+
+// Tower Management
+-(void)spawnTower:(TowerID)towerID forScene:(GameScene *)gameScene atLocation:(CGPoint)spawnLocation;
 
 @end

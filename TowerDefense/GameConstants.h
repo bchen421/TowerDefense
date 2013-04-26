@@ -19,6 +19,7 @@ typedef enum
 {
     kGenericGameObject,
     kMonsterObject,
+    kTowerObject,
 } GameObjectType;
 
 typedef enum
@@ -30,28 +31,18 @@ typedef enum
 
 typedef enum
 {
-    kStateIdle,
-    kStateMoving,
+    kMonsterIdle,
+    kMonsterMoving,
 } MonsterState;
 
 typedef enum
 {
-    kNorth,
-    kSouth,
-    kEast,
-    kWest,
-    kNeutral,
-    kNorthEast,
-    kNorthWest,
-    kSouthEast,
-    kSouthWest
-} Direction;
+    kGenericTower,
+    kBlueTower,
+} TowerID;
 
 typedef enum
 {
-    kMovementAction,
-    kMovementAnim,
-    kWalkingAction,
-    kRecoveryAction,
-    kPursueAction
-} actionTags;
+    kTowerIdle,
+    kTowerAttacking,
+} TowerState;

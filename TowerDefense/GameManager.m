@@ -15,9 +15,35 @@
 // Monster Headers
 #import "OrcMonster.h"
 
+// Tower Headers
+#import "BlueTower.h"
+
 
 @implementation GameManager
 static GameManager * _sharedGameManager = nil;
+
+#pragma mark - Tower Factory
+-(void)spawnTower:(TowerID)towerID forScene:(GameScene *)gameScene atLocation:(CGPoint)spawnLocation
+{
+    TowerObject *newTower = nil;
+    
+    switch (towerID)
+    {
+        case kBlueTower:
+            newTower = [BlueTower spawnTower];
+            break;
+            
+        default:
+            CCLOG(@"Unknown Tower ID");
+            break;
+    }
+    
+    if (newTower)
+    {
+        [newTower setPosition:spawnLocation];
+        [[gameScene sceneSpriteBatchNode] addChild:newTower z:20];
+    }
+}
 
 #pragma mark - Monster Factory
 -(MonsterObject *)spawnMonster:(MonsterID)monsterID withGoalLocation:(CGPoint)goalLocation
@@ -42,7 +68,6 @@ static GameManager * _sharedGameManager = nil;
     [newMonster setGoalLocation:goalLocation];
     return newMonster;
 }
-
 
 #pragma mark - Scene Management
 -(CGSize)getDimensionsOfCurrentScene

@@ -14,17 +14,11 @@
 -(void)updateStateWithDeltaTime:(ccTime)deltaTime andListOfGameObjects:(CCArray*)listOfGameObjects
 {
     [super updateStateWithDeltaTime:deltaTime andListOfGameObjects:listOfGameObjects];
-    
-    // First and foremost, if I don't have a state, I should switch to idle
-    if (!self.monsterState)
-    {
-        [self changeState:kStateIdle];
-    }
-    
+        
     // If I am idle, I should try and move towards the goal
-    if (self.monsterState == kStateIdle)
+    if (self.monsterState == kMonsterIdle)
     {
-        [self changeState:kStateMoving];
+        [self changeState:kMonsterMoving];
     }
 }
 
@@ -34,11 +28,11 @@
     
     switch (newState)
     {
-        case kStateIdle:
+        case kMonsterIdle:
             CCLOG(@"OrcMonster is idle!");
             break;
         
-        case kStateMoving:
+        case kMonsterMoving:
             CCLOG(@"OrcMonster is starting to move");
             [self moveTowardsGoal];
             break;
@@ -91,6 +85,7 @@
     if (self = [super initWithSpriteFrame:spriteFrame])
     {
         _monsterID = kOrc;
+        [self changeState:kMonsterIdle];
     }
     
     return self;

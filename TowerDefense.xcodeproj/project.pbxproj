@@ -144,6 +144,9 @@
 		8F65B221171C43CD0065AA48 /* IntroLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F65B220171C43CD0065AA48 /* IntroLayer.m */; };
 		8F65B22C171C44760065AA48 /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F65B22B171C44760065AA48 /* GameManager.m */; };
 		8F65B233171C44CC0065AA48 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F65B232171C44CC0065AA48 /* Default-568h@2x.png */; };
+		8FA4E38B172A17BD00603CB6 /* TowerObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA4E38A172A17BD00603CB6 /* TowerObject.m */; };
+		8FA4E38E172A1B9500603CB6 /* BlueTower.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA4E38D172A1B9500603CB6 /* BlueTower.m */; };
+		8FA4E391172A257000603CB6 /* GameUILayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA4E390172A257000603CB6 /* GameUILayer.m */; };
 		8FBE24C2171D7F8E001D38BB /* MainMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBE24C1171D7F8E001D38BB /* MainMenuScene.m */; };
 		8FBE24C5171D7FC6001D38BB /* MainMenuLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBE24C4171D7FC6001D38BB /* MainMenuLayer.m */; };
 		8FBE24CB171D8124001D38BB /* background-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FBE24C9171D8124001D38BB /* background-hd.png */; };
@@ -436,6 +439,12 @@
 		8F65B22A171C44760065AA48 /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameManager.h; sourceTree = "<group>"; };
 		8F65B22B171C44760065AA48 /* GameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameManager.m; sourceTree = "<group>"; };
 		8F65B232171C44CC0065AA48 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Resources/Default-568h@2x.png"; sourceTree = "<group>"; };
+		8FA4E389172A17BD00603CB6 /* TowerObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TowerObject.h; sourceTree = "<group>"; };
+		8FA4E38A172A17BD00603CB6 /* TowerObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TowerObject.m; sourceTree = "<group>"; };
+		8FA4E38C172A1B9500603CB6 /* BlueTower.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlueTower.h; sourceTree = "<group>"; };
+		8FA4E38D172A1B9500603CB6 /* BlueTower.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlueTower.m; sourceTree = "<group>"; };
+		8FA4E38F172A257000603CB6 /* GameUILayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameUILayer.h; sourceTree = "<group>"; };
+		8FA4E390172A257000603CB6 /* GameUILayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameUILayer.m; sourceTree = "<group>"; };
 		8FBE24C0171D7F8E001D38BB /* MainMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuScene.h; sourceTree = "<group>"; };
 		8FBE24C1171D7F8E001D38BB /* MainMenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuScene.m; sourceTree = "<group>"; };
 		8FBE24C3171D7FC6001D38BB /* MainMenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuLayer.h; sourceTree = "<group>"; };
@@ -475,6 +484,7 @@
 			children = (
 				8F076971171F825E00232389 /* GameObject.h */,
 				8F076972171F825E00232389 /* GameObject.m */,
+				8FA4E388172A17A500603CB6 /* Towers */,
 				8F076974171F885E00232389 /* Monsters */,
 			);
 			name = "Game Objects";
@@ -512,6 +522,8 @@
 		8F0AF0BF171E633800050CB3 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				8FA4E38F172A257000603CB6 /* GameUILayer.h */,
+				8FA4E390172A257000603CB6 /* GameUILayer.m */,
 			);
 			name = Shared;
 			sourceTree = "<group>";
@@ -1010,6 +1022,17 @@
 			name = Intro;
 			sourceTree = "<group>";
 		};
+		8FA4E388172A17A500603CB6 /* Towers */ = {
+			isa = PBXGroup;
+			children = (
+				8FA4E389172A17BD00603CB6 /* TowerObject.h */,
+				8FA4E38A172A17BD00603CB6 /* TowerObject.m */,
+				8FA4E38C172A1B9500603CB6 /* BlueTower.h */,
+				8FA4E38D172A1B9500603CB6 /* BlueTower.m */,
+			);
+			name = Towers;
+			sourceTree = "<group>";
+		};
 		8FBE24BE171D7F59001D38BB /* MainMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -1264,6 +1287,9 @@
 				8F216E2D1720F84900A0730D /* MonsterObject.m in Sources */,
 				8F216E301720FA2400A0730D /* OrcMonster.m in Sources */,
 				8FCBD19F172769D1008A75AC /* GameScene.m in Sources */,
+				8FA4E38B172A17BD00603CB6 /* TowerObject.m in Sources */,
+				8FA4E38E172A1B9500603CB6 /* BlueTower.m in Sources */,
+				8FA4E391172A257000603CB6 /* GameUILayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

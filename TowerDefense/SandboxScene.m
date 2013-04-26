@@ -8,10 +8,11 @@
 
 #import "SandboxScene.h"
 #import "SandboxLayer.h"
+#import "GameUILayer.h"
 #import "GameManager.h"
 
 @implementation SandboxScene
-@synthesize gameplayLayer = _gameplayLayer;
+@synthesize gameplayLayer=_gameplayLayer, gameUILayer=_gameUILayer;
 
 #pragma mark - Scene Update Management
 -(void)update:(ccTime)deltaTime
@@ -34,15 +35,18 @@
         _startLocation01 = CGPointMake(screenSize.width/2, screenSize.height - 25.0);
         _goalLocation01 = CGPointMake(screenSize.width/2, 0);
         
-        // Setup layers in scene
+        // Setup gameplay layer
         _gameplayLayer = [SandboxLayer node];
         [self addChild:_gameplayLayer z:0];
         
-        // Setup Sprite Atlas for gameplay layer
+        // Setup UI layer
+        _gameUILayer = [GameUILayer node];
+        [self addChild:_gameUILayer z:1];
         
+        // Setup Sprite Atlas for gameplay layer
         [[CCSpriteFrameCache sharedSpriteFrameCache]addSpriteFramesWithFile:@"sandboxAtlas.plist"];
         _sceneSpriteBatchNode = [CCSpriteBatchNode batchNodeWithFile:@"sandboxAtlas.png"];
-        [self addChild:_sceneSpriteBatchNode z:10];
+        [self addChild:_sceneSpriteBatchNode z:1];
         
         // Schedule updates for this scene
         [self scheduleUpdate];
@@ -50,7 +54,9 @@
         // Temp location for monster spawning for now
         [self spawnMonster:kOrc atLocation:[self startLocation01] withGoalLocation:[self goalLocation01]];
         [self spawnMonster:kOrc atLocation:CGPointMake(screenSize.width/2 - 50.0, screenSize.height - 25.0) withGoalLocation:CGPointMake(screenSize.width/2 - 50.0, 0)];
-        [self spawnMonster:kBigOrc atLocation:CGPointMake(screenSize.width/2 - 75.0, screenSize.height - 25.0) withGoalLocation:CGPointMake(screenSize.width/2 - 75.0, 0)];
+        [self spawnMonster:kBigOrc atLocation:CGPointMake(screenSize.width/2.0 - 75.0, screenSize.height - 25.0) withGoalLocation:CGPointMake(screenSize.width/2 - 75.0, screenSize.height/2.0)];
+        
+        //[[GameManager sharedManager] spawnTower:kBlueTower forScene:self atLocation:CGPointMake(screenSize.width/2.0 + 150.0, screenSize.height/2.0)];
     }
     
     return self;
