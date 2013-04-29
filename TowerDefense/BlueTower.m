@@ -14,12 +14,39 @@
 -(void)updateStateWithDeltaTime:(ccTime)deltaTime andListOfGameObjects:(CCArray*)listOfGameObjects
 {
     [super updateStateWithDeltaTime:deltaTime andListOfGameObjects:listOfGameObjects];
+    
+    if (([self numberOfRunningActions] == 0) && ([self towerState] != kTowerIdle))
+    {
+        CCLOG(@"CHANGING TOWER STATE TO IDLE");
+        [self changeState:kTowerIdle];
+    }
+    
+    if ([self towerState] == kTowerIdle)
+    {
+        if (self.currentTarget == nil)
+        {
+            [self findTargetFrom:listOfGameObjects];
+        }
+        else
+        {
+            if ([self isMonsterInRange:self.currentTarget])
+            {
+                CCLOG(@"ATTACKING MONSTER");
+                [self changeState:kTowerAttacking];
+            }
+            else
+            {
+                CCLOG(@"MONSTER HAS MOVED OUT OF RANGE");
+                self.currentTarget = nil;
+            }
+        }
+    }
 }
 
 -(void)changeState:(TowerState)newState
 {
     self.towerState = newState;
-    
+        
     switch (newState)
     {
         case kTowerIdle:
@@ -28,11 +55,18 @@
             
         case kTowerAttacking:
             CCLOG(@"BlueTower is starting to attack!");
+            [self attackCurrentTarget];
             break;
             
         default:
             break;
     }
+}
+
+-(void)attackCurrentTarget
+{
+    CCAction *attackActions = [CCSpawn actions:[CCDelayTime actionWithDuration:(1.0/[self attackRate])], nil];
+    [self runAction:attackActions];
 }
 
 #pragma mark - Tower Factory
@@ -41,7 +75,7 @@
     TowerObject *newTower = [[BlueTower alloc] initWithSpriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"tower.png"]];
     [newTower setTowerID:kBlueTower];
     
-    return newTower;
+    return newTower;    
 }
 
 #pragma mark - Initialization
@@ -50,6 +84,9 @@
     if (self = [super initWithSpriteFrame:spriteFrame])
     {
         _towerID = kBlueTower;
+        _attackRate = 4.0;
+        _attackRange = 64.0;
+        [self createRangeFinder];
         [self changeState:kTowerIdle];
     }
     

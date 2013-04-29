@@ -10,22 +10,27 @@
 #import "GameConstants.h"
 @class MonsterObject;
 
-@interface TowerObject : GameObject
+@interface TowerObject : GameObject <CCTargetedTouchDelegate>
 {
     TowerID _towerID;
     TowerState _towerState;
-    CGFloat _attackSpeed;
+    CGFloat _attackRate;
     CGFloat _attackRange;
+    CCSprite *_rangeFinder;
     
     MonsterObject *_currentTarget;
 }
 
 @property (nonatomic,readwrite) TowerID towerID;
 @property (nonatomic,readwrite) TowerState towerState;
-@property (nonatomic,readwrite) CGFloat attackSpeed;
+@property (nonatomic,readwrite) CGFloat attackRate;
 @property (nonatomic,readwrite) CGFloat attackRange;
 @property (nonatomic,assign,readwrite) MonsterObject *currentTarget;
 
 -(void)changeState:(TowerState)newState;
+-(void)findTargetFrom:(CCArray *)listOfGameObjects;
+-(void)attackCurrentTarget;
+-(void)createRangeFinder;
+-(BOOL)isMonsterInRange:(MonsterObject *)monster;
 
 @end
