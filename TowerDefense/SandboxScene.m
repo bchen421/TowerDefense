@@ -54,10 +54,8 @@
         
         // Temp location for monster spawning for now
         [self spawnMonster:kOrc atLocation:[self startLocation01] withGoalLocation:[self goalLocation01]];
-        //[self spawnMonster:kOrc atLocation:CGPointMake(screenSize.width/2 - 50.0, screenSize.height - 25.0) withGoalLocation:CGPointMake(screenSize.width/2 - 50.0, 0)];
-        //[self spawnMonster:kBigOrc atLocation:CGPointMake(screenSize.width/2.0 - 75.0, screenSize.height - 25.0) withGoalLocation:CGPointMake(screenSize.width/2 - 75.0, screenSize.height/2.0)];
-        
-        //[[GameManager sharedManager] spawnTower:kBlueTower forScene:self atLocation:CGPointMake(screenSize.width/2.0 + 150.0, screenSize.height/2.0)];
+        [self spawnMonster:kOrc atLocation:CGPointMake(screenSize.width/2 - 50.0, screenSize.height - 25.0) withGoalLocation:CGPointMake(screenSize.width/2 - 50.0, 0)];
+        [self spawnMonster:kBigOrc atLocation:CGPointMake(screenSize.width/2.0 - 75.0, screenSize.height - 25.0) withGoalLocation:CGPointMake(screenSize.width/2 - 75.0, screenSize.height/2.0)];
     }
     
     return self;

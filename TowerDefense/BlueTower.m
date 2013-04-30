@@ -7,6 +7,7 @@
 //
 
 #import "BlueTower.h"
+#import "TowerProjectile.h"
 
 @implementation BlueTower
 
@@ -65,7 +66,12 @@
 
 -(void)attackCurrentTarget
 {
-    CCAction *attackActions = [CCSpawn actions:[CCDelayTime actionWithDuration:(1.0/[self attackRate])], nil];
+    TowerProjectile *projectile = [TowerProjectile shootProjectile:@"projectile.png" WithDamage:10 andSpeed:0.0 atMonster:self.currentTarget];
+    [projectile setPosition:self.position];
+    
+    [parent_ addChild:projectile];
+    
+    CCAction *attackActions = [CCSequence actions:[CCDelayTime actionWithDuration:(1.0/[self attackRate])], nil];
     [self runAction:attackActions];
 }
 
@@ -84,8 +90,8 @@
     if (self = [super initWithSpriteFrame:spriteFrame])
     {
         _towerID = kBlueTower;
-        _attackRate = 4.0;
-        _attackRange = 64.0;
+        _attackRate = 1.0;
+        _attackRange = 128.0;
         [self createRangeFinder];
         [self changeState:kTowerIdle];
     }

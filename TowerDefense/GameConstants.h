@@ -20,6 +20,7 @@ typedef enum
     kGenericGameObject,
     kMonsterObject,
     kTowerObject,
+    kTowerProjectileObject,
 } GameObjectType;
 
 typedef enum
@@ -46,3 +47,10 @@ typedef enum
     kTowerIdle,
     kTowerAttacking,
 } TowerState;
+
+typedef enum
+{
+    kProjectileIdle,
+    kProjectileAttacking,
+    kProjectileDead
+} ProjectileState;

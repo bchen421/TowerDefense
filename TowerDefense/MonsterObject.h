@@ -13,6 +13,7 @@
 {
     MonsterID _monsterID;
     MonsterState _monsterState;
+    
     CGFloat _movementSpeed;
     CGPoint _goalLocation;
 }
@@ -23,5 +24,6 @@
 @property (nonatomic, readwrite) CGPoint goalLocation;
 
 -(void)changeState:(MonsterState)newState;
+-(void)takeDamage:(NSUInteger)amount;
 
 @end

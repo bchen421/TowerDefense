@@ -156,6 +156,7 @@
 		8FBE24D3171D8794001D38BB /* MainMenuFonts-hd.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 8FBE24D1171D8794001D38BB /* MainMenuFonts-hd.fnt */; };
 		8FBE24D4171D8794001D38BB /* MainMenuFonts-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FBE24D2171D8794001D38BB /* MainMenuFonts-hd.png */; };
 		8FCBD19F172769D1008A75AC /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCBD19E172769D1008A75AC /* GameScene.m */; };
+		8FCECDB3172F3A100038E521 /* TowerProjectile.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCECDB2172F3A100038E521 /* TowerProjectile.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -457,6 +458,8 @@
 		8FBE24D2171D8794001D38BB /* MainMenuFonts-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MainMenuFonts-hd.png"; sourceTree = "<group>"; };
 		8FCBD19D172769D0008A75AC /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
 		8FCBD19E172769D1008A75AC /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
+		8FCECDB1172F3A100038E521 /* TowerProjectile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TowerProjectile.h; sourceTree = "<group>"; };
+		8FCECDB2172F3A100038E521 /* TowerProjectile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TowerProjectile.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -486,6 +489,7 @@
 				8F076972171F825E00232389 /* GameObject.m */,
 				8FA4E388172A17A500603CB6 /* Towers */,
 				8F076974171F885E00232389 /* Monsters */,
+				8FCECDB0172F39DC0038E521 /* Miscellaneous */,
 			);
 			name = "Game Objects";
 			sourceTree = "<group>";
@@ -1079,6 +1083,15 @@
 			name = Backgrounds;
 			sourceTree = "<group>";
 		};
+		8FCECDB0172F39DC0038E521 /* Miscellaneous */ = {
+			isa = PBXGroup;
+			children = (
+				8FCECDB1172F3A100038E521 /* TowerProjectile.h */,
+				8FCECDB2172F3A100038E521 /* TowerProjectile.m */,
+			);
+			name = Miscellaneous;
+			sourceTree = "<group>";
+		};
 		8FFAFB3F171ED409001CD885 /* Sprite Sheets */ = {
 			isa = PBXGroup;
 			children = (
@@ -1290,6 +1303,7 @@
 				8FA4E38B172A17BD00603CB6 /* TowerObject.m in Sources */,
 				8FA4E38E172A1B9500603CB6 /* BlueTower.m in Sources */,
 				8FA4E391172A257000603CB6 /* GameUILayer.m in Sources */,
+				8FCECDB3172F3A100038E521 /* TowerProjectile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

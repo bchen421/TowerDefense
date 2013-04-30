@@ -24,6 +24,11 @@
     CCLOG(@"STUB METHOD, PLEASE OVERRIDE ME");
 }
 
+-(void)takeDamage:(NSUInteger)amount
+{
+    CCLOG(@"I TOOK %i amount of damage!", amount);
+}
+
 #pragma mark - Initialization
 -(id)initWithSpriteFrame:(CCSpriteFrame*)spriteFrame
 {
