@@ -34,6 +34,7 @@ typedef enum
 {
     kMonsterIdle,
     kMonsterMoving,
+    kMonsterDead,
 } MonsterState;
 
 typedef enum

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="15" height="11" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="tiles" tilewidth="32" tileheight="32" spacing="1" margin="1">
+  <image source="tiles.png" width="265" height="199"/>
+ </tileset>
+ <layer name="Background" width="15" height="11">
+  <data encoding="base64" compression="zlib">
+   eJyTY2BgkMOCFYFYCYiVccijY0YgZgJiZjS9yOK49HICMRcQc6PpRRbHpVcQiIWAWBhNL7L4qJsH1s2kpisABXAPow==
+  </data>
+ </layer>
+ <objectgroup name="Metadata" width="15" height="11">
+  <object name="spawnPoint01" x="224" y="0" width="32" height="32"/>
+ </objectgroup>
+</map>

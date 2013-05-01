@@ -33,12 +33,15 @@
     {
         // Setup Default Start and End Locations
         CGSize screenSize = [[CCDirector sharedDirector] winSize];
+        CCLOG(@"Screen Width: %g Height: %g", screenSize.width, screenSize.height);
         _startLocation01 = CGPointMake(screenSize.width/2, screenSize.height - 25.0);
         _goalLocation01 = CGPointMake(screenSize.width/2, 0);
         
         // Setup gameplay layer
         _gameplayLayer = [SandboxLayer node];
         [self addChild:_gameplayLayer z:0];
+        //CCTMXTiledMap *tileMapNode = [CCTMXTiledMap tiledMapWithTMXFile:@"tilemap.tmx"];
+        //[self addChild:tileMapNode z:0];
         
         // Setup UI layer
         _gameUILayer = [GameUILayer node];

@@ -16,6 +16,9 @@
 		8F0AF0BD171E5EC500050CB3 /* SandboxLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F0AF0BC171E5EC500050CB3 /* SandboxLayer.m */; };
 		8F216E2D1720F84900A0730D /* MonsterObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F216E2C1720F84900A0730D /* MonsterObject.m */; };
 		8F216E301720FA2400A0730D /* OrcMonster.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F216E2F1720FA2400A0730D /* OrcMonster.m */; };
+		8F3520211730CB5E0017AC00 /* tiles.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F3520201730CB5E0017AC00 /* tiles.png */; };
+		8F3520231730CCAA0017AC00 /* tilemap.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 8F3520221730CCAA0017AC00 /* tilemap.tmx */; };
+		8F35202717314E6E0017AC00 /* TiledScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F35202617314E6E0017AC00 /* TiledScene.m */; };
 		8F65B090171C43CC0065AA48 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F65B08F171C43CC0065AA48 /* QuartzCore.framework */; };
 		8F65B092171C43CC0065AA48 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F65B091171C43CC0065AA48 /* OpenGLES.framework */; };
 		8F65B094171C43CC0065AA48 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F65B093171C43CC0065AA48 /* OpenAL.framework */; };
@@ -174,6 +177,10 @@
 		8F216E2C1720F84900A0730D /* MonsterObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonsterObject.m; sourceTree = "<group>"; };
 		8F216E2E1720FA2400A0730D /* OrcMonster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrcMonster.h; sourceTree = "<group>"; };
 		8F216E2F1720FA2400A0730D /* OrcMonster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrcMonster.m; sourceTree = "<group>"; };
+		8F3520201730CB5E0017AC00 /* tiles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tiles.png; sourceTree = "<group>"; };
+		8F3520221730CCAA0017AC00 /* tilemap.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = tilemap.tmx; sourceTree = "<group>"; };
+		8F35202517314E6E0017AC00 /* TiledScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TiledScene.h; sourceTree = "<group>"; };
+		8F35202617314E6E0017AC00 /* TiledScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TiledScene.m; sourceTree = "<group>"; };
 		8F65B08C171C43CC0065AA48 /* TowerDefense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TowerDefense.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F65B08F171C43CC0065AA48 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		8F65B091171C43CC0065AA48 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -530,6 +537,24 @@
 				8FA4E390172A257000603CB6 /* GameUILayer.m */,
 			);
 			name = Shared;
+			sourceTree = "<group>";
+		};
+		8F35201F1730CA350017AC00 /* Tile Maps */ = {
+			isa = PBXGroup;
+			children = (
+				8F3520221730CCAA0017AC00 /* tilemap.tmx */,
+				8F3520201730CB5E0017AC00 /* tiles.png */,
+			);
+			name = "Tile Maps";
+			sourceTree = "<group>";
+		};
+		8F35202417314E550017AC00 /* TiledSandbox */ = {
+			isa = PBXGroup;
+			children = (
+				8F35202517314E6E0017AC00 /* TiledScene.h */,
+				8F35202617314E6E0017AC00 /* TiledScene.m */,
+			);
+			name = TiledSandbox;
 			sourceTree = "<group>";
 		};
 		8F65B083171C43CC0065AA48 = {
@@ -980,6 +1005,7 @@
 			children = (
 				8FCBD19D172769D0008A75AC /* GameScene.h */,
 				8FCBD19E172769D1008A75AC /* GameScene.m */,
+				8F35202417314E550017AC00 /* TiledSandbox */,
 				8F0AF0B0171E59A900050CB3 /* Sandbox */,
 				8FBE24BE171D7F59001D38BB /* MainMenu */,
 			);
@@ -1003,6 +1029,7 @@
 			children = (
 				8FFAFB3F171ED409001CD885 /* Sprite Sheets */,
 				8FBE24C6171D80C3001D38BB /* Images */,
+				8F35201F1730CA350017AC00 /* Tile Maps */,
 				8FBE24C7171D80D0001D38BB /* Font Maps */,
 			);
 			name = "Game Assets";
@@ -1177,6 +1204,8 @@
 				8F0769841720164200232389 /* sandboxAtlas-hd.png in Resources */,
 				8F0769851720164200232389 /* sandboxAtlas.plist in Resources */,
 				8F0769861720164200232389 /* sandboxAtlas.png in Resources */,
+				8F3520211730CB5E0017AC00 /* tiles.png in Resources */,
+				8F3520231730CCAA0017AC00 /* tilemap.tmx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1304,6 +1333,7 @@
 				8FA4E38E172A1B9500603CB6 /* BlueTower.m in Sources */,
 				8FA4E391172A257000603CB6 /* GameUILayer.m in Sources */,
 				8FCECDB3172F3A100038E521 /* TowerProjectile.m in Sources */,
+				8F35202717314E6E0017AC00 /* TiledScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

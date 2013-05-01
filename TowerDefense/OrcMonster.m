@@ -14,6 +14,10 @@
 -(void)updateStateWithDeltaTime:(ccTime)deltaTime andListOfGameObjects:(CCArray*)listOfGameObjects
 {
     [super updateStateWithDeltaTime:deltaTime andListOfGameObjects:listOfGameObjects];
+    if (self.currentHP <= 0 && (self.monsterState != kMonsterDead))
+    {
+        [self changeState:kMonsterDead];
+    }
         
     // If I am idle, I should try and move towards the goal
     if (self.monsterState == kMonsterIdle)
@@ -37,9 +41,23 @@
             [self moveTowardsGoal];
             break;
             
+        case kMonsterDead:
+            CCLOG(@"OrcMonster is dead noooooo");
+            [self hasDied];
+            break;
+            
         default:
             break;
     }
+}
+
+-(void)hasDied
+{
+    [self stopAllActions];
+    //[self runAction:[CCBlink actionWithDuration:1.0 blinks:5]];
+    //[self removeFromParentAndCleanup:YES];
+    CCAction *deathAction = [CCSequence actions:[CCBlink actionWithDuration:1.0 blinks:5], [CCCallFuncND actionWithTarget:self selector:@selector(removeFromParentAndCleanup:) data:YES], nil];
+    [self runAction:deathAction];
 }
 
 #pragma mark - Internal helper methods
@@ -85,6 +103,8 @@
     if (self = [super initWithSpriteFrame:spriteFrame])
     {
         _monsterID = kOrc;
+        _maxHP = 30;
+        _currentHP = 30;
         [self changeState:kMonsterIdle];
     }
     

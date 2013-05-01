@@ -10,6 +10,7 @@
 #import "GameManager.h"
 #import "MainMenuScene.h"
 #import "SandboxScene.h"
+#import "TiledScene.h"
 #import "IntroLayer.h"
 
 // Monster Headers
@@ -41,7 +42,7 @@ static GameManager * _sharedGameManager = nil;
     if (newTower)
     {
         [newTower setPosition:spawnLocation];
-        [[gameScene sceneSpriteBatchNode] addChild:newTower z:20];
+        [[gameScene sceneSpriteBatchNode] addChild:newTower z:10];
     }
 }
 
@@ -90,7 +91,7 @@ static GameManager * _sharedGameManager = nil;
             break;
             
         case kTiledScene:
-            levelSize = CGSizeMake(screenSize.width * 4.0f, screenSize.height * 0.8f);
+            levelSize = screenSize;
             break;
             
         default:
@@ -124,11 +125,11 @@ static GameManager * _sharedGameManager = nil;
         case kSandboxScene:
             sceneToRun = [SandboxScene node];
             break;
-        /*
+        
         case kTiledScene:
             sceneToRun = [TiledScene node];
             break;
-        */
+        
         default:
             CCLOG(@"Unknown Scene ID, cannot switch scenes");
             return;

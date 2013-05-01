@@ -19,7 +19,7 @@
     MonsterObject *testMonster = [[GameManager sharedManager] spawnMonster:monsterID withGoalLocation:endLocation];
     [testMonster setPosition:startLocation];
     
-    [[self sceneSpriteBatchNode] addChild:testMonster z:10];
+    [[self sceneSpriteBatchNode] addChild:testMonster z:20];
 }
 
 #pragma mark - Initialization

@@ -22,6 +22,11 @@
         [self changeState:kTowerIdle];
     }
     
+    if (self.currentTarget.monsterState == kMonsterDead)
+    {
+        self.currentTarget = nil;
+    }
+    
     if ([self towerState] == kTowerIdle)
     {
         if (self.currentTarget == nil)
@@ -69,7 +74,7 @@
     TowerProjectile *projectile = [TowerProjectile shootProjectile:@"projectile.png" WithDamage:10 andSpeed:0.0 atMonster:self.currentTarget];
     [projectile setPosition:self.position];
     
-    [parent_ addChild:projectile];
+    [parent_ addChild:projectile z:30];
     
     CCAction *attackActions = [CCSequence actions:[CCDelayTime actionWithDuration:(1.0/[self attackRate])], nil];
     [self runAction:attackActions];

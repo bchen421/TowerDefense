@@ -39,7 +39,7 @@
         if ([monster gameObjectType] == kMonsterObject)
         {
             //CCLOG(@"Checking if monster is in range");
-            if ([self isMonsterInRange:monster])
+            if ([self isMonsterInRange:monster] && (monster.monsterState != kMonsterDead))
             {
                 if (self.currentTarget == nil)
                 {
