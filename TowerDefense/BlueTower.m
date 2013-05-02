@@ -85,6 +85,7 @@
 {
     TowerObject *newTower = [[BlueTower alloc] initWithSpriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"tower.png"]];
     [newTower setTowerID:kBlueTower];
+    [newTower setScale:0.5];
     
     return newTower;    
 }

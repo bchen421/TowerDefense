@@ -17,13 +17,17 @@
     CCTMXLayer *_backgroundLayer;
     CCTMXObjectGroup *_metadata;
     GameUILayer *_gameUILayer;
+    
+    CCArray *_towerLocations;
 }
 
 @property (readonly) CCTMXTiledMap *tileMap;
 @property (readonly) CCTMXLayer *backgroundLayer;
 @property (readonly) CCTMXObjectGroup *metadata;
 @property (readonly) GameUILayer *gameUILayer;
+@property (readonly) CCArray *towerLocations;
 
 -(CGPoint)locationForMetadataObject:(NSString *)metadataObject;
+-(void)setupTowerNodes;
 
 @end

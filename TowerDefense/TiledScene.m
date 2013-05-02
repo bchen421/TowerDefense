@@ -11,7 +11,7 @@
 #import "GameManager.h"
 
 @implementation TiledScene
-@synthesize tileMap=_tileMap, backgroundLayer=_backgroundLayer, metadata=_metadata, gameUILayer=_gameUILayer;
+@synthesize tileMap=_tileMap, backgroundLayer=_backgroundLayer, metadata=_metadata, gameUILayer=_gameUILayer, towerLocations=_towerLocations;
 
 #pragma mark - Scene Update Management
 -(void)update:(ccTime)deltaTime
@@ -43,6 +43,17 @@
     }
 }
 
+-(void)setupTowerNodes
+{
+    int numberOfTowers = [[[[self metadata] properties] valueForKey:@"numberOfTowers"] integerValue];
+    _towerLocations = [CCArray arrayWithCapacity:numberOfTowers];
+
+    for (int i = 01; i <= numberOfTowers; i++)
+    {
+        CCLOG(@"%i", i);
+    }
+}
+
 
 #pragma mark - Initialization
 -(id)init
@@ -56,11 +67,12 @@
         //_startLocation01 = CGPointMake(screenSize.width/2, screenSize.height - 25.0);
         //_goalLocation01 = CGPointMake(screenSize.width/2, 0);
         
-        // Setup gameplay layer
+        // Setup gameplay and metadata
         _tileMap = [CCTMXTiledMap tiledMapWithTMXFile:@"tilemap.tmx"];
         [self addChild:_tileMap z:0];
         _backgroundLayer = [[self tileMap] layerNamed:@"Background"];
         _metadata = [[self tileMap] objectGroupNamed:@"Metadata"];
+        [self setupTowerNodes];
         
         // Setup UI layer
         _gameUILayer = [GameUILayer node];

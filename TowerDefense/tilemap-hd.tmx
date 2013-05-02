@@ -5,12 +5,12 @@
  </tileset>
  <layer name="Background" width="15" height="10">
   <data encoding="base64" compression="zlib">
-   eJyTY2BgkMOCFYFYCYiVccijY0YgZgJiZjS9yOK49HICMRcQc6PpRRbHpVcQiIWAWBhNL7L4qJvp72YAjZAN1Q==
+   eJyTY2BgkMOCFYFYCYiVccijY0YgZgJiZjS9yOK49HJCaW40vcjiuPQKArEQEAuj6UUWH3Uz/d0MAA0fDk0=
   </data>
  </layer>
  <objectgroup name="Metadata" width="15" height="10">
   <properties>
-   <property name="testProperty" value="5"/>
+   <property name="numberOfTowers" value="6"/>
   </properties>
   <object name="goalPoint01" x="448" y="576" width="64" height="64"/>
   <object name="towerSpawnPoint01" x="256" y="128" width="64" height="64"/>
@@ -20,5 +20,6 @@
   <object name="towerSpawnPoint05" x="256" y="512" width="64" height="64"/>
   <object name="towerSpawnPoint06" x="640" y="512" width="64" height="64"/>
   <object name="spawnPoint01" x="448" y="0" width="64" height="64"/>
+  <object x="1024" y="512"/>
  </objectgroup>
 </map>
