@@ -34,8 +34,8 @@
         // Setup Default Start and End Locations
         CGSize screenSize = [[CCDirector sharedDirector] winSize];
         CCLOG(@"Screen Width: %g Height: %g", screenSize.width, screenSize.height);
-        _startLocation01 = CGPointMake(screenSize.width/2, screenSize.height - 25.0);
-        _goalLocation01 = CGPointMake(screenSize.width/2, 0);
+        //_startLocation01 = CGPointMake(screenSize.width/2, screenSize.height - 25.0);
+        //_goalLocation01 = CGPointMake(screenSize.width/2, 0);
         
         // Setup gameplay layer
         _gameplayLayer = [SandboxLayer node];

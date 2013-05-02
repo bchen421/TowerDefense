@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="15" height="11" tilewidth="32" tileheight="32">
+<map version="1.0" orientation="orthogonal" width="15" height="10" tilewidth="32" tileheight="32">
  <tileset firstgid="1" name="tiles" tilewidth="32" tileheight="32" spacing="1" margin="1">
   <image source="tiles.png" width="265" height="199"/>
  </tileset>
- <layer name="Background" width="15" height="11">
+ <layer name="Background" width="15" height="10">
   <data encoding="base64" compression="zlib">
-   eJyTY2BgkMOCFYFYCYiVccijY0YgZgJiZjS9yOK49HICMRcQc6PpRRbHpVcQiIWAWBhNL7L4qJsH1s2kpisABXAPow==
+   eJyTY2BgkMOCFYFYCYiVccijY0YgZgJiZjS9yOK49HICMRcQc6PpRRbHpVcQiIWAWBhNL7L4qJvp72YAjZAN1Q==
   </data>
  </layer>
- <objectgroup name="Metadata" width="15" height="11">
+ <objectgroup name="Metadata" width="15" height="10">
+  <properties>
+   <property name="testProperty" value="5"/>
+  </properties>
   <object name="spawnPoint01" x="224" y="0" width="32" height="32"/>
+  <object name="towerSpawnPoint02" x="320" y="64" width="32" height="32"/>
+  <object name="towerSpawnPoint04" x="320" y="160" width="32" height="32"/>
+  <object name="towerSpawnPoint06" x="320" y="256" width="32" height="32"/>
+  <object name="towerSpawnPoint05" x="128" y="256" width="32" height="32"/>
+  <object name="towerSpawnPoint03" x="128" y="160" width="32" height="32"/>
+  <object name="towerSpawnPoint01" x="128" y="64" width="32" height="32"/>
+  <object name="goalPoint01" x="224" y="288" width="32" height="32"/>
  </objectgroup>
 </map>

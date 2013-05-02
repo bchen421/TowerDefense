@@ -160,6 +160,8 @@
 		8FBE24D4171D8794001D38BB /* MainMenuFonts-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FBE24D2171D8794001D38BB /* MainMenuFonts-hd.png */; };
 		8FCBD19F172769D1008A75AC /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCBD19E172769D1008A75AC /* GameScene.m */; };
 		8FCECDB3172F3A100038E521 /* TowerProjectile.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCECDB2172F3A100038E521 /* TowerProjectile.m */; };
+		8FD090351731FF3C00DAF53D /* tilemap-hd.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 8FD090331731FF3C00DAF53D /* tilemap-hd.tmx */; };
+		8FD090361731FF3C00DAF53D /* tiles-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FD090341731FF3C00DAF53D /* tiles-hd.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -467,6 +469,8 @@
 		8FCBD19E172769D1008A75AC /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
 		8FCECDB1172F3A100038E521 /* TowerProjectile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TowerProjectile.h; sourceTree = "<group>"; };
 		8FCECDB2172F3A100038E521 /* TowerProjectile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TowerProjectile.m; sourceTree = "<group>"; };
+		8FD090331731FF3C00DAF53D /* tilemap-hd.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "tilemap-hd.tmx"; sourceTree = "<group>"; };
+		8FD090341731FF3C00DAF53D /* tiles-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tiles-hd.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -544,6 +548,8 @@
 			children = (
 				8F3520221730CCAA0017AC00 /* tilemap.tmx */,
 				8F3520201730CB5E0017AC00 /* tiles.png */,
+				8FD090331731FF3C00DAF53D /* tilemap-hd.tmx */,
+				8FD090341731FF3C00DAF53D /* tiles-hd.png */,
 			);
 			name = "Tile Maps";
 			sourceTree = "<group>";
@@ -1206,6 +1212,8 @@
 				8F0769861720164200232389 /* sandboxAtlas.png in Resources */,
 				8F3520211730CB5E0017AC00 /* tiles.png in Resources */,
 				8F3520231730CCAA0017AC00 /* tilemap.tmx in Resources */,
+				8FD090351731FF3C00DAF53D /* tilemap-hd.tmx in Resources */,
+				8FD090361731FF3C00DAF53D /* tiles-hd.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
