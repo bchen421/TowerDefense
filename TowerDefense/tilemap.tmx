@@ -13,13 +13,13 @@
    <property name="numberOfTowers" value="6"/>
    <property name="retina" value="NO"/>
   </properties>
-  <object name="spawnPoint01" x="224" y="0" width="32" height="32"/>
-  <object name="towerSpawnPoint02" x="320" y="64" width="32" height="32"/>
-  <object name="towerSpawnPoint04" x="320" y="160" width="32" height="32"/>
-  <object name="towerSpawnPoint06" x="320" y="256" width="32" height="32"/>
-  <object name="towerSpawnPoint05" x="128" y="256" width="32" height="32"/>
-  <object name="towerSpawnPoint03" x="128" y="160" width="32" height="32"/>
-  <object name="towerSpawnPoint01" x="128" y="64" width="32" height="32"/>
-  <object name="goalPoint01" x="224" y="288" width="32" height="32"/>
+  <object name="spawnPoint1" x="224" y="0" width="32" height="32"/>
+  <object name="towerSpawnPoint2" x="320" y="64" width="32" height="32"/>
+  <object name="towerSpawnPoint4" x="320" y="160" width="32" height="32"/>
+  <object name="towerSpawnPoint6" x="320" y="256" width="32" height="32"/>
+  <object name="towerSpawnPoint5" x="128" y="256" width="32" height="32"/>
+  <object name="towerSpawnPoint3" x="128" y="160" width="32" height="32"/>
+  <object name="towerSpawnPoint1" x="128" y="64" width="32" height="32"/>
+  <object name="goalPoint1" x="224" y="288" width="32" height="32"/>
  </objectgroup>
 </map>

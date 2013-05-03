@@ -54,7 +54,7 @@
 
     for (int i = 1; i <= numberOfTowers; i++)
     {
-        dict = [[self metadata] objectNamed:[NSString stringWithFormat:@"towerSpawnPoint0%i",i]];
+        dict = [[self metadata] objectNamed:[NSString stringWithFormat:@"towerSpawnPoint%i",i]];
         CGRect towerBox = CGRectMake([[dict valueForKey:@"x"] floatValue], [[dict valueForKey:@"y"] floatValue], [[dict valueForKey:@"width"] floatValue], [[dict valueForKey:@"height"] floatValue]);
         if (retinaEnabled)
         {
@@ -101,7 +101,7 @@
         [self scheduleUpdate];
                 
         // Temp location for monster pawning for now
-        [self spawnMonster:kOrc atLocation:[self locationForMetadataObject:@"spawnPoint01"] withGoalLocation:[self locationForMetadataObject:@"goalPoint01"]];
+        [self spawnMonster:kOrc atLocation:[self locationForMetadataObject:@"spawnPoint1"] withGoalLocation:[self locationForMetadataObject:@"goalPoint1"]];
         //[self spawnMonster:kOrc atLocation:CGPointMake(screenSize.width/2, screenSize.height) withGoalLocation:CGPointMake(screenSize.width/2, 0)];
         //[self spawnMonster:kBigOrc atLocation:CGPointMake(screenSize.width/2.0 - 75.0, screenSize.height - 25.0) withGoalLocation:CGPointMake(screenSize.width/2 - 75.0, screenSize.height/2.0)];
     }
