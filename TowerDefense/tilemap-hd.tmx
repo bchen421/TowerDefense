@@ -11,6 +11,7 @@
  <objectgroup name="Metadata" width="15" height="10">
   <properties>
    <property name="numberOfTowers" value="6"/>
+   <property name="retina" value="YES"/>
   </properties>
   <object name="goalPoint01" x="448" y="576" width="64" height="64"/>
   <object name="towerSpawnPoint01" x="256" y="128" width="64" height="64"/>
@@ -20,6 +21,5 @@
   <object name="towerSpawnPoint05" x="256" y="512" width="64" height="64"/>
   <object name="towerSpawnPoint06" x="640" y="512" width="64" height="64"/>
   <object name="spawnPoint01" x="448" y="0" width="64" height="64"/>
-  <object x="1024" y="512"/>
  </objectgroup>
 </map>

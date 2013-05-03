@@ -27,13 +27,15 @@
 #pragma mark - Metadata Management
 -(CGPoint)locationForMetadataObject:(NSString *)metadataObject
 {
+    BOOL retinaEnabled = [[[[self metadata] properties] valueForKey:@"retina"] boolValue];
+
     NSDictionary *dict = [[self metadata] objectNamed:metadataObject];
     int width = [[dict valueForKey:@"width"] integerValue];
     int height = [[dict valueForKey:@"height"] integerValue];
     int x = [[dict valueForKey:@"x"] integerValue];
     int y = [[dict valueForKey:@"y"] integerValue];
     
-    if (width == 32)
+    if (!retinaEnabled)
     {
         return ccp(x + width/2,y + height/2);
     }
@@ -46,6 +48,7 @@
 -(void)setupTowerNodes
 {
     int numberOfTowers = [[[[self metadata] properties] valueForKey:@"numberOfTowers"] integerValue];
+    BOOL retinaEnabled = [[[[self metadata] properties] valueForKey:@"retina"] boolValue];
     
     NSDictionary *dict;
 
@@ -53,10 +56,10 @@
     {
         dict = [[self metadata] objectNamed:[NSString stringWithFormat:@"towerSpawnPoint0%i",i]];
         CGRect towerBox = CGRectMake([[dict valueForKey:@"x"] floatValue], [[dict valueForKey:@"y"] floatValue], [[dict valueForKey:@"width"] floatValue], [[dict valueForKey:@"height"] floatValue]);
-        if (towerBox.size.width == 64)
+        if (retinaEnabled)
         {
-            towerBox.size.width = 32;
-            towerBox.size.height = 32;
+            towerBox.size.width = towerBox.size.width/2.0;
+            towerBox.size.height = towerBox.size.height/2.0;
             towerBox.origin.x = towerBox.origin.x / 2.0;
             towerBox.origin.y = towerBox.origin.y / 2.0;
         }
