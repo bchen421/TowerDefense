@@ -11,7 +11,7 @@
 #import "GameManager.h"
 
 @implementation GameScene
-@synthesize startLocation01 = _startLocation01, goalLocation01 = _goalLocation01, sceneSpriteBatchNode = _sceneSpriteBatchNode;
+@synthesize startLocation01 = _startLocation01, goalLocation01 = _goalLocation01, sceneSpriteBatchNode = _sceneSpriteBatchNode, towerNodes = _towerNodes;
 
 #pragma mark - Monster Spawning
 -(void)spawnMonster:(MonsterID)monsterID atLocation:(CGPoint)startLocation withGoalLocation:(CGPoint)endLocation

@@ -7,7 +7,7 @@
             <key>orc.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{54,68},{14,30}}</string>
+                <string>{{2,88},{14,30}}</string>
                 <key>offset</key>
                 <string>{0,1}</string>
                 <key>rotated</key>
@@ -20,7 +20,7 @@
             <key>projectile.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,120},{4,4}}</string>
+                <string>{{54,2},{4,4}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -33,7 +33,7 @@
             <key>rangefinder.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,68},{50,50}}</string>
+                <string>{{2,2},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -46,15 +46,15 @@
             <key>tower.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{64,64}}</string>
+                <string>{{2,54},{32,32}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{64,64}}</string>
+                <string>{{0,0},{32,32}}</string>
                 <key>sourceSize</key>
-                <string>{64,64}</string>
+                <string>{32,32}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -64,9 +64,9 @@
             <key>realTextureFileName</key>
             <string>sandboxAtlas.png</string>
             <key>size</key>
-            <string>{128,128}</string>
+            <string>{64,128}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:5092bfdc1bcd5e42fbd356908421fd98$</string>
+            <string>$TexturePacker:SmartUpdate:2ae385780e6bef1e23bdeb0580a40967$</string>
             <key>textureFileName</key>
             <string>sandboxAtlas.png</string>
         </dict>

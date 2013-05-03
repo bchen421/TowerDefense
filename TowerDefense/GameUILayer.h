@@ -10,7 +10,9 @@
 
 @interface GameUILayer : CCLayer <CCTargetedTouchDelegate>
 {
-    
+    CGRect _touchedTowerNode;
 }
+
+@property (readwrite) CGRect touchedTowerNode;
 
 @end

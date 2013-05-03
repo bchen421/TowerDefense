@@ -14,12 +14,14 @@
 {
     CGPoint _startLocation01;
     CGPoint _goalLocation01;
+    NSMutableArray *_towerNodes;
     
     CCSpriteBatchNode *_sceneSpriteBatchNode;
 }
 
 @property (readonly) CGPoint startLocation01;
 @property (readonly) CGPoint goalLocation01;
+@property (nonatomic, retain, readwrite) NSMutableArray *towerNodes;
 @property (readwrite, retain) CCSpriteBatchNode *sceneSpriteBatchNode;
 
 -(void)spawnMonster:(MonsterID)monsterID atLocation:(CGPoint)startLocation withGoalLocation:(CGPoint)endLocation;

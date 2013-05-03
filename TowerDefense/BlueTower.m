@@ -85,7 +85,6 @@
 {
     TowerObject *newTower = [[BlueTower alloc] initWithSpriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"tower.png"]];
     [newTower setTowerID:kBlueTower];
-    [newTower setScale:0.5];
     
     return newTower;    
 }
@@ -97,7 +96,7 @@
     {
         _towerID = kBlueTower;
         _attackRate = 1.0;
-        _attackRange = 128.0;
+        _attackRange = 100.0;
         [self createRangeFinder];
         [self changeState:kTowerIdle];
     }

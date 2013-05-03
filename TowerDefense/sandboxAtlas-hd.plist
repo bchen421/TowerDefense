@@ -7,11 +7,11 @@
             <key>orc.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{104,132},{26,58}}</string>
+                <string>{{68,104},{26,58}}</string>
                 <key>offset</key>
                 <string>{0,3}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{3,0},{26,58}}</string>
                 <key>sourceSize</key>
@@ -20,7 +20,7 @@
             <key>projectile.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,234},{8,8}}</string>
+                <string>{{104,2},{8,8}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -33,7 +33,7 @@
             <key>rangefinder.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,132},{100,100}}</string>
+                <string>{{2,2},{100,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -46,15 +46,15 @@
             <key>tower.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{128,128}}</string>
+                <string>{{2,104},{64,64}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{128,128}}</string>
+                <string>{{0,0},{64,64}}</string>
                 <key>sourceSize</key>
-                <string>{128,128}</string>
+                <string>{64,64}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -64,9 +64,9 @@
             <key>realTextureFileName</key>
             <string>sandboxAtlas-hd.png</string>
             <key>size</key>
-            <string>{256,256}</string>
+            <string>{128,256}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:65335da486c3cfa173b027537fb50934$</string>
+            <string>$TexturePacker:SmartUpdate:caa16f9a268b13ffbccbed3ee0bfa35a$</string>
             <key>textureFileName</key>
             <string>sandboxAtlas-hd.png</string>
         </dict>

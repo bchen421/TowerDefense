@@ -11,11 +11,24 @@
 #import "GameManager.h"
 
 @implementation GameUILayer
+@synthesize touchedTowerNode=_touchedTowerNode;
 
 #pragma mark - Touch Management
 -(BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
-    return YES;
+    GameScene *currentScene = [[GameManager sharedManager] getCurrentRunningGameScene];
+    BOOL inTowerNode = NO;
+    CGPoint touchLocation = [parent_ convertTouchToNodeSpace:touch];
+       for (NSValue *towerNode in [currentScene towerNodes])
+    {
+        if (CGRectContainsPoint([towerNode CGRectValue], touchLocation))
+        {
+            inTowerNode = YES;
+            self.touchedTowerNode = [towerNode CGRectValue];
+        }
+    }
+        
+    return inTowerNode;
 }
 
 -(void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event
@@ -24,7 +37,11 @@
     
     GameScene *currentScene = [[GameManager sharedManager] getCurrentRunningGameScene];
     
-    [[GameManager sharedManager] spawnTower:kBlueTower forScene:currentScene atLocation:touchLocation];
+    if (CGRectContainsPoint(self.touchedTowerNode, touchLocation))
+    {
+        CGPoint towerLocation = CGPointMake(self.touchedTowerNode.origin.x + self.touchedTowerNode.size.width/2.0, self.touchedTowerNode.origin.y + self.touchedTowerNode.size.height/2.0);
+        [[GameManager sharedManager] spawnTower:kBlueTower forScene:currentScene atLocation:towerLocation];
+    }
     /*
     if (specialButton.active)
     {

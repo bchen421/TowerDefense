@@ -11,7 +11,7 @@
 #import "GameManager.h"
 
 @implementation TiledScene
-@synthesize tileMap=_tileMap, backgroundLayer=_backgroundLayer, metadata=_metadata, gameUILayer=_gameUILayer, towerLocations=_towerLocations;
+@synthesize tileMap=_tileMap, backgroundLayer=_backgroundLayer, metadata=_metadata, gameUILayer=_gameUILayer;
 
 #pragma mark - Scene Update Management
 -(void)update:(ccTime)deltaTime
@@ -46,11 +46,21 @@
 -(void)setupTowerNodes
 {
     int numberOfTowers = [[[[self metadata] properties] valueForKey:@"numberOfTowers"] integerValue];
-    _towerLocations = [CCArray arrayWithCapacity:numberOfTowers];
+    
+    NSDictionary *dict;
 
-    for (int i = 01; i <= numberOfTowers; i++)
+    for (int i = 1; i <= numberOfTowers; i++)
     {
-        CCLOG(@"%i", i);
+        dict = [[self metadata] objectNamed:[NSString stringWithFormat:@"towerSpawnPoint0%i",i]];
+        CGRect towerBox = CGRectMake([[dict valueForKey:@"x"] floatValue], [[dict valueForKey:@"y"] floatValue], [[dict valueForKey:@"width"] floatValue], [[dict valueForKey:@"height"] floatValue]);
+        if (towerBox.size.width == 64)
+        {
+            towerBox.size.width = 32;
+            towerBox.size.height = 32;
+            towerBox.origin.x = towerBox.origin.x / 2.0;
+            towerBox.origin.y = towerBox.origin.y / 2.0;
+        }
+        [_towerNodes addObject:[NSValue valueWithCGRect:towerBox]];
     }
 }
 
@@ -72,6 +82,7 @@
         [self addChild:_tileMap z:0];
         _backgroundLayer = [[self tileMap] layerNamed:@"Background"];
         _metadata = [[self tileMap] objectGroupNamed:@"Metadata"];
+        _towerNodes = [[NSMutableArray alloc] init];
         [self setupTowerNodes];
         
         // Setup UI layer

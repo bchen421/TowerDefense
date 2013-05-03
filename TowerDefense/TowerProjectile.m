@@ -31,16 +31,13 @@
     switch (newState)
     {
         case kProjectileIdle:
-            CCLOG(@"Projectile is idle!");
             break;
             
         case kProjectileAttacking:
-            CCLOG(@"Projectile is starting to attack!");
             [self attackCurrentTarget];
             break;
             
         case kProjectileDead:
-            CCLOG(@"I AM DEAD");
             break;
             
         default:
