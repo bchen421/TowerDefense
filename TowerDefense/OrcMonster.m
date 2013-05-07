@@ -7,6 +7,7 @@
 //
 
 #import "OrcMonster.h"
+#import "GameManager.h"
 
 @implementation OrcMonster
 
@@ -38,7 +39,8 @@
         
         case kMonsterMoving:
             CCLOG(@"OrcMonster is starting to move");
-            [self moveTowardsGoal];
+            //[self moveTowardsGoal];
+            [self findNextMovableTile];
             break;
             
         case kMonsterDead:
@@ -61,6 +63,71 @@
 }
 
 #pragma mark - Internal helper methods
+-(void)findNextMovableTile
+{
+    CCLOG(@"I AM SEARCHING FOR THE NEXT WAYPOINT");
+    GameScene *currentScene = [[GameManager sharedManager] getCurrentRunningGameScene];
+    CGPoint currentTile = [currentScene tileMapCoordForPosition:self.position];
+    CCLOG(@"SELF.POSITION MOVEABLE: %i", [self tileCoordIsMoveable:currentTile]);
+    CGPoint southTile = CGPointMake(currentTile.x, currentTile.y + 1.0);
+    CGPoint northTile = CGPointMake(currentTile.x, currentTile.y - 1.0);
+    CGPoint westTile = CGPointMake(currentTile.x - 1.0, currentTile.y);
+    CGPoint eastTile = CGPointMake(currentTile.x + 1.0, currentTile.y);
+
+    CCLOG(@"SOUTHTILE: %i", [self tileCoordIsMoveable:southTile]);
+    CCLOG(@"NORTHTILE: %i", [self tileCoordIsMoveable:northTile]);
+    CCLOG(@"WESTTILE: %i", [self tileCoordIsMoveable:westTile]);
+    CCLOG(@"EASTTILE: %i", [self tileCoordIsMoveable:eastTile]);
+    
+    if ([self tileCoordIsMoveable:southTile])
+    {
+        
+    }
+}
+
+-(BOOL)tileCoordIsMoveable:(CGPoint)coord
+{
+    GameScene *currentScene = [[GameManager sharedManager] getCurrentRunningGameScene];
+    
+    // Check if coordinates are out of map bounds before grabbing tile GID
+    CGSize mapSize = [[currentScene tileMap] mapSize];
+    if (coord.x < 0)
+    {
+        return NO;
+    }
+    else if (coord.x >= mapSize.width)
+    {
+        return NO;
+    }
+    if (coord.y < 0)
+    {
+        return NO;
+    }
+    else if (coord.y >= mapSize.height)
+    {
+        return NO;
+    }
+    
+    // Grab tileGID from metadata layer and check if walkable by myself
+    NSUInteger *tileGID = [[currentScene metadataLayer] tileGIDAt:coord];
+    if (tileGID)
+    {
+        NSDictionary *properties = [[currentScene tileMap] propertiesForGID:tileGID];
+        if (properties)
+        {
+            return [[properties valueForKey:_assignedPath] boolValue];
+        }
+        else
+        {
+            return NO;
+        }
+    }
+    else
+    {
+        return NO;
+    }
+}
+
 -(void)moveTowardsGoal
 {
     CCLOG(@"I SHOULD BE MOVING TOWARDS THE GOAL");
@@ -105,6 +172,9 @@
         _monsterID = kOrc;
         _maxHP = 30;
         _currentHP = 30;
+        _previousTildGID = 0;
+        _assignedPath = @"walkableA";
+        _nextDestination = nil;
         [self changeState:kMonsterIdle];
     }
     

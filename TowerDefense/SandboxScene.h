@@ -15,10 +15,8 @@
 @interface SandboxScene : GameScene
 {
     SandboxLayer *_gameplayLayer;
-    GameUILayer *_gameUILayer;
 }
 
 @property (readonly) SandboxLayer *gameplayLayer;
-@property (readonly) GameUILayer *gameUILayer;
 
 @end

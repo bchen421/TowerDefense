@@ -19,6 +19,8 @@
 		8F3520211730CB5E0017AC00 /* tiles.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F3520201730CB5E0017AC00 /* tiles.png */; };
 		8F3520231730CCAA0017AC00 /* tilemap.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 8F3520221730CCAA0017AC00 /* tilemap.tmx */; };
 		8F35202717314E6E0017AC00 /* TiledScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F35202617314E6E0017AC00 /* TiledScene.m */; };
+		8F51EF9D1738900300BDE25E /* metadatatiles-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F51EF9B1738900300BDE25E /* metadatatiles-hd.png */; };
+		8F51EF9E1738900300BDE25E /* metadatatiles.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F51EF9C1738900300BDE25E /* metadatatiles.png */; };
 		8F65B090171C43CC0065AA48 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F65B08F171C43CC0065AA48 /* QuartzCore.framework */; };
 		8F65B092171C43CC0065AA48 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F65B091171C43CC0065AA48 /* OpenGLES.framework */; };
 		8F65B094171C43CC0065AA48 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F65B093171C43CC0065AA48 /* OpenAL.framework */; };
@@ -183,6 +185,8 @@
 		8F3520221730CCAA0017AC00 /* tilemap.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = tilemap.tmx; sourceTree = "<group>"; };
 		8F35202517314E6E0017AC00 /* TiledScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TiledScene.h; sourceTree = "<group>"; };
 		8F35202617314E6E0017AC00 /* TiledScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TiledScene.m; sourceTree = "<group>"; };
+		8F51EF9B1738900300BDE25E /* metadatatiles-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "metadatatiles-hd.png"; sourceTree = "<group>"; };
+		8F51EF9C1738900300BDE25E /* metadatatiles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = metadatatiles.png; sourceTree = "<group>"; };
 		8F65B08C171C43CC0065AA48 /* TowerDefense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TowerDefense.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F65B08F171C43CC0065AA48 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		8F65B091171C43CC0065AA48 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -548,8 +552,10 @@
 			children = (
 				8F3520221730CCAA0017AC00 /* tilemap.tmx */,
 				8F3520201730CB5E0017AC00 /* tiles.png */,
+				8F51EF9C1738900300BDE25E /* metadatatiles.png */,
 				8FD090331731FF3C00DAF53D /* tilemap-hd.tmx */,
 				8FD090341731FF3C00DAF53D /* tiles-hd.png */,
+				8F51EF9B1738900300BDE25E /* metadatatiles-hd.png */,
 			);
 			name = "Tile Maps";
 			sourceTree = "<group>";
@@ -1214,6 +1220,8 @@
 				8F3520231730CCAA0017AC00 /* tilemap.tmx in Resources */,
 				8FD090351731FF3C00DAF53D /* tilemap-hd.tmx in Resources */,
 				8FD090361731FF3C00DAF53D /* tiles-hd.png in Resources */,
+				8F51EF9D1738900300BDE25E /* metadatatiles-hd.png in Resources */,
+				8F51EF9E1738900300BDE25E /* metadatatiles.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

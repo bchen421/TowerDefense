@@ -11,7 +11,16 @@
 #import "GameManager.h"
 
 @implementation GameScene
+
+@synthesize tileMap=_tileMap, backgroundLayer=_backgroundLayer, metadataLayer=_metadataLayer, objectData=_objectData, gameUILayer=_gameUILayer;
 @synthesize startLocation01 = _startLocation01, goalLocation01 = _goalLocation01, sceneSpriteBatchNode = _sceneSpriteBatchNode, towerNodes = _towerNodes;
+
+#pragma mark - Metadata Management
+-(CGPoint)tileMapCoordForPosition:(CGPoint)position
+{
+    CCLOG(@"STUB METHOD");
+    return ccp(0,0);
+}
 
 #pragma mark - Monster Spawning
 -(void)spawnMonster:(MonsterID)monsterID atLocation:(CGPoint)startLocation withGoalLocation:(CGPoint)endLocation

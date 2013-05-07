@@ -3,12 +3,38 @@
  <tileset firstgid="1" name="tiles-hd" tilewidth="64" tileheight="64" spacing="2" margin="2">
   <image source="tiles-hd.png" width="530" height="398"/>
  </tileset>
- <layer name="Background" width="15" height="10">
+ <tileset firstgid="49" name="metadatatiles-hd" tilewidth="64" tileheight="64">
+  <image source="metadatatiles-hd.png" width="128" height="128"/>
+  <tile id="0">
+   <properties>
+    <property name="walkableA" value="YES"/>
+    <property name="walkableB" value="YES"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="walkableA" value="YES"/>
+    <property name="walkableB" value="NO"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="walkableA" value="NO"/>
+    <property name="walkableB" value="YES"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="background" width="15" height="10">
   <data encoding="base64" compression="zlib">
    eJyTY2BgkMOCFYFYCYiVccijY0YgZgJiZjS9yOK49HJCaW40vcjiuPQKArEQEAuj6UUWH3Uz/d0MAA0fDk0=
   </data>
  </layer>
- <objectgroup name="Metadata" width="15" height="10">
+ <layer name="metadata" width="15" height="10">
+  <data encoding="base64" compression="zlib">
+   eJxjYMANDPHIEQKjeke2XgBEggHr
+  </data>
+ </layer>
+ <objectgroup name="objectData" width="15" height="10">
   <properties>
    <property name="numberOfTowers" value="6"/>
    <property name="retina" value="YES"/>
@@ -20,6 +46,10 @@
   <object name="towerSpawnPoint4" x="640" y="320" width="64" height="64"/>
   <object name="towerSpawnPoint5" x="256" y="512" width="64" height="64"/>
   <object name="towerSpawnPoint6" x="640" y="512" width="64" height="64"/>
-  <object name="spawnPoint1" x="448" y="0" width="64" height="64"/>
+  <object name="spawnPoint1" x="448" y="0" width="64" height="64">
+   <properties>
+    <property name="nextWaypoint" value="(7,9)"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

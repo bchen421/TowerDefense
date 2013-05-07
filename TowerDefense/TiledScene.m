@@ -11,7 +11,6 @@
 #import "GameManager.h"
 
 @implementation TiledScene
-@synthesize tileMap=_tileMap, backgroundLayer=_backgroundLayer, metadata=_metadata, gameUILayer=_gameUILayer;
 
 #pragma mark - Scene Update Management
 -(void)update:(ccTime)deltaTime
@@ -25,11 +24,34 @@
 }
 
 #pragma mark - Metadata Management
--(CGPoint)locationForMetadataObject:(NSString *)metadataObject
+-(CGPoint)tileMapCoordForPosition:(CGPoint)position
 {
-    BOOL retinaEnabled = [[[[self metadata] properties] valueForKey:@"retina"] boolValue];
+    BOOL retinaEnabled = [[[[self objectData] properties] valueForKey:@"retina"] boolValue];
+    if (!retinaEnabled)
+    {
+        CGSize mapSize = [[self tileMap] mapSize];
+        CGSize tileSize = [[self tileMap] tileSize];
+        int x = position.x / tileSize.width;
+        int y = ((mapSize.height * tileSize.height) - position.y) / tileSize.height;
+        return ccp(x, y);
+    }
+    else
+    {
+        CGSize mapSize = [[self tileMap] mapSize];
+        CGSize tileSize = [[self tileMap] tileSize];
+        tileSize.width = tileSize.width / 2.0;
+        tileSize.height = tileSize.height / 2.0;
+        int x = position.x / tileSize.width;
+        int y = ((mapSize.height * tileSize.height) - position.y) / tileSize.height;
+        return ccp(x, y);
+    }
+}
 
-    NSDictionary *dict = [[self metadata] objectNamed:metadataObject];
+-(CGPoint)locationForDataObject:(NSString *)dataObject
+{
+    BOOL retinaEnabled = [[[[self objectData] properties] valueForKey:@"retina"] boolValue];
+
+    NSDictionary *dict = [[self objectData] objectNamed:dataObject];
     int width = [[dict valueForKey:@"width"] integerValue];
     int height = [[dict valueForKey:@"height"] integerValue];
     int x = [[dict valueForKey:@"x"] integerValue];
@@ -47,14 +69,14 @@
 
 -(void)setupTowerNodes
 {
-    int numberOfTowers = [[[[self metadata] properties] valueForKey:@"numberOfTowers"] integerValue];
-    BOOL retinaEnabled = [[[[self metadata] properties] valueForKey:@"retina"] boolValue];
+    int numberOfTowers = [[[[self objectData] properties] valueForKey:@"numberOfTowers"] integerValue];
+    BOOL retinaEnabled = [[[[self objectData] properties] valueForKey:@"retina"] boolValue];
     
     NSDictionary *dict;
 
     for (int i = 1; i <= numberOfTowers; i++)
     {
-        dict = [[self metadata] objectNamed:[NSString stringWithFormat:@"towerSpawnPoint%i",i]];
+        dict = [[self objectData] objectNamed:[NSString stringWithFormat:@"towerSpawnPoint%i",i]];
         CGRect towerBox = CGRectMake([[dict valueForKey:@"x"] floatValue], [[dict valueForKey:@"y"] floatValue], [[dict valueForKey:@"width"] floatValue], [[dict valueForKey:@"height"] floatValue]);
         if (retinaEnabled)
         {
@@ -83,8 +105,9 @@
         // Setup gameplay and metadata
         _tileMap = [CCTMXTiledMap tiledMapWithTMXFile:@"tilemap.tmx"];
         [self addChild:_tileMap z:0];
-        _backgroundLayer = [[self tileMap] layerNamed:@"Background"];
-        _metadata = [[self tileMap] objectGroupNamed:@"Metadata"];
+        _backgroundLayer = [[self tileMap] layerNamed:@"background"];
+        _metadataLayer = [[self tileMap] layerNamed:@"metadata"];
+        _objectData = [[self tileMap] objectGroupNamed:@"objectData"];
         _towerNodes = [[NSMutableArray alloc] init];
         [self setupTowerNodes];
         
@@ -101,7 +124,7 @@
         [self scheduleUpdate];
                 
         // Temp location for monster pawning for now
-        [self spawnMonster:kOrc atLocation:[self locationForMetadataObject:@"spawnPoint1"] withGoalLocation:[self locationForMetadataObject:@"goalPoint1"]];
+        [self spawnMonster:kOrc atLocation:[self locationForDataObject:@"spawnPoint1"] withGoalLocation:[self locationForDataObject:@"goalPoint1"]];
         //[self spawnMonster:kOrc atLocation:CGPointMake(screenSize.width/2, screenSize.height) withGoalLocation:CGPointMake(screenSize.width/2, 0)];
         //[self spawnMonster:kBigOrc atLocation:CGPointMake(screenSize.width/2.0 - 75.0, screenSize.height - 25.0) withGoalLocation:CGPointMake(screenSize.width/2 - 75.0, screenSize.height/2.0)];
     }

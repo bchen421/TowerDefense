@@ -3,12 +3,38 @@
  <tileset firstgid="1" name="tiles" tilewidth="32" tileheight="32" spacing="1" margin="1">
   <image source="tiles.png" width="265" height="199"/>
  </tileset>
- <layer name="Background" width="15" height="10">
+ <tileset firstgid="49" name="metadatatiles" tilewidth="32" tileheight="32">
+  <image source="metadatatiles.png" width="64" height="64"/>
+  <tile id="0">
+   <properties>
+    <property name="walkableA" value="YES"/>
+    <property name="walkableB" value="YES"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="walkableA" value="YES"/>
+    <property name="walkableB" value="NO"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="walkableA" value="NO"/>
+    <property name="walkableB" value="YES"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="background" width="15" height="10">
   <data encoding="base64" compression="zlib">
    eJyTY2BgkMOCFYFYCYiVccijY0YgZgJiZjS9yOK49HJCaW40vcjiuPQKArEQEAuj6UUWH3Uz/d0MAA0fDk0=
   </data>
  </layer>
- <objectgroup name="Metadata" width="15" height="10">
+ <layer name="metadata" width="15" height="10">
+  <data encoding="base64" compression="zlib">
+   eJxjYMANDPHIEQKjeke2XgBEggHr
+  </data>
+ </layer>
+ <objectgroup name="objectData" width="15" height="10">
   <properties>
    <property name="numberOfTowers" value="6"/>
    <property name="retina" value="NO"/>

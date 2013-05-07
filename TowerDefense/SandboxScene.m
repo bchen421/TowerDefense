@@ -12,7 +12,7 @@
 #import "GameManager.h"
 
 @implementation SandboxScene
-@synthesize gameplayLayer=_gameplayLayer, gameUILayer=_gameUILayer;
+@synthesize gameplayLayer=_gameplayLayer;
 
 #pragma mark - Scene Update Management
 -(void)update:(ccTime)deltaTime

@@ -13,18 +13,10 @@
 
 @interface TiledScene : GameScene
 {
-    CCTMXTiledMap *_tileMap;
-    CCTMXLayer *_backgroundLayer;
-    CCTMXObjectGroup *_metadata;
-    GameUILayer *_gameUILayer;    
+   
 }
 
-@property (readonly) CCTMXTiledMap *tileMap;
-@property (readonly) CCTMXLayer *backgroundLayer;
-@property (readonly) CCTMXObjectGroup *metadata;
-@property (readonly) GameUILayer *gameUILayer;
-
--(CGPoint)locationForMetadataObject:(NSString *)metadataObject;
+-(CGPoint)locationForDataObject:(NSString *)dataObject;
 -(void)setupTowerNodes;
 
 @end
