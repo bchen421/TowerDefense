@@ -17,6 +17,10 @@
     NSInteger _currentHP;
     CGFloat _movementSpeed;
     CGPoint _goalLocation;
+    
+    CGPoint _previousLocationTile;
+    NSString *_assignedPath;
+    CGPoint _nextDestination;
 }
 
 @property (nonatomic,readwrite) MonsterID monsterID;
@@ -25,6 +29,10 @@
 @property (nonatomic,readwrite) NSInteger currentHP;
 @property (nonatomic,readwrite) CGFloat movementSpeed;
 @property (nonatomic,readwrite) CGPoint goalLocation;
+
+@property (nonatomic,readwrite) CGPoint previousLocationTile;
+@property (nonatomic,copy,readwrite) NSString *assignedPath;
+@property (nonatomic,readwrite) CGPoint nextDestination;
 
 -(void)changeState:(MonsterState)newState;
 -(void)takeDamage:(NSInteger)amount;

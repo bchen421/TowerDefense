@@ -7,8 +7,8 @@
 //
 
 #import "TiledScene.h"
-#import "GameUILayer.h"
 #import "GameManager.h"
+#import "GameUILayer.h"
 
 @implementation TiledScene
 
@@ -23,73 +23,6 @@
     }
 }
 
-#pragma mark - Metadata Management
--(CGPoint)tileMapCoordForPosition:(CGPoint)position
-{
-    BOOL retinaEnabled = [[[[self objectData] properties] valueForKey:@"retina"] boolValue];
-    if (!retinaEnabled)
-    {
-        CGSize mapSize = [[self tileMap] mapSize];
-        CGSize tileSize = [[self tileMap] tileSize];
-        int x = position.x / tileSize.width;
-        int y = ((mapSize.height * tileSize.height) - position.y) / tileSize.height;
-        return ccp(x, y);
-    }
-    else
-    {
-        CGSize mapSize = [[self tileMap] mapSize];
-        CGSize tileSize = [[self tileMap] tileSize];
-        tileSize.width = tileSize.width / 2.0;
-        tileSize.height = tileSize.height / 2.0;
-        int x = position.x / tileSize.width;
-        int y = ((mapSize.height * tileSize.height) - position.y) / tileSize.height;
-        return ccp(x, y);
-    }
-}
-
--(CGPoint)locationForDataObject:(NSString *)dataObject
-{
-    BOOL retinaEnabled = [[[[self objectData] properties] valueForKey:@"retina"] boolValue];
-
-    NSDictionary *dict = [[self objectData] objectNamed:dataObject];
-    int width = [[dict valueForKey:@"width"] integerValue];
-    int height = [[dict valueForKey:@"height"] integerValue];
-    int x = [[dict valueForKey:@"x"] integerValue];
-    int y = [[dict valueForKey:@"y"] integerValue];
-    
-    if (!retinaEnabled)
-    {
-        return ccp(x + width/2,y + height/2);
-    }
-    else
-    {
-        return ccp(x/2 + width/4, y/2 + height/4);
-    }
-}
-
--(void)setupTowerNodes
-{
-    int numberOfTowers = [[[[self objectData] properties] valueForKey:@"numberOfTowers"] integerValue];
-    BOOL retinaEnabled = [[[[self objectData] properties] valueForKey:@"retina"] boolValue];
-    
-    NSDictionary *dict;
-
-    for (int i = 1; i <= numberOfTowers; i++)
-    {
-        dict = [[self objectData] objectNamed:[NSString stringWithFormat:@"towerSpawnPoint%i",i]];
-        CGRect towerBox = CGRectMake([[dict valueForKey:@"x"] floatValue], [[dict valueForKey:@"y"] floatValue], [[dict valueForKey:@"width"] floatValue], [[dict valueForKey:@"height"] floatValue]);
-        if (retinaEnabled)
-        {
-            towerBox.size.width = towerBox.size.width/2.0;
-            towerBox.size.height = towerBox.size.height/2.0;
-            towerBox.origin.x = towerBox.origin.x / 2.0;
-            towerBox.origin.y = towerBox.origin.y / 2.0;
-        }
-        [_towerNodes addObject:[NSValue valueWithCGRect:towerBox]];
-    }
-}
-
-
 #pragma mark - Initialization
 -(id)init
 {
@@ -99,8 +32,6 @@
         // Setup Default Start and End Locations
         CGSize screenSize = [[CCDirector sharedDirector] winSize];
         CCLOG(@"Screen Width: %g Height: %g", screenSize.width, screenSize.height);
-        //_startLocation01 = CGPointMake(screenSize.width/2, screenSize.height - 25.0);
-        //_goalLocation01 = CGPointMake(screenSize.width/2, 0);
         
         // Setup gameplay and metadata
         _tileMap = [CCTMXTiledMap tiledMapWithTMXFile:@"tilemap.tmx"];
@@ -108,6 +39,8 @@
         _backgroundLayer = [[self tileMap] layerNamed:@"background"];
         _metadataLayer = [[self tileMap] layerNamed:@"metadata"];
         _objectData = [[self tileMap] objectGroupNamed:@"objectData"];
+        
+        // Temporary tower node setup
         _towerNodes = [[NSMutableArray alloc] init];
         [self setupTowerNodes];
         

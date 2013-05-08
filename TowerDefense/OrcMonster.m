@@ -66,7 +66,7 @@
     [self runAction:deathAction];
 }
 
-#pragma mark - Internal helper methods
+#pragma mark - Movement Helper Methods
 -(CGPoint)findNextMovableTile
 {
     GameScene *currentScene = [[GameManager sharedManager] getCurrentRunningGameScene];
@@ -183,19 +183,19 @@
     CGPoint tileCoord = [currentScene tileMapCoordForPosition:self.position];
     _previousLocationTile = tileCoord;
     
-    CGPoint nextPosition = [self positionForTileCoord:nextTile];
+     self.nextDestination = [self positionForTileCoord:nextTile];
     
     CCAction *moveAction;
     CGPoint offSet;
     float distance;
     float travelTime;
 
-    offSet.x = ABS(self.position.x - nextPosition.x);
-    offSet.y = ABS(self.position.y - nextPosition.y);
+    offSet.x = ABS(self.position.x - self.nextDestination.x);
+    offSet.y = ABS(self.position.y - self.nextDestination.y);
     distance = sqrt((offSet.x * offSet.x) + (offSet.y * offSet.y));
     travelTime = (distance / self.movementSpeed);
     
-    moveAction = [CCMoveTo actionWithDuration:travelTime position:nextPosition];
+    moveAction = [CCMoveTo actionWithDuration:travelTime position:self.nextDestination];
     [self runAction:moveAction];
 }
 
@@ -226,9 +226,7 @@
         _monsterID = kOrc;
         _maxHP = 30;
         _currentHP = 30;
-        _previousLocationTile = ccp(-1,-1);
         _assignedPath = @"walkableA";
-        _nextDestination = nil;
         [self changeState:kMonsterIdle];
     }
     

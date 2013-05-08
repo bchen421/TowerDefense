@@ -12,9 +12,7 @@
 
 @interface OrcMonster : MonsterObject
 {
-    CGPoint _previousLocationTile;
-    NSString *_assignedPath;
-    CGPoint *_nextDestination;
+    
 }
 
 +(MonsterObject *)spawnOrc;
