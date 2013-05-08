@@ -9,7 +9,6 @@
 // Layer Headers
 #import "GameManager.h"
 #import "MainMenuScene.h"
-#import "SandboxScene.h"
 #import "TiledScene.h"
 #import "IntroLayer.h"
 
@@ -85,10 +84,6 @@ static GameManager * _sharedGameManager = nil;
         case kIntroScene:
             levelSize = screenSize;
             break;
-
-        case kSandboxScene:
-            levelSize = screenSize;
-            break;
             
         case kTiledScene:
             levelSize = screenSize;
@@ -120,10 +115,6 @@ static GameManager * _sharedGameManager = nil;
         
         case kMainMenuScene:
             sceneToRun = [MainMenuScene node];
-            break;
-        
-        case kSandboxScene:
-            sceneToRun = [SandboxScene node];
             break;
         
         case kTiledScene:

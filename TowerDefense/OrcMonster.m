@@ -19,6 +19,11 @@
     {
         [self changeState:kMonsterDead];
     }
+    
+    if (([self numberOfRunningActions] == 0) && (self.monsterState != kMonsterDead))
+    {
+        [self changeState:kMonsterIdle];
+    }
         
     // If I am idle, I should try and move towards the goal
     if (self.monsterState == kMonsterIdle)
@@ -39,8 +44,7 @@
         
         case kMonsterMoving:
             CCLOG(@"OrcMonster is starting to move");
-            //[self moveTowardsGoal];
-            [self findNextMovableTile];
+            [self moveTowardsGoal];
             break;
             
         case kMonsterDead:
@@ -63,25 +67,41 @@
 }
 
 #pragma mark - Internal helper methods
--(void)findNextMovableTile
+-(CGPoint)findNextMovableTile
 {
-    CCLOG(@"I AM SEARCHING FOR THE NEXT WAYPOINT");
     GameScene *currentScene = [[GameManager sharedManager] getCurrentRunningGameScene];
     CGPoint currentTile = [currentScene tileMapCoordForPosition:self.position];
-    CCLOG(@"SELF.POSITION MOVEABLE: %i", [self tileCoordIsMoveable:currentTile]);
+    
     CGPoint southTile = CGPointMake(currentTile.x, currentTile.y + 1.0);
     CGPoint northTile = CGPointMake(currentTile.x, currentTile.y - 1.0);
     CGPoint westTile = CGPointMake(currentTile.x - 1.0, currentTile.y);
     CGPoint eastTile = CGPointMake(currentTile.x + 1.0, currentTile.y);
+    CGPoint southWestTile = CGPointMake(currentTile.x - 1.0, currentTile.y + 1.0);
+    CGPoint southEastTile = CGPointMake(currentTile.x + 1.0, currentTile.y + 1.0);
+    CGPoint northWestTile = CGPointMake(currentTile.x - 1.0, currentTile.y - 1.0);
+    CGPoint northEastTile = CGPointMake(currentTile.x + 1.0, currentTile.y - 1.0);
 
-    CCLOG(@"SOUTHTILE: %i", [self tileCoordIsMoveable:southTile]);
-    CCLOG(@"NORTHTILE: %i", [self tileCoordIsMoveable:northTile]);
-    CCLOG(@"WESTTILE: %i", [self tileCoordIsMoveable:westTile]);
-    CCLOG(@"EASTTILE: %i", [self tileCoordIsMoveable:eastTile]);
     
-    if ([self tileCoordIsMoveable:southTile])
+    if ([self tileCoordIsMoveable:southTile] && (!CGPointEqualToPoint(southTile, _previousLocationTile)))
+        return southTile;
+    else if ([self tileCoordIsMoveable:westTile] && (!CGPointEqualToPoint(westTile, _previousLocationTile)))
+        return westTile;
+    else if ([self tileCoordIsMoveable:eastTile] && (!CGPointEqualToPoint(eastTile, _previousLocationTile)))
+        return eastTile;
+    else if ([self tileCoordIsMoveable:northTile] && (!CGPointEqualToPoint(northTile, _previousLocationTile)))
+        return northTile;
+    else if ([self tileCoordIsMoveable:southWestTile] && (!CGPointEqualToPoint(southWestTile, _previousLocationTile)))
+        return southWestTile;
+    else if ([self tileCoordIsMoveable:southEastTile] && (!CGPointEqualToPoint(southEastTile, _previousLocationTile)))
+        return southEastTile;
+    else if ([self tileCoordIsMoveable:northWestTile] && (!CGPointEqualToPoint(northWestTile, _previousLocationTile)))
+        return northWestTile;
+    else if ([self tileCoordIsMoveable:northEastTile] && (!CGPointEqualToPoint(northEastTile, _previousLocationTile)))
+        return northEastTile;
+    else
     {
-        
+        CCLOG(@"No adjacent moveable tiles found!");
+        return CGPointMake(-1.0, -1.0);
     }
 }
 
@@ -109,7 +129,7 @@
     }
     
     // Grab tileGID from metadata layer and check if walkable by myself
-    NSUInteger *tileGID = [[currentScene metadataLayer] tileGIDAt:coord];
+    NSUInteger tileGID = [[currentScene metadataLayer] tileGIDAt:coord];
     if (tileGID)
     {
         NSDictionary *properties = [[currentScene tileMap] propertiesForGID:tileGID];
@@ -128,20 +148,54 @@
     }
 }
 
+-(CGPoint)positionForTileCoord:(CGPoint)tileCoord
+{
+    GameScene *currentScene = [[GameManager sharedManager] getCurrentRunningGameScene];
+    CGPoint position = [[currentScene metadataLayer] positionAt:tileCoord];
+    CGSize tileSize = [[currentScene tileMap] tileSize];
+    
+    BOOL retina = [[[[currentScene objectData] properties] valueForKey:@"retina"] boolValue];
+    
+    if (retina)
+    {
+        return CGPointMake(position.x + tileSize.width/4.0, position.y + tileSize.height/4.0);
+    }
+    else
+    {
+        return CGPointMake(position.x + tileSize.width/2.0, position.y + tileSize.height/2.0);
+    }
+}
+
 -(void)moveTowardsGoal
 {
     CCLOG(@"I SHOULD BE MOVING TOWARDS THE GOAL");
+    
+    GameScene *currentScene = [[GameManager sharedManager] getCurrentRunningGameScene];
+
+    CGPoint nextTile = [self findNextMovableTile];
+    if (CGPointEqualToPoint(nextTile, ccp(-1,-1)))
+    {
+        CCLOG(@"NO MOVEABLE TILE FOUND");
+        return;
+    }
+    
+
+    CGPoint tileCoord = [currentScene tileMapCoordForPosition:self.position];
+    _previousLocationTile = tileCoord;
+    
+    CGPoint nextPosition = [self positionForTileCoord:nextTile];
+    
     CCAction *moveAction;
     CGPoint offSet;
     float distance;
     float travelTime;
 
-    offSet.x = ABS(self.position.x - self.goalLocation.x);
-    offSet.y = ABS(self.position.y - self.goalLocation.y);
+    offSet.x = ABS(self.position.x - nextPosition.x);
+    offSet.y = ABS(self.position.y - nextPosition.y);
     distance = sqrt((offSet.x * offSet.x) + (offSet.y * offSet.y));
     travelTime = (distance / self.movementSpeed);
-        
-    moveAction = [CCMoveTo actionWithDuration:travelTime position:self.goalLocation];
+    
+    moveAction = [CCMoveTo actionWithDuration:travelTime position:nextPosition];
     [self runAction:moveAction];
 }
 
@@ -172,7 +226,7 @@
         _monsterID = kOrc;
         _maxHP = 30;
         _currentHP = 30;
-        _previousTildGID = 0;
+        _previousLocationTile = ccp(-1,-1);
         _assignedPath = @"walkableA";
         _nextDestination = nil;
         [self changeState:kMonsterIdle];

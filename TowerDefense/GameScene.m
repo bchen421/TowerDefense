@@ -13,7 +13,7 @@
 @implementation GameScene
 
 @synthesize tileMap=_tileMap, backgroundLayer=_backgroundLayer, metadataLayer=_metadataLayer, objectData=_objectData, gameUILayer=_gameUILayer;
-@synthesize startLocation01 = _startLocation01, goalLocation01 = _goalLocation01, sceneSpriteBatchNode = _sceneSpriteBatchNode, towerNodes = _towerNodes;
+@synthesize sceneSpriteBatchNode = _sceneSpriteBatchNode, towerNodes = _towerNodes;
 
 #pragma mark - Metadata Management
 -(CGPoint)tileMapCoordForPosition:(CGPoint)position
@@ -37,8 +37,6 @@
     self = [super init];
     if (self)
     {
-        _startLocation01 = CGPointMake(0.0, 0.0);
-        _goalLocation01 = CGPointMake(0.0, 0.0);
         _sceneSpriteBatchNode = nil;
     }
     

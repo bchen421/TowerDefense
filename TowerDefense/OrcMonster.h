@@ -12,7 +12,7 @@
 
 @interface OrcMonster : MonsterObject
 {
-    NSUInteger *_previousTildGID;
+    CGPoint _previousLocationTile;
     NSString *_assignedPath;
     CGPoint *_nextDestination;
 }

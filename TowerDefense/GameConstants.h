@@ -11,7 +11,6 @@ typedef enum
     kNoScene,
     kIntroScene,
     kMainMenuScene,
-    kSandboxScene,
     kTiledScene
 } GameSceneID;
 

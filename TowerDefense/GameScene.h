@@ -8,7 +8,6 @@
 
 #import "cocos2d.h"
 #import "GameConstants.h"
-@class SandboxLayer;
 @class GameUILayer;
 
 @interface GameScene : CCScene
@@ -19,8 +18,6 @@
     CCTMXObjectGroup *_objectData;
     GameUILayer *_gameUILayer;
     
-    CGPoint _startLocation01;
-    CGPoint _goalLocation01;
     NSMutableArray *_towerNodes;
     
     
@@ -33,8 +30,6 @@
 @property (readonly) CCTMXObjectGroup *objectData;
 @property (readonly) GameUILayer *gameUILayer;
 
-@property (readonly) CGPoint startLocation01;
-@property (readonly) CGPoint goalLocation01;
 @property (nonatomic, retain, readwrite) NSMutableArray *towerNodes;
 @property (readwrite, retain) CCSpriteBatchNode *sceneSpriteBatchNode;
 
