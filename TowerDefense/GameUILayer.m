@@ -19,13 +19,41 @@
     GameScene *currentScene = [[GameManager sharedManager] getCurrentRunningGameScene];
     BOOL inTowerNode = NO;
     CGPoint touchLocation = [parent_ convertTouchToNodeSpace:touch];
-       for (NSValue *towerNode in [currentScene towerNodes])
+    BOOL retina = [[[[currentScene objectData] properties] valueForKey:@"retina"] boolValue];
+    if (retina)
+    {
+        CGSize tileSize = [[currentScene tileMap] tileSize];
+    }
+    
+    /*
+    for (NSValue *towerNode in [currentScene towerNodes])
     {
         if (CGRectContainsPoint([towerNode CGRectValue], touchLocation))
         {
             inTowerNode = YES;
             self.touchedTowerNode = [towerNode CGRectValue];
         }
+    }
+    */
+     
+    CGPoint tileCoord = [currentScene tileMapCoordForPosition:touchLocation];
+    NSUInteger tileGID = [[currentScene metadataLayer] tileGIDAt:tileCoord];
+    if (tileGID)
+    {
+        NSDictionary *properties = [[currentScene tileMap] propertiesForGID:tileGID];
+        if (properties)
+        {
+            inTowerNode = [[properties valueForKey:@"towerNode"] boolValue];
+            CCLOG(@"TOUCH SUCCESSFULL WITH INTOWERNODE: %i", inTowerNode);
+        }
+        else
+        {
+            inTowerNode = NO;
+        }
+    }
+    else
+    {
+        inTowerNode = NO;
     }
         
     return inTowerNode;

@@ -32,6 +32,7 @@
 @property (nonatomic, retain, readwrite) NSMutableArray *towerNodes;
 
 -(void)spawnMonster:(MonsterID)monsterID atLocation:(CGPoint)startLocation withGoalLocation:(CGPoint)endLocation;
+-(CGPoint)positionForTileCoord:(CGPoint)tileCoord;
 -(CGPoint)tileMapCoordForPosition:(CGPoint)position;
 -(CGPoint)locationForDataObject:(NSString *)dataObject;
 

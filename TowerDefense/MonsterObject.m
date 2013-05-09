@@ -121,24 +121,6 @@
     }
 }
 
--(CGPoint)positionForTileCoord:(CGPoint)tileCoord
-{
-    GameScene *currentScene = [[GameManager sharedManager] getCurrentRunningGameScene];
-    CGPoint position = [[currentScene metadataLayer] positionAt:tileCoord];
-    CGSize tileSize = [[currentScene tileMap] tileSize];
-    
-    BOOL retina = [[[[currentScene objectData] properties] valueForKey:@"retina"] boolValue];
-    
-    if (retina)
-    {
-        return CGPointMake(position.x + tileSize.width/4.0, position.y + tileSize.height/4.0);
-    }
-    else
-    {
-        return CGPointMake(position.x + tileSize.width/2.0, position.y + tileSize.height/2.0);
-    }
-}
-
 -(void)moveTowardsGoal
 {
     CCLOG(@"I SHOULD BE MOVING TOWARDS THE GOAL");
@@ -156,7 +138,7 @@
     CGPoint tileCoord = [currentScene tileMapCoordForPosition:self.position];
     _previousLocationTile = tileCoord;
     
-    self.nextDestination = [self positionForTileCoord:nextTile];
+    self.nextDestination = [currentScene positionForTileCoord:nextTile];
     
     CCAction *moveAction;
     CGPoint offSet;

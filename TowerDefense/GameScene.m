@@ -14,6 +14,23 @@
 @synthesize tileMap = _tileMap, backgroundLayer = _backgroundLayer, metadataLayer = _metadataLayer, objectData = _objectData, gameUILayer = _gameUILayer, sceneSpriteBatchNode = _sceneSpriteBatchNode, towerNodes = _towerNodes;
 
 #pragma mark - Metadata Management
+-(CGPoint)positionForTileCoord:(CGPoint)tileCoord
+{
+    CGPoint position = [[self metadataLayer] positionAt:tileCoord];
+    CGSize tileSize = [[self tileMap] tileSize];
+    
+    BOOL retina = [[[[self objectData] properties] valueForKey:@"retina"] boolValue];
+    
+    if (retina)
+    {
+        return CGPointMake(position.x + tileSize.width/4.0, position.y + tileSize.height/4.0);
+    }
+    else
+    {
+        return CGPointMake(position.x + tileSize.width/2.0, position.y + tileSize.height/2.0);
+    }
+}
+
 -(CGPoint)tileMapCoordForPosition:(CGPoint)position
 {
     BOOL retinaEnabled = [[[[self objectData] properties] valueForKey:@"retina"] boolValue];

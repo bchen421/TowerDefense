@@ -39,7 +39,6 @@
 -(void)hasDied;
 -(BOOL)tileCoordIsMoveable:(CGPoint)coord;
 -(CGPoint)findNextMovableTile;
--(CGPoint)positionForTileCoord:(CGPoint)tileCoord;
 -(void)moveTowardsGoal;
 
 @end

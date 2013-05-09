@@ -23,6 +23,11 @@
     <property name="walkableB" value="YES"/>
    </properties>
   </tile>
+  <tile id="3">
+   <properties>
+    <property name="towerNode" value="YES"/>
+   </properties>
+  </tile>
  </tileset>
  <layer name="background" width="15" height="10">
   <data encoding="base64" compression="zlib">
@@ -31,7 +36,7 @@
  </layer>
  <layer name="metadata" width="15" height="10">
   <data encoding="base64" compression="zlib">
-   eJxjYMANDPHIEQKE9BoSwJSYTUu95LqZlm4ajHoBRGIEmQ==
+   eJxjYMAODKEYHzDEgwkBdDUmONRhEyfGfHz2EnI3sX5CdhuyOnQ3U+peQvKkxAO6m7GJU8NdAOsmCOE=
   </data>
  </layer>
  <objectgroup name="objectData" width="15" height="10">
