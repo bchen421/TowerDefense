@@ -16,15 +16,11 @@
 {
     CGSize screenSize = [CCDirector sharedDirector].winSize;
     
-    CCLabelBMFont *introSceneLabel = [CCLabelBMFont labelWithString:@"Intro Scene" fntFile:@"MainMenuFonts.fnt"];
-    CCMenuItemLabel *playIntroScene = [CCMenuItemLabel itemWithLabel:introSceneLabel target:self selector:@selector(playScene:)];
-    [playIntroScene setTag:kIntroScene];
-    
     CCLabelBMFont *tiledSceneLabel = [CCLabelBMFont labelWithString:@"Tiled Scene" fntFile:@"MainMenuFonts.fnt"];
     CCMenuItemLabel *playTiledScene = [CCMenuItemLabel itemWithLabel:tiledSceneLabel target:self selector:@selector(playScene:)];
     [playTiledScene setTag:kTiledScene];
     
-    mainMenu = [CCMenu menuWithItems:playTiledScene, playIntroScene, nil];
+    mainMenu = [CCMenu menuWithItems:playTiledScene, nil];
     [mainMenu alignItemsVerticallyWithPadding:screenSize.height * 0.001];
     NSLog(@"Width: %g, Height: %g", screenSize.width, screenSize.height);
     [mainMenu setPosition:ccp(screenSize.height - 100.0, 75.0)];

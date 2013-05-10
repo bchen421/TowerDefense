@@ -143,8 +143,6 @@
 		8F65B213171C43CD0065AA48 /* vec4.c in Sources */ = {isa = PBXBuildFile; fileRef = 8F65B212171C43CD0065AA48 /* vec4.c */; };
 		8F65B218171C43CD0065AA48 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F65B217171C43CD0065AA48 /* main.m */; };
 		8F65B21B171C43CD0065AA48 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F65B21A171C43CD0065AA48 /* AppDelegate.m */; };
-		8F65B21E171C43CD0065AA48 /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F65B21D171C43CD0065AA48 /* HelloWorldLayer.m */; };
-		8F65B221171C43CD0065AA48 /* IntroLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F65B220171C43CD0065AA48 /* IntroLayer.m */; };
 		8F65B22C171C44760065AA48 /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F65B22B171C44760065AA48 /* GameManager.m */; };
 		8F65B233171C44CC0065AA48 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F65B232171C44CC0065AA48 /* Default-568h@2x.png */; };
 		8FA4E38B172A17BD00603CB6 /* TowerObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA4E38A172A17BD00603CB6 /* TowerObject.m */; };
@@ -439,10 +437,6 @@
 		8F65B217171C43CD0065AA48 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8F65B219171C43CD0065AA48 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8F65B21A171C43CD0065AA48 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		8F65B21C171C43CD0065AA48 /* HelloWorldLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelloWorldLayer.h; sourceTree = "<group>"; };
-		8F65B21D171C43CD0065AA48 /* HelloWorldLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloWorldLayer.m; sourceTree = "<group>"; };
-		8F65B21F171C43CD0065AA48 /* IntroLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntroLayer.h; sourceTree = "<group>"; };
-		8F65B220171C43CD0065AA48 /* IntroLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntroLayer.m; sourceTree = "<group>"; };
 		8F65B229171C44760065AA48 /* GameConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameConstants.h; sourceTree = "<group>"; };
 		8F65B22A171C44760065AA48 /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameManager.h; sourceTree = "<group>"; };
 		8F65B22B171C44760065AA48 /* GameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameManager.m; sourceTree = "<group>"; };
@@ -1004,8 +998,6 @@
 			children = (
 				8F0AF0BF171E633800050CB3 /* Shared */,
 				8FBE24BF171D7F63001D38BB /* MainMenu */,
-				8F65B235171C45060065AA48 /* Intro */,
-				8F65B234171C44FF0065AA48 /* HelloWorld */,
 			);
 			name = Layers;
 			sourceTree = "<group>";
@@ -1019,24 +1011,6 @@
 				8FBE24C7171D80D0001D38BB /* Font Maps */,
 			);
 			name = "Game Assets";
-			sourceTree = "<group>";
-		};
-		8F65B234171C44FF0065AA48 /* HelloWorld */ = {
-			isa = PBXGroup;
-			children = (
-				8F65B21C171C43CD0065AA48 /* HelloWorldLayer.h */,
-				8F65B21D171C43CD0065AA48 /* HelloWorldLayer.m */,
-			);
-			name = HelloWorld;
-			sourceTree = "<group>";
-		};
-		8F65B235171C45060065AA48 /* Intro */ = {
-			isa = PBXGroup;
-			children = (
-				8F65B21F171C43CD0065AA48 /* IntroLayer.h */,
-				8F65B220171C43CD0065AA48 /* IntroLayer.m */,
-			);
-			name = Intro;
 			sourceTree = "<group>";
 		};
 		8FA4E388172A17A500603CB6 /* Towers */ = {
@@ -1308,8 +1282,6 @@
 				8F65B213171C43CD0065AA48 /* vec4.c in Sources */,
 				8F65B218171C43CD0065AA48 /* main.m in Sources */,
 				8F65B21B171C43CD0065AA48 /* AppDelegate.m in Sources */,
-				8F65B21E171C43CD0065AA48 /* HelloWorldLayer.m in Sources */,
-				8F65B221171C43CD0065AA48 /* IntroLayer.m in Sources */,
 				8F65B22C171C44760065AA48 /* GameManager.m in Sources */,
 				8FBE24C2171D7F8E001D38BB /* MainMenuScene.m in Sources */,
 				8FBE24C5171D7FC6001D38BB /* MainMenuLayer.m in Sources */,

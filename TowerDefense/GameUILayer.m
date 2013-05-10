@@ -16,7 +16,7 @@
 #pragma mark - Touch Management
 -(BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
-    GameScene *currentScene = [[GameManager sharedManager] getCurrentRunningGameScene];
+    GameScene *currentScene = [[GameManager sharedManager] currentRunningGameScene];
     BOOL inTowerNode = NO;
     CGPoint touchLocation = [parent_ convertTouchToNodeSpace:touch];
     CGPoint tileCoord = [currentScene tileMapCoordForPosition:touchLocation];
@@ -59,7 +59,7 @@
 {
     CGPoint touchLocation = [self convertTouchToNodeSpace:touch];
     
-    GameScene *currentScene = [[GameManager sharedManager] getCurrentRunningGameScene];
+    GameScene *currentScene = [[GameManager sharedManager] currentRunningGameScene];
     
     if (CGRectContainsPoint(self.touchedTowerNode, touchLocation))
     {

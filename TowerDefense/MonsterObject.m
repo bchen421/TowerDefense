@@ -42,7 +42,7 @@
 #pragma mark - Movement Helper Methods
 -(BOOL)tileCoordIsMoveable:(CGPoint)coord
 {
-    GameScene *currentScene = [[GameManager sharedManager] getCurrentRunningGameScene];
+    GameScene *currentScene = [[GameManager sharedManager] currentRunningGameScene];
     
     // Check if coordinates are out of map bounds before grabbing tile GID
     CGSize mapSize = [[currentScene tileMap] mapSize];
@@ -85,7 +85,7 @@
 
 -(CGPoint)findNextMovableTile
 {
-    GameScene *currentScene = [[GameManager sharedManager] getCurrentRunningGameScene];
+    GameScene *currentScene = [[GameManager sharedManager] currentRunningGameScene];
     CGPoint currentTile = [currentScene tileMapCoordForPosition:self.position];
     
     CGPoint southTile = CGPointMake(currentTile.x, currentTile.y + 1.0);
@@ -126,7 +126,7 @@
 {
     CCLOG(@"I SHOULD BE MOVING TOWARDS THE GOAL");
     
-    GameScene *currentScene = [[GameManager sharedManager] getCurrentRunningGameScene];
+    GameScene *currentScene = [[GameManager sharedManager] currentRunningGameScene];
     
     CGPoint nextTile = [self findNextMovableTile];
     if (CGPointEqualToPoint(nextTile, ccp(-1,-1)))

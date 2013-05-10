@@ -10,7 +10,6 @@
 #import "GameManager.h"
 #import "MainMenuScene.h"
 #import "TiledScene.h"
-#import "IntroLayer.h"
 
 // Monster Headers
 #import "OrcMonster.h"
@@ -70,7 +69,7 @@ static GameManager * _sharedGameManager = nil;
 }
 
 #pragma mark - Scene Management
--(CGSize)getDimensionsOfCurrentScene
+-(CGSize)dimensionsOfCurrentScene
 {
     CGSize screenSize = [[CCDirector sharedDirector] winSize];
     CGSize levelSize;
@@ -78,10 +77,6 @@ static GameManager * _sharedGameManager = nil;
     switch (_currentSceneID)
     {
         case kMainMenuScene:
-            levelSize = screenSize;
-            break;
-            
-        case kIntroScene:
             levelSize = screenSize;
             break;
             
@@ -108,11 +103,7 @@ static GameManager * _sharedGameManager = nil;
         case kNoScene:
             CCLOG(@"Tried to run no scene!");
             break;
-            
-        case kIntroScene:
-            sceneToRun = [IntroLayer node];
-            break;
-        
+                    
         case kMainMenuScene:
             sceneToRun = [MainMenuScene node];
             break;
@@ -142,15 +133,11 @@ static GameManager * _sharedGameManager = nil;
     }
 }
 
--(GameScene *)getCurrentRunningGameScene;
+-(GameScene *)currentRunningGameScene;
 {
     switch (_currentSceneID)
     {
         case kNoScene:
-            return nil;
-            break;
-            
-        case kIntroScene:
             return nil;
             break;
             

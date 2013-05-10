@@ -23,8 +23,8 @@
 
 // Scene Management
 -(void)runGameScene:(GameSceneID)sceneID;
--(CGSize)getDimensionsOfCurrentScene;
--(GameScene *)getCurrentRunningGameScene;
+-(CGSize)dimensionsOfCurrentScene;
+-(GameScene *)currentRunningGameScene;
 
 // Monster Management
 -(MonsterObject *)spawnMonster:(MonsterID)monsterID withGoalLocation:(CGPoint)goalLocation;
