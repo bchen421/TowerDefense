@@ -9,6 +9,7 @@
 typedef enum
 {
     kNoScene,
+    kTitleScreenScene,
     kMainMenuScene,
     kTiledScene
 } GameSceneID;
