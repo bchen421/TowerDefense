@@ -41,7 +41,6 @@
  </layer>
  <objectgroup name="objectData" width="15" height="10">
   <properties>
-   <property name="numberOfTowers" value="6"/>
    <property name="retina" value="NO"/>
   </properties>
   <object name="spawnPoint1" x="224" y="0" width="32" height="32"/>

@@ -20,13 +20,12 @@
         [self changeState:kMonsterDead];
     }
     
-    if (([self numberOfRunningActions] == 0) && (self.monsterState != kMonsterDead))
+    if (([self numberOfRunningActions] == 0) && (self.monsterState != kMonsterDead) && [self doneMoving] && (self.monsterState != kMonsterIdle))
     {
         [self changeState:kMonsterIdle];
     }
         
-    // If I am idle, I should try and move towards the goal
-    if (self.monsterState == kMonsterIdle)
+    if ( ((self.monsterState == kMonsterMoving) || (self.monsterState == kMonsterIdle)) && (![self doneMoving]) && ([self numberOfRunningActions] == 0))
     {
         [self changeState:kMonsterMoving];
     }

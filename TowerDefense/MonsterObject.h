@@ -21,6 +21,7 @@
     CGPoint _previousLocationTile;
     NSString *_assignedPath;
     CGPoint _nextDestination;
+    BOOL _doneMoving;
 }
 
 @property (nonatomic,readwrite) MonsterID monsterID;
@@ -33,6 +34,7 @@
 @property (nonatomic,readwrite) CGPoint previousLocationTile;
 @property (nonatomic,copy,readwrite) NSString *assignedPath;
 @property (nonatomic,readwrite) CGPoint nextDestination;
+@property (nonatomic,readwrite) BOOL doneMoving;
 
 -(void)changeState:(MonsterState)newState;
 -(void)takeDamage:(NSInteger)amount;

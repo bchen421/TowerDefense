@@ -11,7 +11,7 @@
 #import "GameManager.h"
 
 @implementation MonsterObject
-@synthesize monsterID = _monsterID, monsterState = _monsterState, maxHP = _maxHP, currentHP = _currentHP, movementSpeed = _movementSpeed, goalLocation = _goalLocation, previousLocationTile = _previousLocationTile, assignedPath = _assignedPath, nextDestination = _nextDestination;
+@synthesize monsterID = _monsterID, monsterState = _monsterState, maxHP = _maxHP, currentHP = _currentHP, movementSpeed = _movementSpeed, goalLocation = _goalLocation, previousLocationTile = _previousLocationTile, assignedPath = _assignedPath, nextDestination = _nextDestination, doneMoving = _doneMoving;
 
 #pragma mark - State Management Methods
 -(void)updateStateWithDeltaTime:(ccTime)deltaTime andListOfGameObjects:(CCArray*)listOfGameObjects
@@ -117,6 +117,7 @@
     else
     {
         CCLOG(@"No adjacent moveable tiles found!");
+        [self setDoneMoving:YES];
         return CGPointMake(-1.0, -1.0);
     }
 }
@@ -169,6 +170,7 @@
         _previousLocationTile = ccp(-1,-1);
         _assignedPath = nil;
         _nextDestination = ccp(0,0);
+        _doneMoving = NO;
     }
     return self;
 }

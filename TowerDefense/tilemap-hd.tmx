@@ -36,12 +36,11 @@
  </layer>
  <layer name="metadata" width="15" height="10">
   <data encoding="base64" compression="zlib">
-   eJwzZGBgMETCyACdjw4McbDJ0WuCQx5dnJC9yOK4MD41+NyLLm+CRR7mF1LMxmYGuji5AJ+bCYnjC0NCbgIAgEgKaQ==
+   eJwzZGBgMETCyACdjw4McbDJ0WuCQx5dnJC9yOK4MD41+NyLLm+CRR7ZL8Sajc0MdHFyAT43ExLHF4aE3AQAT0gKOA==
   </data>
  </layer>
  <objectgroup name="objectData" width="15" height="10">
   <properties>
-   <property name="numberOfTowers" value="6"/>
    <property name="retina" value="YES"/>
   </properties>
   <object name="goalPoint1" x="448" y="576" width="64" height="64"/>
