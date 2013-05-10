@@ -11,7 +11,7 @@
 
 @implementation GameScene
 
-@synthesize tileMap = _tileMap, backgroundLayer = _backgroundLayer, metadataLayer = _metadataLayer, objectData = _objectData, gameUILayer = _gameUILayer, sceneSpriteBatchNode = _sceneSpriteBatchNode, towerNodes = _towerNodes;
+@synthesize tileMap = _tileMap, backgroundLayer = _backgroundLayer, metadataLayer = _metadataLayer, objectData = _objectData, gameUILayer = _gameUILayer, sceneSpriteBatchNode = _sceneSpriteBatchNode;
 
 #pragma mark - Metadata Management
 -(CGPoint)positionForTileCoord:(CGPoint)tileCoord
@@ -74,28 +74,6 @@
     }
 }
 
--(void)setupTowerNodes
-{
-    int numberOfTowers = [[[[self objectData] properties] valueForKey:@"numberOfTowers"] integerValue];
-    BOOL retinaEnabled = [[[[self objectData] properties] valueForKey:@"retina"] boolValue];
-    
-    NSDictionary *dict;
-    
-    for (int i = 1; i <= numberOfTowers; i++)
-    {
-        dict = [[self objectData] objectNamed:[NSString stringWithFormat:@"towerSpawnPoint%i",i]];
-        CGRect towerBox = CGRectMake([[dict valueForKey:@"x"] floatValue], [[dict valueForKey:@"y"] floatValue], [[dict valueForKey:@"width"] floatValue], [[dict valueForKey:@"height"] floatValue]);
-        if (retinaEnabled)
-        {
-            towerBox.size.width = towerBox.size.width/2.0;
-            towerBox.size.height = towerBox.size.height/2.0;
-            towerBox.origin.x = towerBox.origin.x / 2.0;
-            towerBox.origin.y = towerBox.origin.y / 2.0;
-        }
-        [_towerNodes addObject:[NSValue valueWithCGRect:towerBox]];
-    }
-}
-
 #pragma mark - Monster Spawning
 -(void)spawnMonster:(MonsterID)monsterID atLocation:(CGPoint)startLocation withGoalLocation:(CGPoint)endLocation
 {
@@ -118,9 +96,6 @@
         _objectData = nil;
         _gameUILayer = nil;
         _sceneSpriteBatchNode = nil;
-        
-        // Temporary: Move to tile metadata
-        _towerNodes = nil;
     }
     
     return self;

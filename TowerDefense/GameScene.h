@@ -18,9 +18,6 @@
     CCTMXObjectGroup *_objectData;
     GameUILayer *_gameUILayer;
     CCSpriteBatchNode *_sceneSpriteBatchNode;
-    
-    // Temporary: Move to tile metadata
-    NSMutableArray *_towerNodes;
 }
 
 @property (readonly) CCTMXTiledMap *tileMap;
@@ -35,8 +32,5 @@
 -(CGPoint)positionForTileCoord:(CGPoint)tileCoord;
 -(CGPoint)tileMapCoordForPosition:(CGPoint)position;
 -(CGPoint)locationForDataObject:(NSString *)dataObject;
-
-// Temporary: Move to tile metadata
--(void)setupTowerNodes;
 
 @end

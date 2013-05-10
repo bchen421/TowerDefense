@@ -19,24 +19,21 @@
     GameScene *currentScene = [[GameManager sharedManager] getCurrentRunningGameScene];
     BOOL inTowerNode = NO;
     CGPoint touchLocation = [parent_ convertTouchToNodeSpace:touch];
+    CGPoint tileCoord = [currentScene tileMapCoordForPosition:touchLocation];
     BOOL retina = [[[[currentScene objectData] properties] valueForKey:@"retina"] boolValue];
     if (retina)
     {
         CGSize tileSize = [[currentScene tileMap] tileSize];
+        CGPoint originPoint = [[currentScene metadataLayer] positionAt:tileCoord];
+        self.touchedTowerNode = CGRectMake(originPoint.x, originPoint.y, tileSize.width/2.0, tileSize.height/2.0);
     }
-    
-    /*
-    for (NSValue *towerNode in [currentScene towerNodes])
+    else
     {
-        if (CGRectContainsPoint([towerNode CGRectValue], touchLocation))
-        {
-            inTowerNode = YES;
-            self.touchedTowerNode = [towerNode CGRectValue];
-        }
+        CGSize tileSize = [[currentScene tileMap] tileSize];
+        CGPoint originPoint = [[currentScene metadataLayer] positionAt:tileCoord];
+        self.touchedTowerNode = CGRectMake(originPoint.x, originPoint.y, tileSize.width, tileSize.height);
     }
-    */
      
-    CGPoint tileCoord = [currentScene tileMapCoordForPosition:touchLocation];
     NSUInteger tileGID = [[currentScene metadataLayer] tileGIDAt:tileCoord];
     if (tileGID)
     {
@@ -44,7 +41,6 @@
         if (properties)
         {
             inTowerNode = [[properties valueForKey:@"towerNode"] boolValue];
-            CCLOG(@"TOUCH SUCCESSFULL WITH INTOWERNODE: %i", inTowerNode);
         }
         else
         {
@@ -70,18 +66,6 @@
         CGPoint towerLocation = CGPointMake(self.touchedTowerNode.origin.x + self.touchedTowerNode.size.width/2.0, self.touchedTowerNode.origin.y + self.touchedTowerNode.size.height/2.0);
         [[GameManager sharedManager] spawnTower:kBlueTower forScene:currentScene atLocation:towerLocation];
     }
-    /*
-    if (specialButton.active)
-    {
-        if ((self.objectState == kStateDefending) || (self.objectState == kStateIdle) || (self.objectState == kStateRunning) || (self.objectState == kStateWalking) || (self.objectState == kStateUpRecovery))
-        {
-            CGPoint touchMoved = [parent_ convertTouchToNodeSpace:touch];
-            CGPoint offSet;
-            offSet.x = (touchMoved.x - touchBegin.x);
-            offSet.y = (touchMoved.y - touchBegin.y);
-        }
-    }
-     */
 }
 
 #pragma mark - Touch Delegate Management

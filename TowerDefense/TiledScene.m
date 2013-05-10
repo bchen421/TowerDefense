@@ -40,10 +40,6 @@
         _metadataLayer = [[self tileMap] layerNamed:@"metadata"];
         _objectData = [[self tileMap] objectGroupNamed:@"objectData"];
         
-        // Temporary tower node setup
-        _towerNodes = [[NSMutableArray alloc] init];
-        [self setupTowerNodes];
-        
         // Setup UI layer
         _gameUILayer = [GameUILayer node];
         [self addChild:_gameUILayer z:2];

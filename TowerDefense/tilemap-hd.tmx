@@ -36,7 +36,7 @@
  </layer>
  <layer name="metadata" width="15" height="10">
   <data encoding="base64" compression="zlib">
-   eJwzZGBgMETCyACdjw4McbDJ0WuCQx5dnJC9yOK4MD41+NyLLm+CRR7mF1LMJgSoqRdbeOISxxeGhNwEAA1wCdY=
+   eJwzZGBgMETCyACdjw4McbDJ0WuCQx5dnJC9yOK4MD41+NyLLm+CRR7mF1LMxmYGuji5AJ+bCYnjC0NCbgIAgEgKaQ==
   </data>
  </layer>
  <objectgroup name="objectData" width="15" height="10">
@@ -45,12 +45,6 @@
    <property name="retina" value="YES"/>
   </properties>
   <object name="goalPoint1" x="448" y="576" width="64" height="64"/>
-  <object name="towerSpawnPoint1" x="256" y="128" width="64" height="64"/>
-  <object name="towerSpawnPoint2" x="640" y="128" width="64" height="64"/>
-  <object name="towerSpawnPoint3" x="256" y="320" width="64" height="64"/>
-  <object name="towerSpawnPoint4" x="640" y="320" width="64" height="64"/>
-  <object name="towerSpawnPoint5" x="256" y="512" width="64" height="64"/>
-  <object name="towerSpawnPoint6" x="640" y="512" width="64" height="64"/>
   <object name="spawnPoint1" x="448" y="0" width="64" height="64">
    <properties>
     <property name="nextWaypoint" value="(7,9)"/>
