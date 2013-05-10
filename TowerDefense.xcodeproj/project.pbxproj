@@ -985,9 +985,7 @@
 		8F65B22F171C44B50065AA48 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				8FCBD19D172769D0008A75AC /* GameScene.h */,
-				8FCBD19E172769D1008A75AC /* GameScene.m */,
-				8F35202417314E550017AC00 /* TiledSandbox */,
+				8F65F987173D25E6005F143E /* Levels */,
 				8FBE24BE171D7F59001D38BB /* MainMenu */,
 			);
 			name = Scenes;
@@ -1011,6 +1009,16 @@
 				8FBE24C7171D80D0001D38BB /* Font Maps */,
 			);
 			name = "Game Assets";
+			sourceTree = "<group>";
+		};
+		8F65F987173D25E6005F143E /* Levels */ = {
+			isa = PBXGroup;
+			children = (
+				8FCBD19D172769D0008A75AC /* GameScene.h */,
+				8FCBD19E172769D1008A75AC /* GameScene.m */,
+				8F35202417314E550017AC00 /* TiledSandbox */,
+			);
+			name = Levels;
 			sourceTree = "<group>";
 		};
 		8FA4E388172A17A500603CB6 /* Towers */ = {

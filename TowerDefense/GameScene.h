@@ -26,7 +26,6 @@
 @property (readonly) CCTMXObjectGroup *objectData;
 @property (readonly) GameUILayer *gameUILayer;
 @property (readwrite, retain) CCSpriteBatchNode *sceneSpriteBatchNode;
-@property (nonatomic, retain, readwrite) NSMutableArray *towerNodes;
 
 -(void)spawnMonster:(MonsterID)monsterID atLocation:(CGPoint)startLocation withGoalLocation:(CGPoint)endLocation;
 -(CGPoint)positionForTileCoord:(CGPoint)tileCoord;
