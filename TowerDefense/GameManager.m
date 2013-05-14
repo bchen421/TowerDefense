@@ -106,7 +106,7 @@ static GameManager * _sharedGameManager = nil;
             break;
             
         case kTitleScreenScene:
-            sceneToRun = [TitleScreenScene node];
+            sceneToRun = [CCTransitionFade transitionWithDuration:1.0f scene:[TitleScreenScene node] withColor:ccWHITE];
             break;
                     
         case kMainMenuScene:
