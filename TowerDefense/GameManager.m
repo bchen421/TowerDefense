@@ -10,6 +10,7 @@
 #import "GameManager.h"
 #import "MainMenuScene.h"
 #import "TiledScene.h"
+#import "TitleScreenScene.h"
 
 // Monster Headers
 #import "OrcMonster.h"
@@ -102,6 +103,10 @@ static GameManager * _sharedGameManager = nil;
     {
         case kNoScene:
             CCLOG(@"Tried to run no scene!");
+            break;
+            
+        case kTitleScreenScene:
+            sceneToRun = [TitleScreenScene node];
             break;
                     
         case kMainMenuScene:

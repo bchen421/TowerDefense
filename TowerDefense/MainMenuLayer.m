@@ -14,16 +14,19 @@
 
 -(void)displayMainMenu
 {
-    CGSize screenSize = [CCDirector sharedDirector].winSize;
+    CGSize screenSize = [[CCDirector sharedDirector] winSize];
     
+    CCLabelBMFont *titleScreenSceneLabel = [CCLabelBMFont labelWithString:@"Title Scene" fntFile:@"MainMenuFonts.fnt"];
+    CCMenuItemLabel *playTitleScene = [CCMenuItemLabel itemWithLabel:titleScreenSceneLabel target:self selector:@selector(playScene:)];
+    [playTitleScene setTag:kTitleScreenScene];
     CCLabelBMFont *tiledSceneLabel = [CCLabelBMFont labelWithString:@"Tiled Scene" fntFile:@"MainMenuFonts.fnt"];
     CCMenuItemLabel *playTiledScene = [CCMenuItemLabel itemWithLabel:tiledSceneLabel target:self selector:@selector(playScene:)];
     [playTiledScene setTag:kTiledScene];
     
-    mainMenu = [CCMenu menuWithItems:playTiledScene, nil];
+    mainMenu = [CCMenu menuWithItems:playTitleScene, playTiledScene, nil];
     [mainMenu alignItemsVerticallyWithPadding:screenSize.height * 0.001];
     NSLog(@"Width: %g, Height: %g", screenSize.width, screenSize.height);
-    [mainMenu setPosition:ccp(screenSize.height - 100.0, 75.0)];
+    [mainMenu setPosition:ccp(screenSize.width - 100.0, 75.0)];
     
     [self addChild:mainMenu z:1];
 }
@@ -39,7 +42,8 @@
     self = [super init];
     if (self)
     {
-        CGSize screenSize = [CCDirector sharedDirector].winSize;
+        CCLOG(@"MAIN MENU INIT");
+        CGSize screenSize = [[CCDirector sharedDirector] winSize];
         CCSprite *background = [CCSprite spriteWithFile:@"background.png"];
         [background setPosition:ccp(screenSize.width/2, screenSize.height/2)];
         [self addChild:background];

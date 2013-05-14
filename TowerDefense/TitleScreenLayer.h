@@ -6,8 +6,11 @@
 //
 //
 
-#import <Foundation/Foundation.h>
+#import "cocos2d.h"
 
-@interface TitleScreenLayer : NSObject
+@interface TitleScreenLayer : CCLayer
+{
+    
+}
 
 @end
