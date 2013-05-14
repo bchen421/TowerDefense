@@ -162,6 +162,7 @@
 		8FCECDB3172F3A100038E521 /* TowerProjectile.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCECDB2172F3A100038E521 /* TowerProjectile.m */; };
 		8FD090351731FF3C00DAF53D /* tilemap-hd.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 8FD090331731FF3C00DAF53D /* tilemap-hd.tmx */; };
 		8FD090361731FF3C00DAF53D /* tiles-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FD090341731FF3C00DAF53D /* tiles-hd.png */; };
+		8FDD69DC174270B9006A8BD8 /* MapScreenScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDD69DB174270B9006A8BD8 /* MapScreenScene.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -469,6 +470,8 @@
 		8FCECDB2172F3A100038E521 /* TowerProjectile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TowerProjectile.m; sourceTree = "<group>"; };
 		8FD090331731FF3C00DAF53D /* tilemap-hd.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "tilemap-hd.tmx"; sourceTree = "<group>"; };
 		8FD090341731FF3C00DAF53D /* tiles-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tiles-hd.png"; sourceTree = "<group>"; };
+		8FDD69DA174270B9006A8BD8 /* MapScreenScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapScreenScene.h; sourceTree = "<group>"; };
+		8FDD69DB174270B9006A8BD8 /* MapScreenScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapScreenScene.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -993,6 +996,7 @@
 			children = (
 				8F65F988173D29B4005F143E /* TitleScreen */,
 				8FBE24BE171D7F59001D38BB /* MainMenu */,
+				8FDD69D517426FF3006A8BD8 /* MapScreen */,
 				8F65F987173D25E6005F143E /* Levels */,
 			);
 			name = Scenes;
@@ -1004,6 +1008,7 @@
 				8F0AF0BF171E633800050CB3 /* Shared */,
 				8F65F98C173D2A47005F143E /* TitleScreen */,
 				8FBE24BF171D7F63001D38BB /* MainMenu */,
+				8FDD69D91742707E006A8BD8 /* MapScreen */,
 			);
 			name = Layers;
 			sourceTree = "<group>";
@@ -1111,6 +1116,22 @@
 				8FCECDB2172F3A100038E521 /* TowerProjectile.m */,
 			);
 			name = Miscellaneous;
+			sourceTree = "<group>";
+		};
+		8FDD69D517426FF3006A8BD8 /* MapScreen */ = {
+			isa = PBXGroup;
+			children = (
+				8FDD69DA174270B9006A8BD8 /* MapScreenScene.h */,
+				8FDD69DB174270B9006A8BD8 /* MapScreenScene.m */,
+			);
+			name = MapScreen;
+			sourceTree = "<group>";
+		};
+		8FDD69D91742707E006A8BD8 /* MapScreen */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = MapScreen;
 			sourceTree = "<group>";
 		};
 		8FFAFB3F171ED409001CD885 /* Sprite Sheets */ = {
@@ -1330,6 +1351,7 @@
 				8F35202717314E6E0017AC00 /* TiledScene.m in Sources */,
 				8F65F98B173D2A07005F143E /* TitleScreenScene.m in Sources */,
 				8F65F98F173D2A63005F143E /* TitleScreenLayer.m in Sources */,
+				8FDD69DC174270B9006A8BD8 /* MapScreenScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

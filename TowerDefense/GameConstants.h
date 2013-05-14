@@ -11,6 +11,7 @@ typedef enum
     kNoScene,
     kTitleScreenScene,
     kMainMenuScene,
+    kMapScreenScene,
     kTiledScene
 } GameSceneID;
 

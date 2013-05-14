@@ -11,6 +11,7 @@
 #import "MainMenuScene.h"
 #import "TiledScene.h"
 #import "TitleScreenScene.h"
+#import "MapScreenScene.h"
 
 // Monster Headers
 #import "OrcMonster.h"
@@ -111,6 +112,10 @@ static GameManager * _sharedGameManager = nil;
                     
         case kMainMenuScene:
             sceneToRun = [MainMenuScene node];
+            break;
+            
+        case kMapScreenScene:
+            sceneToRun = [CCTransitionFade transitionWithDuration:1.0f scene:[MapScreenScene node] withColor:ccWHITE];
             break;
         
         case kTiledScene:
