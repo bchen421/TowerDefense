@@ -10,10 +10,15 @@
 #import "GameManager.h"
 
 @interface MapScreenScene : CCScene
-{
-    CCLayer *_backgroundLayer;
+{    
+    CCTMXTiledMap *_tileMap;
+    CCTMXLayer *_backgroundLayer;
+    CCTMXObjectGroup *_objectData;
 }
 
-@property (nonatomic,readonly) CCLayer *backgroundLayer;
+@property (readonly) CCTMXTiledMap *tileMap;
+@property (readonly) CCTMXLayer *backgroundLayer;
+@property (readonly) CCTMXObjectGroup *objectData;
+@property (readonly) GameUILayer *gameUILayer;
 
 @end

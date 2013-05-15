@@ -86,6 +86,10 @@ static GameManager * _sharedGameManager = nil;
             levelSize = screenSize;
             break;
             
+        case kMapScreenScene:
+            levelSize = CGSizeMake(screenSize.width * 2, screenSize.height *2);
+            break;
+            
         default:
             CCLOG(@"Unknown Scene, returning default size");
             levelSize = screenSize;

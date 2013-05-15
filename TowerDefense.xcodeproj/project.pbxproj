@@ -162,6 +162,8 @@
 		8FCECDB3172F3A100038E521 /* TowerProjectile.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCECDB2172F3A100038E521 /* TowerProjectile.m */; };
 		8FD090351731FF3C00DAF53D /* tilemap-hd.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 8FD090331731FF3C00DAF53D /* tilemap-hd.tmx */; };
 		8FD090361731FF3C00DAF53D /* tiles-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FD090341731FF3C00DAF53D /* tiles-hd.png */; };
+		8FD785461743C313002836FD /* mapscreen-hd.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 8FD785441743C313002836FD /* mapscreen-hd.tmx */; };
+		8FD785471743C313002836FD /* mapscreen.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 8FD785451743C313002836FD /* mapscreen.tmx */; };
 		8FDD69DC174270B9006A8BD8 /* MapScreenScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDD69DB174270B9006A8BD8 /* MapScreenScene.m */; };
 /* End PBXBuildFile section */
 
@@ -470,6 +472,8 @@
 		8FCECDB2172F3A100038E521 /* TowerProjectile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TowerProjectile.m; sourceTree = "<group>"; };
 		8FD090331731FF3C00DAF53D /* tilemap-hd.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "tilemap-hd.tmx"; sourceTree = "<group>"; };
 		8FD090341731FF3C00DAF53D /* tiles-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tiles-hd.png"; sourceTree = "<group>"; };
+		8FD785441743C313002836FD /* mapscreen-hd.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "mapscreen-hd.tmx"; sourceTree = "<group>"; };
+		8FD785451743C313002836FD /* mapscreen.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = mapscreen.tmx; sourceTree = "<group>"; };
 		8FDD69DA174270B9006A8BD8 /* MapScreenScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapScreenScene.h; sourceTree = "<group>"; };
 		8FDD69DB174270B9006A8BD8 /* MapScreenScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapScreenScene.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -529,6 +533,8 @@
 		8F35201F1730CA350017AC00 /* Tile Maps */ = {
 			isa = PBXGroup;
 			children = (
+				8FD785441743C313002836FD /* mapscreen-hd.tmx */,
+				8FD785451743C313002836FD /* mapscreen.tmx */,
 				8F3520221730CCAA0017AC00 /* tilemap.tmx */,
 				8F3520201730CB5E0017AC00 /* tiles.png */,
 				8F51EF9C1738900300BDE25E /* metadatatiles.png */,
@@ -1225,6 +1231,8 @@
 				8FD090361731FF3C00DAF53D /* tiles-hd.png in Resources */,
 				8F51EF9D1738900300BDE25E /* metadatatiles-hd.png in Resources */,
 				8F51EF9E1738900300BDE25E /* metadatatiles.png in Resources */,
+				8FD785461743C313002836FD /* mapscreen-hd.tmx in Resources */,
+				8FD785471743C313002836FD /* mapscreen.tmx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -22,8 +22,11 @@
     CCLabelBMFont *tiledSceneLabel = [CCLabelBMFont labelWithString:@"Tiled Scene" fntFile:@"MainMenuFonts.fnt"];
     CCMenuItemLabel *playTiledScene = [CCMenuItemLabel itemWithLabel:tiledSceneLabel target:self selector:@selector(playScene:)];
     [playTiledScene setTag:kTiledScene];
+    CCLabelBMFont *mapScreenSceneLabel = [CCLabelBMFont labelWithString:@"Level Select" fntFile:@"MainMenuFonts.fnt"];
+    CCMenuItemLabel *playMapScreenScene = [CCMenuItemLabel itemWithLabel:mapScreenSceneLabel target:self selector:@selector(playScene:)];
+    [playMapScreenScene setTag:kMapScreenScene];
     
-    mainMenu = [CCMenu menuWithItems:playTitleScene, playTiledScene, nil];
+    mainMenu = [CCMenu menuWithItems:playTitleScene, playTiledScene, playMapScreenScene, nil];
     [mainMenu alignItemsVerticallyWithPadding:screenSize.height * 0.001];
     NSLog(@"Width: %g, Height: %g", screenSize.width, screenSize.height);
     [mainMenu setPosition:ccp(screenSize.width - 100.0, 75.0)];

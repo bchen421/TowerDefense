@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="30" height="20" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="tiles" tilewidth="32" tileheight="32" spacing="1" margin="1">
+  <image source="tiles.png" width="265" height="199"/>
+ </tileset>
+ <layer name="background" width="30" height="20">
+  <data encoding="base64" compression="zlib">
+   eJyTY2BgkBsgTG8wau+ovcPRXnrny1F7R+2lt72SQCwFxNJ0tlcRiJWAWJmG9mLzmyYQawGxNg3tpcRvlNhLid/IsZtW6ZkYDACoIyVv
+  </data>
+ </layer>
+ <objectgroup name="objectData" width="30" height="20">
+  <object name="1" type="levelselect" x="64" y="544" width="32" height="32"/>
+ </objectgroup>
+</map>
