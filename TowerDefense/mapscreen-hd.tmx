@@ -9,10 +9,7 @@
   </data>
  </layer>
  <objectgroup name="objectData" width="30" height="20">
-  <object name="level" x="128" y="1088" width="64" height="64">
-   <properties>
-    <property name="level" value="1"/>
-   </properties>
-  </object>
+  <object name="1" type="levelSelect" x="128" y="1088" width="64" height="64"/>
+  <object name="2" type="levelSelect" x="384" y="960" width="64" height="64"/>
  </objectgroup>
 </map>
