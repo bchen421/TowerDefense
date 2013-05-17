@@ -18,9 +18,9 @@
 {
     GameScene *currentScene = [[GameManager sharedManager] currentRunningGameScene];
     BOOL inTowerNode = NO;
-    CGPoint touchLocation = [parent_ convertTouchToNodeSpace:touch];
+    CGPoint touchLocation = [self convertTouchToNodeSpace:touch];
     CGPoint tileCoord = [currentScene tileMapCoordForPosition:touchLocation];
-    BOOL retina = [[[[currentScene objectData] properties] valueForKey:@"retina"] boolValue];
+    BOOL retina = [[[[currentScene tileMap] properties] valueForKey:@"retina"] boolValue];
     if (retina)
     {
         CGSize tileSize = [[currentScene tileMap] tileSize];

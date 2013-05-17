@@ -19,7 +19,7 @@
     CGPoint position = [[self metadataLayer] positionAt:tileCoord];
     CGSize tileSize = [[self tileMap] tileSize];
     
-    BOOL retina = [[[[self objectData] properties] valueForKey:@"retina"] boolValue];
+    BOOL retina = [[[[self tileMap] properties] valueForKey:@"retina"] boolValue];
     
     if (retina)
     {
@@ -33,8 +33,8 @@
 
 -(CGPoint)tileMapCoordForPosition:(CGPoint)position
 {
-    BOOL retinaEnabled = [[[[self objectData] properties] valueForKey:@"retina"] boolValue];
-    if (!retinaEnabled)
+    BOOL retina = [[[[self tileMap] properties] valueForKey:@"retina"] boolValue];
+    if (!retina)
     {
         CGSize mapSize = [[self tileMap] mapSize];
         CGSize tileSize = [[self tileMap] tileSize];
@@ -56,7 +56,7 @@
 
 -(CGPoint)locationForDataObject:(NSString *)dataObject
 {
-    BOOL retinaEnabled = [[[[self objectData] properties] valueForKey:@"retina"] boolValue];
+    BOOL retina = [[[[self tileMap] properties] valueForKey:@"retina"] boolValue];
     
     NSDictionary *dict = [[self objectData] objectNamed:dataObject];
     int width = [[dict valueForKey:@"width"] integerValue];
@@ -64,7 +64,7 @@
     int x = [[dict valueForKey:@"x"] integerValue];
     int y = [[dict valueForKey:@"y"] integerValue];
     
-    if (!retinaEnabled)
+    if (!retina)
     {
         return ccp(x + width/2,y + height/2);
     }

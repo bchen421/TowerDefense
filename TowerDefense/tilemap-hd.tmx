@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="15" height="10" tilewidth="64" tileheight="64">
+ <properties>
+  <property name="retina" value="YES"/>
+ </properties>
  <tileset firstgid="1" name="tiles-hd" tilewidth="64" tileheight="64" spacing="2" margin="2">
   <image source="tiles-hd.png" width="530" height="398"/>
  </tileset>
@@ -40,9 +43,6 @@
   </data>
  </layer>
  <objectgroup name="objectData" width="15" height="10">
-  <properties>
-   <property name="retina" value="YES"/>
-  </properties>
   <object name="goalPoint1" x="448" y="576" width="64" height="64"/>
   <object name="spawnPoint1" x="448" y="0" width="64" height="64">
    <properties>
