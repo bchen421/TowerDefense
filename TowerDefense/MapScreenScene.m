@@ -8,7 +8,6 @@
 
 #import "MapScreenScene.h"
 #import "GameManager.h"
-#import <Foundation/Foundation.h>
 
 @implementation MapScreenScene
 @synthesize levelSelectNodes = _levelSelectNodes, levelSelectIndex = _levelSelectIndex, startingTouchLocation = _startingTouchLocation;
