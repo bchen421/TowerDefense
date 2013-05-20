@@ -8,6 +8,7 @@
 
 #import "MapScreenScene.h"
 #import "GameManager.h"
+#import <Foundation/Foundation.h>
 
 @implementation MapScreenScene
 @synthesize levelSelectNodes = _levelSelectNodes, levelSelectIndex = _levelSelectIndex, startingTouchLocation = _startingTouchLocation;
@@ -130,12 +131,12 @@
         
         CCLOG(@"VELOCITY: %g", touchVelocity);
         
-        if (touchVelocity > 100.0)
+        if (touchVelocity > 10.0)
         {
             CCLOG(@"PAN DETECTED");
             CGPoint translation = ccp(self.startingTouchLocation.x - touchLocation.x, self.startingTouchLocation.y - touchLocation.y);
-            translation.x = translation.x * 25.0;
-            translation.y = translation.y * 25.0;
+            translation.x = translation.x * 50.0;
+            translation.y = translation.y * 50.0;
             self.startingTouchLocation = touchLocation;
             [self scrollViewBy:translation];
         }
@@ -196,7 +197,6 @@
         _levelSelectIndex = [[NSMutableArray alloc] initWithCapacity:0];
         [self setupLevelSelectNodes];
     }
-    
     return self;
 }
 
