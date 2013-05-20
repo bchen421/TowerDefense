@@ -12,13 +12,17 @@
 {    
     NSMutableArray *_levelSelectNodes;
     NSMutableArray *_levelSelectIndex;
-    CGPoint _tileTouched;
+    CGPoint _startingTouchLocation;
+    long unsigned int _startingTouchTime;
+    BOOL _touchMoved;
 }
 
 @property (nonatomic,readonly) NSMutableArray *levelSelectNodes;
 @property (nonatomic,readonly) NSMutableArray *levelSelectIndex;
-@property (nonatomic,readwrite) CGPoint tileTouched;
+@property (nonatomic, readwrite) CGPoint startingTouchLocation;
 
 -(void)setupLevelSelectNodes;
+-(void)translateViewBy:(CGPoint)translation;
+-(void)scrollViewBy:(CGPoint)translation;
 
 @end

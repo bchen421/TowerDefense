@@ -123,7 +123,8 @@ static GameManager * _sharedGameManager = nil;
             break;
         
         case kTiledScene:
-            sceneToRun = [TiledScene node];
+            //sceneToRun = [TiledScene node];
+            sceneToRun = [CCTransitionFade transitionWithDuration:1.0f scene:[TiledScene node] withColor:ccWHITE];
             break;
         
         default:

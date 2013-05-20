@@ -23,6 +23,20 @@
     }
 }
 
+#pragma mark - Scene Management
+-(void)onEnterTransitionDidFinish
+{
+    [super onEnterTransitionDidFinish];
+    
+    // Schedule updates for this scene
+    [self scheduleUpdate];
+    
+    // Temp location for monster pawning for now
+    [self spawnMonster:kOrc atLocation:[self locationForDataObject:@"spawnPoint1"] withGoalLocation:[self locationForDataObject:@"goalPoint1"]];
+    //[self spawnMonster:kOrc atLocation:CGPointMake(screenSize.width/2, screenSize.height) withGoalLocation:CGPointMake(screenSize.width/2, 0)];
+    //[self spawnMonster:kBigOrc atLocation:CGPointMake(screenSize.width/2.0 - 75.0, screenSize.height - 25.0) withGoalLocation:CGPointMake(screenSize.width/2 - 75.0, screenSize.height/2.0)];
+}
+
 #pragma mark - Initialization
 -(id)init
 {
@@ -48,14 +62,6 @@
         [[CCSpriteFrameCache sharedSpriteFrameCache]addSpriteFramesWithFile:@"sandboxAtlas.plist"];
         _sceneSpriteBatchNode = [CCSpriteBatchNode batchNodeWithFile:@"sandboxAtlas.png"];
         [self addChild:_sceneSpriteBatchNode z:1];
-        
-        // Schedule updates for this scene
-        [self scheduleUpdate];
-                
-        // Temp location for monster pawning for now
-        [self spawnMonster:kOrc atLocation:[self locationForDataObject:@"spawnPoint1"] withGoalLocation:[self locationForDataObject:@"goalPoint1"]];
-        //[self spawnMonster:kOrc atLocation:CGPointMake(screenSize.width/2, screenSize.height) withGoalLocation:CGPointMake(screenSize.width/2, 0)];
-        //[self spawnMonster:kBigOrc atLocation:CGPointMake(screenSize.width/2.0 - 75.0, screenSize.height - 25.0) withGoalLocation:CGPointMake(screenSize.width/2 - 75.0, screenSize.height/2.0)];
     }
     
     return self;
