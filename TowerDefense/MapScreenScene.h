@@ -14,6 +14,7 @@
     NSMutableArray *_levelSelectIndex;
     CGPoint _startingTouchLocation;
     long unsigned int _startingTouchTime;
+    BOOL _beingTouched;
     BOOL _touchMoved;
 }
 
@@ -24,5 +25,6 @@
 -(void)setupLevelSelectNodes;
 -(void)translateViewBy:(CGPoint)translation;
 -(void)scrollViewBy:(CGPoint)translation;
+-(BOOL)viewInBounds;
 
 @end

@@ -35,10 +35,10 @@
     [[self titleLabel] setPosition:ccp(screenSize.width/2, screenSize.height/2 + 50)];
     CCSequence *titleScaling = [CCSequence actions:[CCDelayTime actionWithDuration:2.0f], [CCScaleTo actionWithDuration:0.3f scale:0.75],[CCDelayTime actionWithDuration:0.1f],[CCScaleTo actionWithDuration:0.3f scale:1.0],[CCDelayTime actionWithDuration:3.0f], nil];
     CCActionInterval *titleLooping = [CCRepeatForever actionWithAction:titleScaling];
-    [[self titleLabel] runAction:titleLooping];
     [self addChild:_titleLabel z:1];
+    [[self titleLabel] runAction:titleLooping];
     
-    _continueLabel = [CCLabelTTF labelWithString:@"Tap to Continue" fontName:@"Marker Felt" fontSize:16.0];
+    _continueLabel = [CCLabelTTF labelWithString:@"Touch to Continue" fontName:@"Marker Felt" fontSize:16.0];
     [[self continueLabel] setColor:ccBLACK];
     [[self continueLabel] setPosition:ccp(screenSize.width/2, screenSize.height/2 - 25)];
     CCSequence *continueBlinking = [CCSequence actions:[CCBlink actionWithDuration:3.0f blinks:2], [CCShow action], nil];

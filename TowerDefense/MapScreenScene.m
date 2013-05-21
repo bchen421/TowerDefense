@@ -12,12 +12,48 @@
 @implementation MapScreenScene
 @synthesize levelSelectNodes = _levelSelectNodes, levelSelectIndex = _levelSelectIndex, startingTouchLocation = _startingTouchLocation;
 
+#pragma mark - Run Time Loop
+-(void)update:(ccTime)deltaTime
+{
+    if ( (![self viewInBounds]) && !(_beingTouched) && ([self numberOfRunningActions] == 0) )
+    {
+        [self returnInBounds];
+    }
+}
+
 #pragma mark - Map View Management
--(void)translateViewBy:(CGPoint)translation
+-(BOOL)viewInBounds
 {
     CGSize screenSize = [[CCDirector sharedDirector] winSize];
     CGSize levelSize = [[GameManager sharedManager] dimensionsOfCurrentScene];
-    CGPoint newPosition = ccp((self.position.x - translation.x), (self.position.y - translation.y));
+    if (self.position.x > 0)
+    {
+        return NO;
+    }
+    else if (self.position.x < -(levelSize.width - screenSize.width))
+    {
+        return NO;
+    }
+    
+    if (self.position.y > 0)
+    {
+        return NO;
+    }
+    else if (self.position.y < -(levelSize.height - screenSize.height))
+    {
+        return NO;
+    }
+    
+    return YES;
+}
+
+-(void)returnInBounds
+{
+    CGSize screenSize = [[CCDirector sharedDirector] winSize];
+    CGSize levelSize = [[GameManager sharedManager] dimensionsOfCurrentScene];
+    
+    CGPoint newPosition = self.position;
+    
     if (newPosition.x > 0)
     {
         newPosition.x = 0;
@@ -26,7 +62,7 @@
     {
         newPosition.x = -(levelSize.width - screenSize.width);
     }
-
+    
     if (newPosition.y > 0)
     {
         newPosition.y = 0;
@@ -35,6 +71,41 @@
     {
         newPosition.y = -(levelSize.height - screenSize.height);
     }
+    
+    newPosition.x = round(newPosition.x);
+    newPosition.y = round(newPosition.y);
+    
+    CCMoveTo *moveTo = [CCMoveTo actionWithDuration:(12.0/60.0) position:newPosition];
+    [self runAction:moveTo];
+}
+
+-(void)translateViewBy:(CGPoint)translation
+{
+    CGSize screenSize = [[CCDirector sharedDirector] winSize];
+    CGSize levelSize = [[GameManager sharedManager] dimensionsOfCurrentScene];
+    CGPoint newPosition = ccp((self.position.x - translation.x), (self.position.y - translation.y));
+    
+    if (newPosition.x > 0)
+    {
+        newPosition.x = MIN(newPosition.x / 2.0, 100.0);
+    }
+    else if (newPosition.x < -(levelSize.width - screenSize.width))
+    {
+        float diff = newPosition.x - -(levelSize.width - screenSize.width);
+        newPosition.x = MAX(newPosition.x - diff/2.0, -(levelSize.width - screenSize.width + 100.0));
+    }
+    
+    if (newPosition.y > 0)
+    {
+        newPosition.y = MIN(newPosition.y / 2.0, 100.0);
+    }
+    else if (newPosition.y < -(levelSize.height - screenSize.height))
+    {
+        float diff = newPosition.y - -(levelSize.height - screenSize.height);
+        newPosition.y = MAX(newPosition.y - diff/2.0, -(levelSize.height - screenSize.height + 100.0));
+    }
+    
+    CCLOG(@"NEWPOSITION X: %g Y: %g", newPosition.x, newPosition.y);
     [self setPosition:newPosition];
 }
 
@@ -43,6 +114,7 @@
     CGSize screenSize = [[CCDirector sharedDirector] winSize];
     CGSize levelSize = [[GameManager sharedManager] dimensionsOfCurrentScene];
     CGPoint newPosition = ccp((self.position.x - translation.x), (self.position.y - translation.y));
+    
     if (newPosition.x > 0)
     {
         newPosition.x = 0;
@@ -61,14 +133,18 @@
         newPosition.y = -(levelSize.height - screenSize.height);
     }
     
+    newPosition.x = round(newPosition.x);
+    newPosition.y = round(newPosition.y);
     
-    [self runAction:[CCMoveTo actionWithDuration:(6.0/60.0) position:newPosition]];
+    CCMoveTo *moveTo = [CCMoveTo actionWithDuration:(6.0/60.0) position:newPosition];
+    [self runAction:moveTo];
 }
 
 #pragma mark - Touch Management
 -(BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
     [self stopAllActions];
+    _beingTouched = YES;
     _touchMoved = NO;
     CGPoint touchLocation = [self convertTouchToNodeSpace:touch];
     self.startingTouchLocation = touchLocation;
@@ -90,6 +166,7 @@
 
 -(void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event
 {
+    _beingTouched = NO;
     CGPoint touchLocation = [self convertTouchToNodeSpace:touch];
     if (!_touchMoved)
     {
@@ -119,26 +196,16 @@
     }
     else
     {
+        CCLOG(@"TOUCH ENDED");
         struct timeval time;
         gettimeofday(&time, NULL);
         long unsigned int currentTime = (time.tv_sec * 1000) + (time.tv_usec / 1000);
-        float distance = ABS(ccpDistance(self.startingTouchLocation, touchLocation));
         unsigned int deltaTime = currentTime - _startingTouchTime;
         CCLOG(@"TIME: %lu", currentTime);
         
-        float touchVelocity = (distance / deltaTime) * 1000;
-        
-        CCLOG(@"VELOCITY: %g", touchVelocity);
-        
-        if (touchVelocity > 10.0)
-        {
-            CCLOG(@"PAN DETECTED");
-            CGPoint translation = ccp(self.startingTouchLocation.x - touchLocation.x, self.startingTouchLocation.y - touchLocation.y);
-            translation.x = translation.x * 50.0;
-            translation.y = translation.y * 50.0;
-            self.startingTouchLocation = touchLocation;
-            [self scrollViewBy:translation];
-        }
+        CGPoint velocity = ccp((self.startingTouchLocation.x - touchLocation.x)/deltaTime, (self.startingTouchLocation.y - touchLocation.y)/deltaTime);
+        velocity = ccpMult(velocity, 1000.0);
+        [self scrollViewBy:velocity];
     }
     
 }
@@ -191,10 +258,13 @@
         _tileMap = [CCTMXTiledMap tiledMapWithTMXFile:@"mapscreen.tmx"];
         [self addChild:_tileMap z:0];
         _backgroundLayer = [[self tileMap] layerNamed:@"background"];
+        [[_backgroundLayer texture] setAliasTexParameters];
         _objectData = [[self tileMap] objectGroupNamed:@"objectData"];
         _levelSelectNodes = [[NSMutableArray alloc] initWithCapacity:0];
         _levelSelectIndex = [[NSMutableArray alloc] initWithCapacity:0];
         [self setupLevelSelectNodes];
+        _beingTouched = NO;
+        [self scheduleUpdate];
     }
     return self;
 }
