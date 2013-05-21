@@ -68,6 +68,38 @@
     }
 }
 
+#pragma mark - Tilemap Management Methods
+-(void)translateViewBy:(CGPoint)translation
+{
+    CGSize screenSize = [[CCDirector sharedDirector] winSize];
+    CGSize levelSize = [[GameManager sharedManager] dimensionsOfCurrentScene];
+    CCTMXTiledMap *currentMap = [[[GameManager sharedManager] currentRunningGameScene] tileMap];
+    CGPoint newPosition = ccp((currentMap.position.x - translation.x), (currentMap.position.y - translation.y));
+    
+    if (newPosition.x > 0)
+    {
+        newPosition.x = MIN(newPosition.x / 2.0, 100.0);
+    }
+    else if (newPosition.x < -(levelSize.width - screenSize.width))
+    {
+        float diff = newPosition.x - -(levelSize.width - screenSize.width);
+        newPosition.x = MAX(newPosition.x - diff/2.0, -(levelSize.width - screenSize.width + 100.0));
+    }
+    
+    if (newPosition.y > 0)
+    {
+        newPosition.y = MIN(newPosition.y / 2.0, 100.0);
+    }
+    else if (newPosition.y < -(levelSize.height - screenSize.height))
+    {
+        float diff = newPosition.y - -(levelSize.height - screenSize.height);
+        newPosition.y = MAX(newPosition.y - diff/2.0, -(levelSize.height - screenSize.height + 100.0));
+    }
+    
+    CCLOG(@"NEWPOSITION X: %g Y: %g", newPosition.x, newPosition.y);
+    [self setPosition:newPosition];
+}
+
 #pragma mark - Touch Delegate Management
 - (void) onEnterTransitionDidFinish
 {

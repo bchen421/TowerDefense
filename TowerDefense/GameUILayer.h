@@ -15,4 +15,6 @@
 
 @property (readwrite) CGRect touchedTowerNode;
 
+-(void)translateViewBy:(CGPoint)translation;
+
 @end

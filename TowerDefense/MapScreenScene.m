@@ -12,6 +12,15 @@
 @implementation MapScreenScene
 @synthesize levelSelectNodes = _levelSelectNodes, levelSelectIndex = _levelSelectIndex, startingTouchLocation = _startingTouchLocation,  tileMap = _tileMap, backgroundLayer = _backgroundLayer, objectData = _objectData;
 
+#pragma mark - Run Time Loop
+-(void)update:(ccTime)deltaTime
+{
+    if ( (![self viewInBounds]) && !(_beingTouched) && ([self numberOfRunningActions] == 0) )
+    {
+        [self returnInBounds];
+    }
+}
+
 #pragma mark - Metadata Management
 -(CGPoint)positionForTileCoord:(CGPoint)tileCoord
 {
@@ -70,15 +79,6 @@
     else
     {
         return ccp(x/2 + width/4, y/2 + height/4);
-    }
-}
-
-#pragma mark - Run Time Loop
--(void)update:(ccTime)deltaTime
-{
-    if ( (![self viewInBounds]) && !(_beingTouched) && ([self numberOfRunningActions] == 0) )
-    {
-        [self returnInBounds];
     }
 }
 

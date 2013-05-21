@@ -8,7 +8,7 @@
  </tileset>
  <layer name="background" width="30" height="20">
   <data encoding="base64" compression="zlib">
-   eJyTY2BgkBsgzICFjw5wiZMD8NlDSzBq76i9tLSXGvlw1N5RewervZJALAXE0nS2VxGIlYBYmcb2ovtPE4i1gFibxvaS6j9q2Uuq/wZLeiYHAwBL7iCh
+   eJyTY2BgkBvFo3gUj+JRPIoHIZYEYikglqazvYpArATEynT2nyYQawGx9jDxHzqml/8GAwYAlaZGmQ==
   </data>
  </layer>
  <objectgroup name="objectData" width="30" height="20">
