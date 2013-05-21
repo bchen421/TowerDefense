@@ -16,7 +16,7 @@
 #pragma mark - Metadata Management
 -(CGPoint)positionForTileCoord:(CGPoint)tileCoord
 {
-    CGPoint position = [[self metadataLayer] positionAt:tileCoord];
+    CGPoint position = [[self backgroundLayer] positionAt:tileCoord];
     CGSize tileSize = [[self tileMap] tileSize];
     
     BOOL retina = [[[[self tileMap] properties] valueForKey:@"retina"] boolValue];

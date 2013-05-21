@@ -6,10 +6,15 @@
 //
 //
 
-#import "GameScene.h"
+#import "cocos2d.h"
+#import "GameConstants.h"
 
-@interface MapScreenScene : GameScene <CCTargetedTouchDelegate>
-{    
+@interface MapScreenScene : CCScene <CCTargetedTouchDelegate>
+{
+    CCTMXTiledMap *_tileMap;
+    CCTMXLayer *_backgroundLayer;
+    CCTMXObjectGroup *_objectData;
+    
     NSMutableArray *_levelSelectNodes;
     NSMutableArray *_levelSelectIndex;
     CGPoint _startingTouchLocation;
@@ -18,10 +23,16 @@
     BOOL _touchMoved;
 }
 
+@property (readonly) CCTMXTiledMap *tileMap;
+@property (readonly) CCTMXLayer *backgroundLayer;
+@property (readonly) CCTMXObjectGroup *objectData;
 @property (nonatomic,readonly) NSMutableArray *levelSelectNodes;
 @property (nonatomic,readonly) NSMutableArray *levelSelectIndex;
 @property (nonatomic, readwrite) CGPoint startingTouchLocation;
 
+-(CGPoint)positionForTileCoord:(CGPoint)tileCoord;
+-(CGPoint)tileMapCoordForPosition:(CGPoint)position;
+-(CGPoint)locationForDataObject:(NSString *)dataObject;
 -(void)setupLevelSelectNodes;
 -(void)translateViewBy:(CGPoint)translation;
 -(void)scrollViewBy:(CGPoint)translation;

@@ -1002,7 +1002,7 @@
 			children = (
 				8F65F988173D29B4005F143E /* TitleScreen */,
 				8FBE24BE171D7F59001D38BB /* MainMenu */,
-				8FDD69D517426FF3006A8BD8 /* MapScreen */,
+				8FDD69D517426FF3006A8BD8 /* Maps */,
 				8F65F987173D25E6005F143E /* Levels */,
 			);
 			name = Scenes;
@@ -1124,13 +1124,13 @@
 			name = Miscellaneous;
 			sourceTree = "<group>";
 		};
-		8FDD69D517426FF3006A8BD8 /* MapScreen */ = {
+		8FDD69D517426FF3006A8BD8 /* Maps */ = {
 			isa = PBXGroup;
 			children = (
 				8FDD69DA174270B9006A8BD8 /* MapScreenScene.h */,
 				8FDD69DB174270B9006A8BD8 /* MapScreenScene.m */,
 			);
-			name = MapScreen;
+			name = Maps;
 			sourceTree = "<group>";
 		};
 		8FDD69D91742707E006A8BD8 /* MapScreen */ = {
