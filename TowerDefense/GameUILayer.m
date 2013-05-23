@@ -134,6 +134,7 @@
 
 -(void)returnInBounds
 {
+    CCLOG(@"I AM RETURNING IN BOUNDS");
     GameScene *currentScene = [[GameManager sharedManager] currentRunningGameScene];
     CGSize screenSize = [[CCDirector sharedDirector] winSize];
     CGSize levelSize = [[GameManager sharedManager] dimensionsOfCurrentScene];

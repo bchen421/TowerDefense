@@ -55,3 +55,29 @@ typedef enum
     kProjectileAttacking,
     kProjectileDead
 } ProjectileState;
+
+typedef enum
+{
+    kScrollLevelActions,
+} actionTags;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -15,9 +15,11 @@
 #pragma mark - Run Time Loop
 -(void)update:(ccTime)deltaTime
 {
-    if ( (![self viewInBounds]) && !(_beingTouched) && ([self numberOfRunningActions] == 0) )
+    CCAction *scrollAction = [self getActionByTag:kScrollLevelActions];
+    if ( (![self viewInBounds]) && !(_beingTouched) && (!scrollAction) )
     {
-        [self returnInBounds];
+        //CCLOG(@"RETURNING TO BOUNDS");
+        //[self returnInBounds];
     }
 }
 
@@ -110,6 +112,7 @@
 
 -(void)returnInBounds
 {
+    CCLOG(@"I AM RETURNING IN BOUNDS");
     CGSize screenSize = [[CCDirector sharedDirector] winSize];
     CGSize levelSize = [[GameManager sharedManager] dimensionsOfCurrentScene];
     
@@ -137,6 +140,7 @@
     newPosition.y = round(newPosition.y);
     
     CCMoveTo *moveTo = [CCMoveTo actionWithDuration:(12.0/60.0) position:newPosition];
+    [moveTo setTag:kScrollLevelActions];
     [self runAction:moveTo];
 }
 
@@ -198,13 +202,14 @@
     newPosition.y = round(newPosition.y);
     
     CCMoveTo *moveTo = [CCMoveTo actionWithDuration:(6.0/60.0) position:newPosition];
+    [moveTo setTag:kScrollLevelActions];
     [self runAction:moveTo];
 }
 
 #pragma mark - Touch Management
 -(BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
-    [self stopAllActions];
+    [self stopActionByTag:kScrollLevelActions];
     _beingTouched = YES;
     _touchMoved = NO;
     CGPoint touchLocation = [self convertTouchToNodeSpace:touch];
@@ -264,10 +269,11 @@
         gettimeofday(&time, NULL);
         long unsigned int currentTime = (time.tv_sec * 1000) + (time.tv_usec / 1000);
         unsigned int deltaTime = currentTime - _startingTouchTime;
-        CCLOG(@"TIME: %lu", currentTime);
         
         CGPoint velocity = ccp((self.startingTouchLocation.x - touchLocation.x)/deltaTime, (self.startingTouchLocation.y - touchLocation.y)/deltaTime);
+        CCLOG(@"VELOCITY X: %g Y: %g", velocity.x, velocity.y);
         velocity = ccpMult(velocity, 1000.0);
+        CCLOG(@"ADJUSTED VELOCITY X: %g Y: %g", velocity.x, velocity.y);
         [self scrollViewBy:velocity];
     }
     
