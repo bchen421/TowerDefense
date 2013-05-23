@@ -28,6 +28,10 @@
 {
     [super onEnterTransitionDidFinish];
     
+    // Setup UI layer
+    _gameUILayer = [GameUILayer node];
+    [self addChild:_gameUILayer z:2];
+    
     // Schedule updates for this scene
     [self scheduleUpdate];
     
@@ -53,10 +57,6 @@
         _backgroundLayer = [[self tileMap] layerNamed:@"background"];
         _metadataLayer = [[self tileMap] layerNamed:@"metadata"];
         _objectData = [[self tileMap] objectGroupNamed:@"objectData"];
-        
-        // Setup UI layer
-        _gameUILayer = [GameUILayer node];
-        [self addChild:_gameUILayer z:2];
         
         // Setup Sprite Atlas for gameplay layer
         [[CCSpriteFrameCache sharedSpriteFrameCache]addSpriteFramesWithFile:@"sandboxAtlas.plist"];

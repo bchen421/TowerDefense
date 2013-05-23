@@ -83,11 +83,11 @@ static GameManager * _sharedGameManager = nil;
             break;
             
         case kTiledScene:
-            levelSize = screenSize;
+            levelSize = CGSizeMake(screenSize.width * 2, screenSize.height * 2);
             break;
             
         case kMapScreenScene:
-            levelSize = CGSizeMake(screenSize.width * 2, screenSize.height *2);
+            levelSize = CGSizeMake(screenSize.width * 2, screenSize.height * 2);
             break;
             
         default:
@@ -150,10 +150,12 @@ static GameManager * _sharedGameManager = nil;
 
 -(GameScene *)currentRunningGameScene;
 {
+    CCScene *currentScene = nil;
+    
     switch (_currentSceneID)
     {
         case kNoScene:
-            return nil;
+             return nil;
             break;
             
         case kMainMenuScene:
@@ -161,9 +163,18 @@ static GameManager * _sharedGameManager = nil;
             break;
             
         default:
-            return (GameScene *)[[CCDirector sharedDirector] runningScene];
+            currentScene = [[CCDirector sharedDirector] runningScene];
+            if ([currentScene isKindOfClass:[GameScene class]])
+            {
+                return (GameScene *)[[CCDirector sharedDirector] runningScene];
+            }
+            else
+            {
+                return nil;
+            }
             break;
     }
+    
 }
 
 #pragma mark - Class Methods

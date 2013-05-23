@@ -11,10 +11,18 @@
 @interface GameUILayer : CCLayer <CCTargetedTouchDelegate>
 {
     CGRect _touchedTowerNode;
+    BOOL _touchMoved;
+    BOOL _inTowerNode;
+    CGPoint _startingTouchLocation;
+    long unsigned int _startingTouchTime;
+    BOOL _beingTouched;
 }
 
 @property (readwrite) CGRect touchedTowerNode;
+@property (nonatomic, readwrite) CGPoint startingTouchLocation;
 
 -(void)translateViewBy:(CGPoint)translation;
+-(void)scrollViewBy:(CGPoint)translation;
+-(void)returnInBounds;
 
 @end

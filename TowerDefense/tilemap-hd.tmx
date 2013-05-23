@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="15" height="10" tilewidth="64" tileheight="64">
+<map version="1.0" orientation="orthogonal" width="30" height="20" tilewidth="64" tileheight="64">
  <properties>
   <property name="retina" value="YES"/>
  </properties>
@@ -32,18 +32,18 @@
    </properties>
   </tile>
  </tileset>
- <layer name="background" width="15" height="10">
+ <layer name="background" width="30" height="20">
   <data encoding="base64" compression="zlib">
-   eJyTY2BgkMOCFYFYCYiVccijY0YgZgJiZjS9yOK49HJCaW40vcjiuPQKArEQEAuj6UUWH3Uz/d0MAA0fDk0=
+   eJyTY2BgkMOCFYFYCYiVcchTEzMCMRMQM6PZiyxOC3s5oTQ3mr3I4rSwVxCIhYBYGM1eZPHRcB4N59FwHg3n0XAeDefRcKYdpnU7BwCZpz/B
   </data>
  </layer>
- <layer name="metadata" width="15" height="10">
+ <layer name="metadata" width="30" height="20">
   <data encoding="base64" compression="zlib">
-   eJwzZGBgMETCyACdjw4McbDJ0WuCQx5dnJC9yOK4MD41+NyLLm+CRR7ZL8Sajc0MdHFyAT43ExLHF4aE3AQAT0gKOA==
+   eJztklEKACAIQ72S4P3PFn0EIRpF0yAcDGpKD0ZMRDx5lr4jxc45myvOXOdorrdjGcndfRvJ7RI1GxYjQ3K9HQTrlBuhVc87+Q135RfK5Or/bOXRqp5zVD3n6MeeG3s/DVo=
   </data>
  </layer>
- <objectgroup name="objectData" width="15" height="10">
-  <object name="goalPoint1" x="448" y="576" width="64" height="64"/>
+ <objectgroup name="objectData" width="30" height="20">
+  <object name="goalPoint1" x="448" y="1216" width="64" height="64"/>
   <object name="spawnPoint1" x="448" y="0" width="64" height="64">
    <properties>
     <property name="nextWaypoint" value="(7,9)"/>
