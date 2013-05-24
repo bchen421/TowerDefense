@@ -13,15 +13,6 @@
 @implementation GameUILayer
 @synthesize touchedTowerNode = _touchedTowerNode;
 
-#pragma mark - Run Time Loop
--(void)update:(ccTime)deltaTime
-{
-    if ( (![self viewInBounds]) && !(_beingTouched) && ([[[GameManager sharedManager] currentRunningGameScene] numberOfRunningActions] == 0) )
-    {
-        [self returnInBounds];
-    }
-}
-
 #pragma mark - Game Tilemap View Management
 -(BOOL)viewInBounds
 {
@@ -132,40 +123,6 @@
     [currentScene runAction:moveTo];
 }
 
--(void)returnInBounds
-{
-    CCLOG(@"I AM RETURNING IN BOUNDS");
-    GameScene *currentScene = [[GameManager sharedManager] currentRunningGameScene];
-    CGSize screenSize = [[CCDirector sharedDirector] winSize];
-    CGSize levelSize = [[GameManager sharedManager] dimensionsOfCurrentScene];
-    
-    CGPoint newPosition = currentScene.position;
-    
-    if (newPosition.x > 0)
-    {
-        newPosition.x = 0;
-    }
-    else if (newPosition.x < -(levelSize.width - screenSize.width))
-    {
-        newPosition.x = -(levelSize.width - screenSize.width);
-    }
-    
-    if (newPosition.y > 0)
-    {
-        newPosition.y = 0;
-    }
-    else if (newPosition.y < -(levelSize.height - screenSize.height))
-    {
-        newPosition.y = -(levelSize.height - screenSize.height);
-    }
-    
-    newPosition.x = round(newPosition.x);
-    newPosition.y = round(newPosition.y);
-    
-    CCMoveTo *moveTo = [CCMoveTo actionWithDuration:(12.0/60.0) position:newPosition];
-    [currentScene runAction:moveTo];
-}
-
 #pragma mark - Touch Management
 -(BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
@@ -254,7 +211,6 @@
 #pragma mark - Touch Delegate Management
 - (void) onEnterTransitionDidFinish
 {
-    [self scheduleUpdate];
     [[[CCDirector sharedDirector] touchDispatcher] addTargetedDelegate:self priority:1 swallowsTouches:YES];
 }
 

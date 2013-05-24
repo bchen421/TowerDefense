@@ -12,17 +12,6 @@
 @implementation MapScreenScene
 @synthesize levelSelectNodes = _levelSelectNodes, levelSelectIndex = _levelSelectIndex, startingTouchLocation = _startingTouchLocation,  tileMap = _tileMap, backgroundLayer = _backgroundLayer, objectData = _objectData;
 
-#pragma mark - Run Time Loop
--(void)update:(ccTime)deltaTime
-{
-    CCAction *scrollAction = [self getActionByTag:kScrollLevelActions];
-    if ( (![self viewInBounds]) && !(_beingTouched) && (!scrollAction) )
-    {
-        //CCLOG(@"RETURNING TO BOUNDS");
-        //[self returnInBounds];
-    }
-}
-
 #pragma mark - Metadata Management
 -(CGPoint)positionForTileCoord:(CGPoint)tileCoord
 {
@@ -108,40 +97,6 @@
     }
     
     return YES;
-}
-
--(void)returnInBounds
-{
-    CCLOG(@"I AM RETURNING IN BOUNDS");
-    CGSize screenSize = [[CCDirector sharedDirector] winSize];
-    CGSize levelSize = [[GameManager sharedManager] dimensionsOfCurrentScene];
-    
-    CGPoint newPosition = self.position;
-    
-    if (newPosition.x > 0)
-    {
-        newPosition.x = 0;
-    }
-    else if (newPosition.x < -(levelSize.width - screenSize.width))
-    {
-        newPosition.x = -(levelSize.width - screenSize.width);
-    }
-    
-    if (newPosition.y > 0)
-    {
-        newPosition.y = 0;
-    }
-    else if (newPosition.y < -(levelSize.height - screenSize.height))
-    {
-        newPosition.y = -(levelSize.height - screenSize.height);
-    }
-    
-    newPosition.x = round(newPosition.x);
-    newPosition.y = round(newPosition.y);
-    
-    CCMoveTo *moveTo = [CCMoveTo actionWithDuration:(12.0/60.0) position:newPosition];
-    [moveTo setTag:kScrollLevelActions];
-    [self runAction:moveTo];
 }
 
 -(void)translateViewBy:(CGPoint)translation
@@ -252,12 +207,10 @@
             CCLOG(@"LOAD LEVEL %i", level);
             if (level == 1)
             {
-                [self unscheduleUpdate];
                 [[GameManager sharedManager] runGameScene:kTiledScene];
             }
             else if (level == 2)
             {
-                [self unscheduleUpdate];
                 [[GameManager sharedManager] runGameScene:kTitleScreenScene];
             }
         }
@@ -333,7 +286,6 @@
         _levelSelectIndex = [[NSMutableArray alloc] initWithCapacity:0];
         [self setupLevelSelectNodes];
         _beingTouched = NO;
-        [self scheduleUpdate];
     }
     return self;
 }

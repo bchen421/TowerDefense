@@ -23,6 +23,5 @@
 
 -(void)translateViewBy:(CGPoint)translation;
 -(void)scrollViewBy:(CGPoint)translation;
--(void)returnInBounds;
 
 @end
