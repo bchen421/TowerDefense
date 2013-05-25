@@ -83,7 +83,6 @@
         _monsterID = kOrc;
         _maxHP = 30;
         _currentHP = 30;
-        _assignedPath = @"walkableA";
         [self changeState:kMonsterIdle];
     }
     

@@ -36,9 +36,10 @@
     [self scheduleUpdate];
     
     // Temp location for monster pawning for now
-    [self spawnMonster:kOrc atLocation:[self locationForDataObject:@"spawnPoint1"] withGoalLocation:[self locationForDataObject:@"goalPoint1"]];
-    //[self spawnMonster:kOrc atLocation:CGPointMake(screenSize.width/2, screenSize.height) withGoalLocation:CGPointMake(screenSize.width/2, 0)];
-    //[self spawnMonster:kBigOrc atLocation:CGPointMake(screenSize.width/2.0 - 75.0, screenSize.height - 25.0) withGoalLocation:CGPointMake(screenSize.width/2 - 75.0, screenSize.height/2.0)];
+    //[self spawnMonster:kOrc atLocation:[self locationForDataObject:@"spawnPoint1"] onPath:@"walkableA"];
+    //[self spawnMonster:kOrc atLocation:[self locationForDataObject:@"spawnPoint1"] onPath:@"walkableB"];
+    [self performSelector:@selector(spawnMonsterFromDictionary:) withObject:nil afterDelay:1.0f];
+    [self performSelector:@selector(spawnMonsterFromDictionary:) withObject:nil afterDelay:5.0f];
 }
 
 #pragma mark - Initialization

@@ -27,7 +27,8 @@
 @property (readonly) GameUILayer *gameUILayer;
 @property (readwrite, retain) CCSpriteBatchNode *sceneSpriteBatchNode;
 
--(void)spawnMonster:(MonsterID)monsterID atLocation:(CGPoint)startLocation withGoalLocation:(CGPoint)endLocation;
+-(void)spawnMonster:(MonsterID)monsterID atLocation:(CGPoint)startLocation onPath:(NSString *)pathName;
+-(void)spawnMonsterFromDictionary:(NSDictionary *)spawnInfo;
 -(CGPoint)positionForTileCoord:(CGPoint)tileCoord;
 -(CGPoint)tileMapCoordForPosition:(CGPoint)position;
 -(CGPoint)locationForDataObject:(NSString *)dataObject;

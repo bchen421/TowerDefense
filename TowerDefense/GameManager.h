@@ -27,7 +27,7 @@
 -(GameScene *)currentRunningGameScene;
 
 // Monster Management
--(MonsterObject *)spawnMonster:(MonsterID)monsterID withGoalLocation:(CGPoint)goalLocation;
+-(MonsterObject *)spawnMonster:(MonsterID)monsterID onPath:(NSString *)pathName;
 
 // Tower Management
 -(void)spawnTower:(TowerID)towerID forScene:(GameScene *)gameScene atLocation:(CGPoint)spawnLocation;

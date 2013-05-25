@@ -39,11 +39,12 @@
  </layer>
  <layer name="metadata" width="30" height="20">
   <data encoding="base64" compression="zlib">
-   eJxjYMAODKGYVsAQD6YlQDffBIc6XOLUspdeAF84GxJQQ02AHJ7IdqCH80CGEy3Npld6Rw9nbOK0BsMxDtHBaDjTB4yGM33AaDjTBgAAdlwMAw==
+   eJztlEEKwCAMBPOlVf//trYH6WJjTtn04kBAFFwzqGY+7S5s1jJoQXVxLjNo3KmG5bLmeij6jjzPMyFYy4J9zv1hX8/ZuR6eZ2Uu91vt+UFxnyNg7zuqRPlfrbBPbObVVPb7V+7xXMPxrOECIEoN8Q==
   </data>
  </layer>
  <objectgroup name="objectData" width="30" height="20">
   <object name="spawnPoint1" x="224" y="0" width="32" height="32"/>
   <object name="goalPoint1" x="224" y="608" width="32" height="32"/>
+  <object name="spawnPoint2" x="224" y="0" width="32" height="32"/>
  </objectgroup>
 </map>

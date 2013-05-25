@@ -39,7 +39,7 @@
  </layer>
  <layer name="metadata" width="30" height="20">
   <data encoding="base64" compression="zlib">
-   eJztklEKACAIQ72S4P3PFn0EIRpF0yAcDGpKD0ZMRDx5lr4jxc45myvOXOdorrdjGcndfRvJ7RI1GxYjQ3K9HQTrlBuhVc87+Q135RfK5Or/bOXRqp5zVD3n6MeeG3s/DVo=
+   eJxjYIAAYyzYkIH2wBiLmBEd7TXBYS+yOLUAyHxDKI2OaQlA5mMLZ1oDZHtxhSetwnmg/TtQ9tI7nAciPYPASCo3kO1FBqPhTDt7kcFoONPOXmRAL//Ss50DAHQaDds=
   </data>
  </layer>
  <objectgroup name="objectData" width="30" height="20">
@@ -49,5 +49,6 @@
     <property name="nextWaypoint" value="(7,9)"/>
    </properties>
   </object>
+  <object name="spawnPoint2" x="448" y="0" width="64" height="64"/>
  </objectgroup>
 </map>

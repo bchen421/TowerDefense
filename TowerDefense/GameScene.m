@@ -75,12 +75,17 @@
 }
 
 #pragma mark - Monster Spawning
--(void)spawnMonster:(MonsterID)monsterID atLocation:(CGPoint)startLocation withGoalLocation:(CGPoint)endLocation
+-(void)spawnMonster:(MonsterID)monsterID atLocation:(CGPoint)startLocation onPath:(NSString *)pathName
 {
-    MonsterObject *testMonster = [[GameManager sharedManager] spawnMonster:monsterID withGoalLocation:endLocation];
-    [testMonster setPosition:startLocation];
+    MonsterObject *newMonster = [[GameManager sharedManager] spawnMonster:monsterID onPath:pathName];
+    [newMonster setPosition:startLocation];
     
-    [[self sceneSpriteBatchNode] addChild:testMonster z:20];
+    [[self sceneSpriteBatchNode] addChild:newMonster z:20];
+}
+
+-(void)spawnMonsterFromDictionary:(NSDictionary *)spawnInfo
+{
+    NSLog(@"I SHOULD BE SPAWNING A MONSTER WITH DICTIONARY INFO");
 }
 
 #pragma mark - Initialization
