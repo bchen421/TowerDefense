@@ -19,6 +19,7 @@
 		8F35202717314E6E0017AC00 /* TiledScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F35202617314E6E0017AC00 /* TiledScene.m */; };
 		8F51EF9D1738900300BDE25E /* metadatatiles-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F51EF9B1738900300BDE25E /* metadatatiles-hd.png */; };
 		8F51EF9E1738900300BDE25E /* metadatatiles.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F51EF9C1738900300BDE25E /* metadatatiles.png */; };
+		8F5B3F5417512D8E00831C3A /* TiledScene.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F5B3F5317512D8E00831C3A /* TiledScene.plist */; };
 		8F65B090171C43CC0065AA48 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F65B08F171C43CC0065AA48 /* QuartzCore.framework */; };
 		8F65B092171C43CC0065AA48 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F65B091171C43CC0065AA48 /* OpenGLES.framework */; };
 		8F65B094171C43CC0065AA48 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F65B093171C43CC0065AA48 /* OpenAL.framework */; };
@@ -184,6 +185,7 @@
 		8F35202617314E6E0017AC00 /* TiledScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TiledScene.m; sourceTree = "<group>"; };
 		8F51EF9B1738900300BDE25E /* metadatatiles-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "metadatatiles-hd.png"; sourceTree = "<group>"; };
 		8F51EF9C1738900300BDE25E /* metadatatiles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = metadatatiles.png; sourceTree = "<group>"; };
+		8F5B3F5317512D8E00831C3A /* TiledScene.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TiledScene.plist; sourceTree = "<group>"; };
 		8F65B08C171C43CC0065AA48 /* TowerDefense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TowerDefense.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F65B08F171C43CC0065AA48 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		8F65B091171C43CC0065AA48 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -550,6 +552,7 @@
 			children = (
 				8F35202517314E6E0017AC00 /* TiledScene.h */,
 				8F35202617314E6E0017AC00 /* TiledScene.m */,
+				8F5B3F5317512D8E00831C3A /* TiledScene.plist */,
 			);
 			name = TiledSandbox;
 			sourceTree = "<group>";
@@ -1233,6 +1236,7 @@
 				8F51EF9E1738900300BDE25E /* metadatatiles.png in Resources */,
 				8FD785461743C313002836FD /* mapscreen-hd.tmx in Resources */,
 				8FD785471743C313002836FD /* mapscreen.tmx in Resources */,
+				8F5B3F5417512D8E00831C3A /* TiledScene.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

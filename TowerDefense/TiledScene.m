@@ -15,12 +15,20 @@
 #pragma mark - Scene Update Management
 -(void)update:(ccTime)deltaTime
 {
+    //_timeInLevel += deltaTime;
+    //[self displaySecs:_timeInLevel];
     CCArray *listOfGameObjects = [_sceneSpriteBatchNode children];
     GameObject *tempObject;
     CCARRAY_FOREACH(listOfGameObjects, tempObject)
     {
         [tempObject updateStateWithDeltaTime:deltaTime andListOfGameObjects:listOfGameObjects];
     }
+}
+
+-(void)gameTime
+{
+    _timeInLevel += 0.1f;
+    [self displaySecs:_timeInLevel];
 }
 
 #pragma mark - Scene Management
@@ -34,12 +42,30 @@
     
     // Schedule updates for this scene
     [self scheduleUpdate];
+    [self schedule:@selector(gameTime) interval:0.1f];
     
-    // Temp location for monster pawning for now
-    //[self spawnMonster:kOrc atLocation:[self locationForDataObject:@"spawnPoint1"] onPath:@"walkableA"];
+    // Temp mob spawn
+    //[self spawnMonsterOnPath:@"walkableA"];
     //[self spawnMonster:kOrc atLocation:[self locationForDataObject:@"spawnPoint1"] onPath:@"walkableB"];
-    [self performSelector:@selector(spawnMonsterFromDictionary:) withObject:nil afterDelay:1.0f];
-    [self performSelector:@selector(spawnMonsterFromDictionary:) withObject:nil afterDelay:5.0f];
+    
+    // Load plist data
+    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"TiledScene" ofType:@"plist"];
+    _mobSpawns = [NSMutableArray arrayWithContentsOfFile:plistPath];
+    //NSLog(@"ARRAY DATA: %@", [[self mobSpawns] description]);
+    
+    // Temp Location for mob loading
+    [self checkAndLoadMobSpawns];
+}
+
+- (void)displaySecs:(float)secs {
+    double intPart = 0;
+    double fractPart = modf(secs, &intPart);
+    int isecs = (int)intPart;
+    int min = isecs / 60;
+    int sec = isecs % 60;
+    int hund = (int) (fractPart * 100);
+    [_label setString:[NSString stringWithFormat:@"%02d:%02d:%02d",
+                      min, sec, hund]];
 }
 
 #pragma mark - Initialization
@@ -63,6 +89,26 @@
         [[CCSpriteFrameCache sharedSpriteFrameCache]addSpriteFramesWithFile:@"sandboxAtlas.plist"];
         _sceneSpriteBatchNode = [CCSpriteBatchNode batchNodeWithFile:@"sandboxAtlas.png"];
         [self addChild:_sceneSpriteBatchNode z:1];
+        
+        // Timer Test code
+        _label = [CCLabelTTF labelWithString:@"" fontName:@"AmericanTypewriter-Bold" fontSize:40.0];
+        _label.anchorPoint = ccp(1, 1);
+        _label.position = ccp(screenSize.width - 20, screenSize.height - 20);
+        [self addChild:_label];
+        
+        /* PList sample code
+         NSString* plistPath = [[NSBundle mainBundle] pathForResource:@"TowersPosition" ofType:@"plist"];
+         NSArray * towerPositions = [NSArray arrayWithContentsOfFile:plistPath];
+         towerBases = [[NSMutableArray alloc] initWithCapacity:10];
+         
+         for(NSDictionary * towerPos in towerPositions)
+         {
+         CCSprite * towerBase = [CCSprite spriteWithFile:@"open_spot.png"];
+         [self addChild:towerBase];
+         [towerBase setPosition:ccp([[towerPos objectForKey:@"x"] intValue],[[towerPos objectForKey:@"y"] intValue])];
+         [towerBases addObject:towerBase];
+         }
+        */
     }
     
     return self;

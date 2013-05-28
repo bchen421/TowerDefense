@@ -11,7 +11,7 @@
 
 @implementation GameScene
 
-@synthesize tileMap = _tileMap, backgroundLayer = _backgroundLayer, metadataLayer = _metadataLayer, objectData = _objectData, gameUILayer = _gameUILayer, sceneSpriteBatchNode = _sceneSpriteBatchNode;
+@synthesize tileMap = _tileMap, backgroundLayer = _backgroundLayer, metadataLayer = _metadataLayer, objectData = _objectData, gameUILayer = _gameUILayer, sceneSpriteBatchNode = _sceneSpriteBatchNode, mobSpawns = _mobSpawns;
 
 #pragma mark - Metadata Management
 -(CGPoint)positionForTileCoord:(CGPoint)tileCoord
@@ -88,6 +88,26 @@
     NSLog(@"I SHOULD BE SPAWNING A MONSTER WITH DICTIONARY INFO");
 }
 
+-(void)spawnMonsterOnPath:(NSString *)path
+{
+    [self spawnMonster:kOrc atLocation:[self locationForDataObject:@"spawnPoint1"] onPath:path];
+    //[self spawnMonster:kOrc atLocation:[self locationForDataObject:@"spawnPoint1"] onPath:@"walkableA"];
+}
+
+-(void)checkAndLoadMobSpawns
+{
+    MonsterID mobID;
+    CGPoint spawnLoc;
+    NSString *path;
+    for (NSDictionary *mobSpawn in _mobSpawns)
+    {
+        NSLog(@"EACH ITEM: %@", [mobSpawn description]);
+        mobID = [[mobSpawn objectForKey:@"type"] integerValue];
+        spawnLoc = [self locationForDataObject:[mobSpawn objectForKey:@"location"]];
+        path = [mobSpawn objectForKey:@"path"];
+    }
+}
+
 #pragma mark - Initialization
 -(id)init
 {
@@ -101,6 +121,8 @@
         _objectData = nil;
         _gameUILayer = nil;
         _sceneSpriteBatchNode = nil;
+        _timeInLevel = 0.0;
+        _mobSpawns = nil;
     }
     
     return self;
