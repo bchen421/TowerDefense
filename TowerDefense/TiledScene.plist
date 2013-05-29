@@ -8,7 +8,7 @@
 		<key>location</key>
 		<string>spawnPoint1</string>
 		<key>time</key>
-		<integer>1</integer>
+		<integer>10</integer>
 		<key>type</key>
 		<integer>1</integer>
 	</dict>
@@ -18,7 +18,7 @@
 		<key>location</key>
 		<string>spawnPoint1</string>
 		<key>time</key>
-		<real>2.5</real>
+		<integer>0</integer>
 		<key>type</key>
 		<integer>1</integer>
 	</dict>
@@ -28,7 +28,7 @@
 		<key>location</key>
 		<string>spawnPoint1</string>
 		<key>time</key>
-		<real>5.5</real>
+		<integer>0</integer>
 		<key>type</key>
 		<integer>1</integer>
 	</dict>
@@ -38,7 +38,7 @@
 		<key>location</key>
 		<string>spawnPoint1</string>
 		<key>time</key>
-		<real>10</real>
+		<integer>0</integer>
 		<key>type</key>
 		<integer>1</integer>
 	</dict>
