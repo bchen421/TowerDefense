@@ -124,7 +124,7 @@
 
 -(void)moveTowardsGoal
 {
-    CCLOG(@"I SHOULD BE MOVING TOWARDS THE GOAL");
+    //CCLOG(@"I SHOULD BE MOVING TOWARDS THE GOAL");
     
     GameScene *currentScene = [[GameManager sharedManager] currentRunningGameScene];
     

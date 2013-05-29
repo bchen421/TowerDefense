@@ -96,6 +96,26 @@
 
 -(void)checkAndLoadMobSpawns
 {
+    if (_currentWave >= [_mobSpawns count])
+    {
+        return;
+    }
+        
+    NSDictionary *nextSpawn = [_mobSpawns objectAtIndex:_currentWave];
+    //NSLog(@"NEXTSPAWN: %@", [nextSpawn description]);
+    float loadTime = [[nextSpawn objectForKey:@"time"] floatValue];
+    
+    if (_spawnTimer >= loadTime)
+    {
+        MonsterID mobID = [[nextSpawn objectForKey:@"type"] integerValue];
+        CGPoint spawnLoc = [self locationForDataObject:[nextSpawn objectForKey:@"location"]];
+        NSString *path = [nextSpawn objectForKey:@"path"];
+        [self spawnMonster:mobID atLocation:spawnLoc onPath:path];
+        _currentWave += 1;
+        _spawnTimer = 0;
+    }
+    
+    /*
     MonsterID mobID;
     CGPoint spawnLoc;
     NSString *path;
@@ -105,7 +125,9 @@
         mobID = [[mobSpawn objectForKey:@"type"] integerValue];
         spawnLoc = [self locationForDataObject:[mobSpawn objectForKey:@"location"]];
         path = [mobSpawn objectForKey:@"path"];
+        [self spawnMonster:mobID atLocation:spawnLoc onPath:path];
     }
+    */
 }
 
 #pragma mark - Initialization
@@ -121,8 +143,9 @@
         _objectData = nil;
         _gameUILayer = nil;
         _sceneSpriteBatchNode = nil;
-        _timeInLevel = 0.0;
-        _mobSpawns = nil;
+        _spawnTimer = 0.0;
+        _mobSpawns = [[NSMutableArray alloc] initWithCapacity:0];
+        _currentWave = 0;
     }
     
     return self;

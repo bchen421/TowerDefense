@@ -10,7 +10,7 @@
 		<key>time</key>
 		<integer>1</integer>
 		<key>type</key>
-		<string>kOrc</string>
+		<integer>1</integer>
 	</dict>
 	<dict>
 		<key>path</key>
@@ -18,9 +18,9 @@
 		<key>location</key>
 		<string>spawnPoint1</string>
 		<key>time</key>
-		<real>1.5</real>
+		<real>2.5</real>
 		<key>type</key>
-		<string>kOrc</string>
+		<integer>1</integer>
 	</dict>
 	<dict>
 		<key>path</key>
@@ -28,9 +28,19 @@
 		<key>location</key>
 		<string>spawnPoint1</string>
 		<key>time</key>
-		<real>3.2</real>
+		<real>5.5</real>
 		<key>type</key>
-		<string>kOrc</string>
+		<integer>1</integer>
+	</dict>
+	<dict>
+		<key>path</key>
+		<string>walkableB</string>
+		<key>location</key>
+		<string>spawnPoint1</string>
+		<key>time</key>
+		<real>10</real>
+		<key>type</key>
+		<integer>1</integer>
 	</dict>
 </array>
 </plist>

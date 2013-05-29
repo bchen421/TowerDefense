@@ -42,7 +42,7 @@
             break;
         
         case kMonsterMoving:
-            CCLOG(@"OrcMonster is starting to move");
+            //CCLOG(@"OrcMonster is starting to move");
             [self moveTowardsGoal];
             break;
             

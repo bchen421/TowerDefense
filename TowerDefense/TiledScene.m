@@ -23,12 +23,17 @@
     {
         [tempObject updateStateWithDeltaTime:deltaTime andListOfGameObjects:listOfGameObjects];
     }
+    [self checkAndLoadMobSpawns];
+    _spawnTimer += deltaTime;
+    [self displaySecs:_spawnTimer];
+
 }
 
 -(void)gameTime
 {
-    _timeInLevel += 0.1f;
-    [self displaySecs:_timeInLevel];
+    [self checkAndLoadMobSpawns];
+    _spawnTimer += 0.1f;
+    [self displaySecs:_spawnTimer];
 }
 
 #pragma mark - Scene Management
@@ -40,18 +45,13 @@
     _gameUILayer = [GameUILayer node];
     [self addChild:_gameUILayer z:2];
     
-    // Schedule updates for this scene
-    [self scheduleUpdate];
-    [self schedule:@selector(gameTime) interval:0.1f];
-    
-    // Temp mob spawn
-    //[self spawnMonsterOnPath:@"walkableA"];
-    //[self spawnMonster:kOrc atLocation:[self locationForDataObject:@"spawnPoint1"] onPath:@"walkableB"];
-    
     // Load plist data
     NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"TiledScene" ofType:@"plist"];
-    _mobSpawns = [NSMutableArray arrayWithContentsOfFile:plistPath];
-    //NSLog(@"ARRAY DATA: %@", [[self mobSpawns] description]);
+    [_mobSpawns addObjectsFromArray:[NSMutableArray arrayWithContentsOfFile:plistPath]];
+    
+    // Schedule updates for this scene
+    [self scheduleUpdate];
+    //[self schedule:@selector(gameTime) interval:0.1f];
     
     // Temp Location for mob loading
     [self checkAndLoadMobSpawns];
