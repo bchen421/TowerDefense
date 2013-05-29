@@ -88,7 +88,7 @@
         // Setup Sprite Atlas for gameplay layer
         [[CCSpriteFrameCache sharedSpriteFrameCache]addSpriteFramesWithFile:@"sandboxAtlas.plist"];
         _sceneSpriteBatchNode = [CCSpriteBatchNode batchNodeWithFile:@"sandboxAtlas.png"];
-        [self addChild:_sceneSpriteBatchNode z:1];
+        [_tileMap addChild:_sceneSpriteBatchNode z:100];
         
         // Timer Test code
         _label = [CCLabelTTF labelWithString:@"" fontName:@"AmericanTypewriter-Bold" fontSize:40.0];
