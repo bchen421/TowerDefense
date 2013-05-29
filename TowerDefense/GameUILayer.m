@@ -11,7 +11,7 @@
 #import "GameManager.h"
 
 @implementation GameUILayer
-@synthesize touchedTowerNode = _touchedTowerNode;
+@synthesize touchedTowerNode = _touchedTowerNode, startingTouchLocation = _startingTouchLocation, scrollingTouchLocation = _scrollingTouchLocation;
 
 #pragma mark - Game Tilemap View Management
 -(BOOL)viewInBounds
@@ -189,6 +189,7 @@
     CGPoint tileCoord = [currentScene tileMapCoordForPosition:touchLocation];
     
     self.startingTouchLocation = touchLocation;
+    self.scrollingTouchLocation = [currentScene convertTouchToNodeSpace:touch];
     
     if (CGRectContainsPoint(levelBoundingBox, touchLocation))
     {
@@ -233,6 +234,7 @@
     _beingTouched = NO;
     GameScene *currentScene = [[GameManager sharedManager] currentRunningGameScene];
     CGPoint touchLocation = [[currentScene tileMap] convertTouchToNodeSpace:touch];
+    CGPoint scrolledToLocation = [currentScene convertTouchToNodeSpace:touch];
     
     if (_inTowerNode && (!_touchMoved))
     {
@@ -251,8 +253,8 @@
         unsigned int deltaTime = currentTime - _startingTouchTime;
         CCLOG(@"TIME: %lu", currentTime);
         
-        CGPoint velocity = ccp((self.startingTouchLocation.x - touchLocation.x)/deltaTime, (self.startingTouchLocation.y - touchLocation.y)/deltaTime);
-        velocity = ccpMult(velocity, 1000.0);
+        CGPoint velocity = ccp((self.scrollingTouchLocation.x - scrolledToLocation.x)/deltaTime, (self.scrollingTouchLocation.y - scrolledToLocation.y)/deltaTime);
+        velocity = ccpMult(velocity, 100.0);
         [self scrollViewBy:velocity];
     }
 }

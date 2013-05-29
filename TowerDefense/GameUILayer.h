@@ -13,13 +13,15 @@
     CGRect _touchedTowerNode;
     BOOL _touchMoved;
     BOOL _inTowerNode;
-    CGPoint _startingTouchLocation;
+    CGPoint _startingTouchLocation;     // This holds touch location based on the tiled map to be use for interaction calculations
+    CGPoint _scrollingTouchLocation;            // This holds touch location based on the scene to be used for velocity calculations
     long unsigned int _startingTouchTime;
     BOOL _beingTouched;
 }
 
 @property (readwrite) CGRect touchedTowerNode;
 @property (nonatomic, readwrite) CGPoint startingTouchLocation;
+@property (nonatomic, readwrite) CGPoint scrollingTouchLocation;
 
 -(void)translateViewBy:(CGPoint)translation;
 -(void)scrollViewBy:(CGPoint)translation;
