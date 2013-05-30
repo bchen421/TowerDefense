@@ -34,8 +34,6 @@
 @property (nonatomic, readonly) NSMutableArray *mobSpawns;
 
 -(void)spawnMonster:(MonsterID)monsterID atLocation:(CGPoint)startLocation onPath:(NSString *)pathName;
--(void)spawnMonsterFromDictionary:(NSDictionary *)spawnInfo;
--(void)spawnMonsterOnPath:(NSString *)path;
 -(void)checkAndLoadMobSpawns;
 -(CGPoint)positionForTileCoord:(CGPoint)tileCoord;
 -(CGPoint)tileMapCoordForPosition:(CGPoint)position;

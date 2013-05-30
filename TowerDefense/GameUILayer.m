@@ -14,31 +14,6 @@
 @synthesize touchedTowerNode = _touchedTowerNode, startingTouchLocation = _startingTouchLocation, scrollingTouchLocation = _scrollingTouchLocation;
 
 #pragma mark - Game Tilemap View Management
--(BOOL)viewInBounds
-{
-    GameScene *currentScene = [[GameManager sharedManager] currentRunningGameScene];
-    CGSize screenSize = [[CCDirector sharedDirector] winSize];
-    CGSize levelSize = [[GameManager sharedManager] dimensionsOfCurrentScene];
-    if (currentScene.position.x > 0)
-    {
-        return NO;
-    }
-    else if (currentScene.position.x < -(levelSize.width - screenSize.width))
-    {
-        return NO;
-    }
-    
-    if (currentScene.position.y > 0)
-    {
-        return NO;
-    }
-    else if (currentScene.position.y < -(levelSize.height - screenSize.height))
-    {
-        return NO;
-    }
-    
-    return YES;
-}
 
 -(void)translateViewBy:(CGPoint)translation
 {
@@ -72,37 +47,6 @@
     newPosition.y = round(newPosition.y);
     
     [tiledMap setPosition:newPosition];
-    /*
-    GameScene *currentScene = [[GameManager sharedManager] currentRunningGameScene];
-    CGSize screenSize = [[CCDirector sharedDirector] winSize];
-    CGSize levelSize = [[GameManager sharedManager] dimensionsOfCurrentScene];
-    CGPoint newPosition = ccp((currentScene.position.x - translation.x), (currentScene.position.y - translation.y));
-        
-    if (newPosition.x > 0)
-    {
-        newPosition.x = MIN(newPosition.x / 2.0, 10.0);
-    }
-    else if (newPosition.x < -(levelSize.width - screenSize.width))
-    {
-        float diff = newPosition.x - -(levelSize.width - screenSize.width);
-        newPosition.x = MAX(newPosition.x - diff/2.0, -(levelSize.width - screenSize.width + 10.0));
-    }
-    
-    if (newPosition.y > 0)
-    {
-        newPosition.y = MIN(newPosition.y / 2.0, 10.0);
-    }
-    else if (newPosition.y < -(levelSize.height - screenSize.height))
-    {
-        float diff = newPosition.y - -(levelSize.height - screenSize.height);
-        newPosition.y = MAX(newPosition.y - diff/2.0, -(levelSize.height - screenSize.height + 10.0));
-    }
-    
-    newPosition.x = round(newPosition.x);
-    newPosition.y = round(newPosition.y);
-    
-    [currentScene setPosition:newPosition];
-    */
 }
 
 -(void)scrollViewBy:(CGPoint)translation
@@ -136,37 +80,6 @@
     
     CCMoveTo *moveTo = [CCMoveTo actionWithDuration:(6.0/60.0) position:newPosition];
     [tiledMap runAction:moveTo];
-    
-    /*
-    GameScene *currentScene = [[GameManager sharedManager] currentRunningGameScene];
-    CGSize screenSize = [[CCDirector sharedDirector] winSize];
-    CGSize levelSize = [[GameManager sharedManager] dimensionsOfCurrentScene];
-    CGPoint newPosition = ccp((currentScene.position.x - translation.x), (currentScene.position.y - translation.y));
-    
-    if (newPosition.x > 0)
-    {
-        newPosition.x = 0;
-    }
-    else if (newPosition.x < -(levelSize.width - screenSize.width))
-    {
-        newPosition.x = -(levelSize.width - screenSize.width);
-    }
-    
-    if (newPosition.y > 0)
-    {
-        newPosition.y = 0;
-    }
-    else if (newPosition.y < -(levelSize.height - screenSize.height))
-    {
-        newPosition.y = -(levelSize.height - screenSize.height);
-    }
-    
-    newPosition.x = round(newPosition.x);
-    newPosition.y = round(newPosition.y);
-    
-    CCMoveTo *moveTo = [CCMoveTo actionWithDuration:(6.0/60.0) position:newPosition];
-    [currentScene runAction:moveTo];
-    */
 }
 
 #pragma mark - Touch Management

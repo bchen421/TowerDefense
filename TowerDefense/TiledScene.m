@@ -95,20 +95,6 @@
         _label.anchorPoint = ccp(1, 1);
         _label.position = ccp(screenSize.width - 20, screenSize.height - 20);
         [self addChild:_label];
-        
-        /* PList sample code
-         NSString* plistPath = [[NSBundle mainBundle] pathForResource:@"TowersPosition" ofType:@"plist"];
-         NSArray * towerPositions = [NSArray arrayWithContentsOfFile:plistPath];
-         towerBases = [[NSMutableArray alloc] initWithCapacity:10];
-         
-         for(NSDictionary * towerPos in towerPositions)
-         {
-         CCSprite * towerBase = [CCSprite spriteWithFile:@"open_spot.png"];
-         [self addChild:towerBase];
-         [towerBase setPosition:ccp([[towerPos objectForKey:@"x"] intValue],[[towerPos objectForKey:@"y"] intValue])];
-         [towerBases addObject:towerBase];
-         }
-        */
     }
     
     return self;

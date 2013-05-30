@@ -47,7 +47,7 @@ static GameManager * _sharedGameManager = nil;
 }
 
 #pragma mark - Monster Factory
--(MonsterObject *)spawnMonster:(MonsterID)monsterID onPath:(NSString *)pathName
+-(MonsterObject *)spawnMonster:(MonsterID)monsterID
 {
     MonsterObject *newMonster = nil;
     
@@ -66,7 +66,6 @@ static GameManager * _sharedGameManager = nil;
             break;
     }
     
-    [newMonster setAssignedPath:pathName];
     return newMonster;
 }
 

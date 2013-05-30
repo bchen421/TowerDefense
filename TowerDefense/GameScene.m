@@ -77,21 +77,11 @@
 #pragma mark - Monster Spawning
 -(void)spawnMonster:(MonsterID)monsterID atLocation:(CGPoint)startLocation onPath:(NSString *)pathName
 {
-    MonsterObject *newMonster = [[GameManager sharedManager] spawnMonster:monsterID onPath:pathName];
+    MonsterObject *newMonster = [[GameManager sharedManager] spawnMonster:monsterID];
     [newMonster setPosition:startLocation];
+    [newMonster setAssignedPath:pathName];
     
     [[self sceneSpriteBatchNode] addChild:newMonster z:20];
-}
-
--(void)spawnMonsterFromDictionary:(NSDictionary *)spawnInfo
-{
-    NSLog(@"I SHOULD BE SPAWNING A MONSTER WITH DICTIONARY INFO");
-}
-
--(void)spawnMonsterOnPath:(NSString *)path
-{
-    [self spawnMonster:kOrc atLocation:[self locationForDataObject:@"spawnPoint1"] onPath:path];
-    //[self spawnMonster:kOrc atLocation:[self locationForDataObject:@"spawnPoint1"] onPath:@"walkableA"];
 }
 
 -(void)checkAndLoadMobSpawns
@@ -102,7 +92,6 @@
     }
         
     NSDictionary *nextSpawn = [_mobSpawns objectAtIndex:_currentWave];
-    //NSLog(@"NEXTSPAWN: %@", [nextSpawn description]);
     float loadTime = [[nextSpawn objectForKey:@"time"] floatValue];
     
     if (_spawnTimer >= loadTime)
@@ -114,20 +103,6 @@
         _currentWave += 1;
         _spawnTimer = 0;
     }
-    
-    /*
-    MonsterID mobID;
-    CGPoint spawnLoc;
-    NSString *path;
-    for (NSDictionary *mobSpawn in _mobSpawns)
-    {
-        NSLog(@"EACH ITEM: %@", [mobSpawn description]);
-        mobID = [[mobSpawn objectForKey:@"type"] integerValue];
-        spawnLoc = [self locationForDataObject:[mobSpawn objectForKey:@"location"]];
-        path = [mobSpawn objectForKey:@"path"];
-        [self spawnMonster:mobID atLocation:spawnLoc onPath:path];
-    }
-    */
 }
 
 #pragma mark - Initialization
