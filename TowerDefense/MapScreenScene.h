@@ -19,6 +19,7 @@
     NSMutableArray *_levelSelectIndex;
     CGPoint _startingTouchLocation;
     long unsigned int _startingTouchTime;
+    CGPoint _scrollingTouchLocation;
     BOOL _beingTouched;
     BOOL _touchMoved;
 }
@@ -29,6 +30,7 @@
 @property (nonatomic,readonly) NSMutableArray *levelSelectNodes;
 @property (nonatomic,readonly) NSMutableArray *levelSelectIndex;
 @property (nonatomic, readwrite) CGPoint startingTouchLocation;
+@property (nonatomic, readwrite) CGPoint scrollingTouchLocation;
 
 -(CGPoint)positionForTileCoord:(CGPoint)tileCoord;
 -(CGPoint)tileMapCoordForPosition:(CGPoint)position;
@@ -36,6 +38,5 @@
 -(void)setupLevelSelectNodes;
 -(void)translateViewBy:(CGPoint)translation;
 -(void)scrollViewBy:(CGPoint)translation;
--(BOOL)viewInBounds;
 
 @end

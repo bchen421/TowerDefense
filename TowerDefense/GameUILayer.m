@@ -13,8 +13,82 @@
 @implementation GameUILayer
 @synthesize touchedTowerNode = _touchedTowerNode, startingTouchLocation = _startingTouchLocation, scrollingTouchLocation = _scrollingTouchLocation;
 
-#pragma mark - Game Tilemap View Management
+#pragma mark - Private Helper Methods
+-(BOOL)checkTouchInTower:(CGPoint)touchLocation
+{
+    GameScene *currentScene = [[GameManager sharedManager] currentRunningGameScene];
+    CGSize levelSize = [[GameManager sharedManager] dimensionsOfCurrentScene];
+    CGRect levelBoundingBox = CGRectMake(0.0, 0.0, levelSize.width, levelSize.height);
+    CGPoint tileCoord = [currentScene tileMapCoordForPosition:touchLocation];
+    BOOL returnValue = NO;
 
+    if (CGRectContainsPoint(levelBoundingBox, touchLocation))
+    {
+        NSUInteger tileGID = [[currentScene metadataLayer] tileGIDAt:tileCoord];
+        if (tileGID)
+        {
+            NSDictionary *properties = [[currentScene tileMap] propertiesForGID:tileGID];
+            if (properties)
+            {
+                returnValue = [[properties valueForKey:@"towerNode"] boolValue];
+            }
+        }
+    }
+    
+    return returnValue;
+    
+    /*
+     if (CGRectContainsPoint(levelBoundingBox, touchLocation))
+     {
+     NSUInteger tileGID = [[currentScene metadataLayer] tileGIDAt:tileCoord];
+     if (tileGID)
+     {
+     NSDictionary *properties = [[currentScene tileMap] propertiesForGID:tileGID];
+     if (properties)
+     {
+     _inTowerNode = [[properties valueForKey:@"towerNode"] boolValue];
+     BOOL retina = [[[[currentScene tileMap] properties] valueForKey:@"retina"] boolValue];
+     if (retina)
+     {
+     CGSize tileSize = [[currentScene tileMap] tileSize];
+     CGPoint originPoint = [[currentScene metadataLayer] positionAt:tileCoord];
+     self.touchedTowerNode = CGRectMake(originPoint.x, originPoint.y, tileSize.width/2.0, tileSize.height/2.0);
+     }
+     else
+     {
+     CGSize tileSize = [[currentScene tileMap] tileSize];
+     CGPoint originPoint = [[currentScene metadataLayer] positionAt:tileCoord];
+     self.touchedTowerNode = CGRectMake(originPoint.x, originPoint.y, tileSize.width, tileSize.height);
+     }
+     }
+     }
+     }
+*/
+}
+
+-(CGPoint)towerNodeAtTouchLocation:(CGPoint)touchLocation
+{
+    GameScene *currentScene = [[GameManager sharedManager] currentRunningGameScene];
+    CGPoint tileCoord = [currentScene tileMapCoordForPosition:touchLocation];
+    
+    BOOL retina = [[[[currentScene tileMap] properties] valueForKey:@"retina"] boolValue];
+    if (retina)
+    {
+        CGSize tileSize = [[currentScene tileMap] tileSize];
+        CGPoint originPoint = [[currentScene metadataLayer] positionAt:tileCoord];
+        self.touchedTowerNode = CGRectMake(originPoint.x, originPoint.y, tileSize.width/2.0, tileSize.height/2.0);
+    }
+    else
+    {
+        CGSize tileSize = [[currentScene tileMap] tileSize];
+        CGPoint originPoint = [[currentScene metadataLayer] positionAt:tileCoord];
+        self.touchedTowerNode = CGRectMake(originPoint.x, originPoint.y, tileSize.width, tileSize.height);
+    }
+    
+    CGPoint towerLocation = CGPointMake(self.touchedTowerNode.origin.x + self.touchedTowerNode.size.width/2.0, self.touchedTowerNode.origin.y + self.touchedTowerNode.size.height/2.0);
+}
+
+#pragma mark - Game Tilemap View Management
 -(void)translateViewBy:(CGPoint)translation
 {
     GameScene *currentScene = [[GameManager sharedManager] currentRunningGameScene];
@@ -86,8 +160,6 @@
 -(BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
     GameScene *currentScene = [[GameManager sharedManager] currentRunningGameScene];
-    CGSize levelSize = [[GameManager sharedManager] dimensionsOfCurrentScene];
-    CGRect levelBoundingBox = CGRectMake(0.0, 0.0, levelSize.width, levelSize.height);
     struct timeval time;
     gettimeofday(&time, NULL);
     _startingTouchTime = (time.tv_sec * 1000) + (time.tv_usec / 1000);
@@ -99,36 +171,9 @@
     _touchMoved = NO;
     _inTowerNode = NO;
     CGPoint touchLocation = [[currentScene tileMap] convertTouchToNodeSpace:touch];
-    CGPoint tileCoord = [currentScene tileMapCoordForPosition:touchLocation];
     
     self.startingTouchLocation = touchLocation;
     self.scrollingTouchLocation = [currentScene convertTouchToNodeSpace:touch];
-    
-    if (CGRectContainsPoint(levelBoundingBox, touchLocation))
-    {
-        NSUInteger tileGID = [[currentScene metadataLayer] tileGIDAt:tileCoord];
-        if (tileGID)
-        {
-            NSDictionary *properties = [[currentScene tileMap] propertiesForGID:tileGID];
-            if (properties)
-            {
-                _inTowerNode = [[properties valueForKey:@"towerNode"] boolValue];
-                BOOL retina = [[[[currentScene tileMap] properties] valueForKey:@"retina"] boolValue];
-                if (retina)
-                {
-                    CGSize tileSize = [[currentScene tileMap] tileSize];
-                    CGPoint originPoint = [[currentScene metadataLayer] positionAt:tileCoord];
-                    self.touchedTowerNode = CGRectMake(originPoint.x, originPoint.y, tileSize.width/2.0, tileSize.height/2.0);
-                }
-                else
-                {
-                    CGSize tileSize = [[currentScene tileMap] tileSize];
-                    CGPoint originPoint = [[currentScene metadataLayer] positionAt:tileCoord];
-                    self.touchedTowerNode = CGRectMake(originPoint.x, originPoint.y, tileSize.width, tileSize.height);
-                }
-            }
-        }
-    }
     
     return YES;
 }
@@ -149,8 +194,13 @@
     CGPoint touchLocation = [[currentScene tileMap] convertTouchToNodeSpace:touch];
     CGPoint scrolledToLocation = [currentScene convertTouchToNodeSpace:touch];
     
-    if (_inTowerNode && (!_touchMoved))
+    if (!_touchMoved)
     {
+        if ([self checkTouchInTower:touchLocation])
+        {
+        }
+        
+        
         if (CGRectContainsPoint(self.touchedTowerNode, touchLocation))
         {
             CGPoint towerLocation = CGPointMake(self.touchedTowerNode.origin.x + self.touchedTowerNode.size.width/2.0, self.touchedTowerNode.origin.y + self.touchedTowerNode.size.height/2.0);

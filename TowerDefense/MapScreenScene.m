@@ -10,7 +10,7 @@
 #import "GameManager.h"
 
 @implementation MapScreenScene
-@synthesize levelSelectNodes = _levelSelectNodes, levelSelectIndex = _levelSelectIndex, startingTouchLocation = _startingTouchLocation,  tileMap = _tileMap, backgroundLayer = _backgroundLayer, objectData = _objectData;
+@synthesize levelSelectNodes = _levelSelectNodes, levelSelectIndex = _levelSelectIndex, startingTouchLocation = _startingTouchLocation, scrollingTouchLocation = _scrollingTouchLocation, tileMap = _tileMap, backgroundLayer = _backgroundLayer, objectData = _objectData;
 
 #pragma mark - Metadata Management
 -(CGPoint)positionForTileCoord:(CGPoint)tileCoord
@@ -74,66 +74,43 @@
 }
 
 #pragma mark - Map View Management
--(BOOL)viewInBounds
-{
-    CGSize screenSize = [[CCDirector sharedDirector] winSize];
-    CGSize levelSize = [[GameManager sharedManager] dimensionsOfCurrentScene];
-    if (self.position.x > 0)
-    {
-        return NO;
-    }
-    else if (self.position.x < -(levelSize.width - screenSize.width))
-    {
-        return NO;
-    }
-    
-    if (self.position.y > 0)
-    {
-        return NO;
-    }
-    else if (self.position.y < -(levelSize.height - screenSize.height))
-    {
-        return NO;
-    }
-    
-    return YES;
-}
-
 -(void)translateViewBy:(CGPoint)translation
 {
     CGSize screenSize = [[CCDirector sharedDirector] winSize];
     CGSize levelSize = [[GameManager sharedManager] dimensionsOfCurrentScene];
-    CGPoint newPosition = ccp((self.position.x - translation.x), (self.position.y - translation.y));
+    CGPoint newPosition = ccp((_tileMap.position.x - translation.x), (_tileMap.position.y - translation.y));
     
     if (newPosition.x > 0)
     {
-        newPosition.x = MIN(newPosition.x / 2.0, 100.0);
+        newPosition.x = MIN(newPosition.x / 2.0, 10.0);
     }
     else if (newPosition.x < -(levelSize.width - screenSize.width))
     {
         float diff = newPosition.x - -(levelSize.width - screenSize.width);
-        newPosition.x = MAX(newPosition.x - diff/2.0, -(levelSize.width - screenSize.width + 100.0));
+        newPosition.x = MAX(newPosition.x - diff/2.0, -(levelSize.width - screenSize.width + 10.0));
     }
     
     if (newPosition.y > 0)
     {
-        newPosition.y = MIN(newPosition.y / 2.0, 100.0);
+        newPosition.y = MIN(newPosition.y / 2.0, 10.0);
     }
     else if (newPosition.y < -(levelSize.height - screenSize.height))
     {
         float diff = newPosition.y - -(levelSize.height - screenSize.height);
-        newPosition.y = MAX(newPosition.y - diff/2.0, -(levelSize.height - screenSize.height + 100.0));
+        newPosition.y = MAX(newPosition.y - diff/2.0, -(levelSize.height - screenSize.height + 10.0));
     }
     
-    CCLOG(@"NEWPOSITION X: %g Y: %g", newPosition.x, newPosition.y);
-    [self setPosition:newPosition];
+    newPosition.x = round(newPosition.x);
+    newPosition.y = round(newPosition.y);
+    
+    [_tileMap setPosition:newPosition];
 }
 
 -(void)scrollViewBy:(CGPoint)translation
 {
     CGSize screenSize = [[CCDirector sharedDirector] winSize];
     CGSize levelSize = [[GameManager sharedManager] dimensionsOfCurrentScene];
-    CGPoint newPosition = ccp((self.position.x - translation.x), (self.position.y - translation.y));
+    CGPoint newPosition = ccp((_tileMap.position.x - translation.x), (_tileMap.position.y - translation.y));
     
     if (newPosition.x > 0)
     {
@@ -158,7 +135,7 @@
     
     CCMoveTo *moveTo = [CCMoveTo actionWithDuration:(6.0/60.0) position:newPosition];
     [moveTo setTag:kScrollLevelActions];
-    [self runAction:moveTo];
+    [_tileMap runAction:moveTo];
 }
 
 #pragma mark - Touch Management
@@ -276,9 +253,15 @@
         CGSize screenSize = [[CCDirector sharedDirector] winSize];
         CCLOG(@"Screen Width: %g Height: %g", screenSize.width, screenSize.height);
         
+        // Setup static background image
+        // Setup static background image
+        CCSprite *background = [CCSprite spriteWithFile:@"background.png"];
+        [background setPosition:ccp(screenSize.width/2, screenSize.height/2)];
+        [self addChild:background z:0];
+        
         // Setup background and metadata
         _tileMap = [CCTMXTiledMap tiledMapWithTMXFile:@"mapscreen.tmx"];
-        [self addChild:_tileMap z:0];
+        [self addChild:_tileMap z:1];
         _backgroundLayer = [[self tileMap] layerNamed:@"background"];
         [[_backgroundLayer texture] setAliasTexParameters];
         _objectData = [[self tileMap] objectGroupNamed:@"objectData"];
