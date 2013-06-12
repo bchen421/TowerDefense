@@ -78,9 +78,14 @@
         CGSize screenSize = [[CCDirector sharedDirector] winSize];
         CCLOG(@"Screen Width: %g Height: %g", screenSize.width, screenSize.height);
         
+        // Setup static background image
+        CCSprite *background = [CCSprite spriteWithFile:@"background.png"];
+        [background setPosition:ccp(screenSize.width/2, screenSize.height/2)];
+        [self addChild:background z:0];
+        
         // Setup gameplay and metadata
         _tileMap = [CCTMXTiledMap tiledMapWithTMXFile:@"tilemap.tmx"];
-        [self addChild:_tileMap z:0];
+        [self addChild:_tileMap z:1];
         _backgroundLayer = [[self tileMap] layerNamed:@"background"];
         _metadataLayer = [[self tileMap] layerNamed:@"metadata"];
         _objectData = [[self tileMap] objectGroupNamed:@"objectData"];
@@ -94,7 +99,7 @@
         _label = [CCLabelTTF labelWithString:@"" fontName:@"AmericanTypewriter-Bold" fontSize:40.0];
         _label.anchorPoint = ccp(1, 1);
         _label.position = ccp(screenSize.width - 20, screenSize.height - 20);
-        [self addChild:_label];
+        [self addChild:_label z:2];
     }
     
     return self;
