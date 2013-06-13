@@ -126,6 +126,7 @@
     newPosition.y = round(newPosition.y);
     
     CCMoveTo *moveTo = [CCMoveTo actionWithDuration:(6.0/60.0) position:newPosition];
+    [moveTo setTag:kScrollLevelActions];
     [tiledMap runAction:moveTo];
 }
 
@@ -137,15 +138,14 @@
     _touchMoved = NO;
     
     GameScene *currentScene = [[GameManager sharedManager] currentRunningGameScene];
+    [[currentScene tileMap] stopActionByTag:kScrollLevelActions];
+    CGPoint touchLocation = [[currentScene tileMap] convertTouchToNodeSpace:touch];
+    self.startingTouchLocation = touchLocation;
+    self.scrollingTouchLocation = [self convertTouchToNodeSpace:touch];
+    
     struct timeval time;
     gettimeofday(&time, NULL);
     _startingTouchTime = (time.tv_sec * 1000) + (time.tv_usec / 1000);
-    // POC code
-    [[currentScene tileMap] stopAllActions];
-    CGPoint touchLocation = [[currentScene tileMap] convertTouchToNodeSpace:touch];
-    
-    self.startingTouchLocation = touchLocation;
-    self.scrollingTouchLocation = [self convertTouchToNodeSpace:touch];
     
     return YES;
 }

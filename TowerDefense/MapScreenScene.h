@@ -38,5 +38,7 @@
 -(void)setupLevelSelectNodes;
 -(void)translateViewBy:(CGPoint)translation;
 -(void)scrollViewBy:(CGPoint)translation;
+-(BOOL)checkTouchInLevelSelect:(CGPoint)touchLocation;
+-(void)loadLevelAtTouchLocation:(CGPoint)touchLocation;
 
 @end

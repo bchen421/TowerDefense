@@ -12,6 +12,49 @@
 @implementation MapScreenScene
 @synthesize levelSelectNodes = _levelSelectNodes, levelSelectIndex = _levelSelectIndex, startingTouchLocation = _startingTouchLocation, scrollingTouchLocation = _scrollingTouchLocation, tileMap = _tileMap, backgroundLayer = _backgroundLayer, objectData = _objectData;
 
+#pragma mark - Internal Helper Methods
+-(BOOL)checkTouchInLevelSelect:(CGPoint)touchLocation
+{
+    BOOL inLevelSelectNode = NO;
+    for (NSValue *levelSelectNode in [self levelSelectNodes])
+    {
+        if (CGRectContainsPoint([levelSelectNode CGRectValue], touchLocation))
+        {
+            inLevelSelectNode = YES;
+        }
+    }
+    
+    return inLevelSelectNode;
+}
+
+-(void)loadLevelAtTouchLocation:(CGPoint)touchLocation
+{
+    BOOL inLevelSelectNode = NO;
+    NSUInteger level;
+    for (NSValue *levelSelectNode in [self levelSelectNodes])
+    {
+        if (CGRectContainsPoint([levelSelectNode CGRectValue], touchLocation))
+        {
+            inLevelSelectNode = YES;
+            level = [[[self levelSelectIndex] objectAtIndex:[[self levelSelectNodes] indexOfObject:levelSelectNode]] integerValue];
+        }
+    }
+    
+    if (inLevelSelectNode)
+    {
+        CCLOG(@"LOAD LEVEL %i", level);
+        if (level == 1)
+        {
+            [[GameManager sharedManager] runGameScene:kTiledScene];
+        }
+        else if (level == 2)
+        {
+            [[GameManager sharedManager] runGameScene:kTitleScreenScene];
+        }
+    }
+
+}
+
 #pragma mark - Metadata Management
 -(CGPoint)positionForTileCoord:(CGPoint)tileCoord
 {
@@ -82,22 +125,22 @@
     
     if (newPosition.x > 0)
     {
-        newPosition.x = MIN(newPosition.x / 2.0, 10.0);
+        newPosition.x = MIN(newPosition.x / 4.0, 25.0);
     }
     else if (newPosition.x < -(levelSize.width - screenSize.width))
     {
         float diff = newPosition.x - -(levelSize.width - screenSize.width);
-        newPosition.x = MAX(newPosition.x - diff/2.0, -(levelSize.width - screenSize.width + 10.0));
+        newPosition.x = MAX(newPosition.x - diff/4.0, -(levelSize.width - screenSize.width + 25.0));
     }
     
     if (newPosition.y > 0)
     {
-        newPosition.y = MIN(newPosition.y / 2.0, 10.0);
+        newPosition.y = MIN(newPosition.y / 4.0, 25.0);
     }
     else if (newPosition.y < -(levelSize.height - screenSize.height))
     {
         float diff = newPosition.y - -(levelSize.height - screenSize.height);
-        newPosition.y = MAX(newPosition.y - diff/2.0, -(levelSize.height - screenSize.height + 10.0));
+        newPosition.y = MAX(newPosition.y - diff/4.0, -(levelSize.height - screenSize.height + 25.0));
     }
     
     newPosition.x = round(newPosition.x);
@@ -141,11 +184,15 @@
 #pragma mark - Touch Management
 -(BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
-    [self stopActionByTag:kScrollLevelActions];
+    CCLOG(@"TOUCH BEGAN");
     _beingTouched = YES;
     _touchMoved = NO;
-    CGPoint touchLocation = [self convertTouchToNodeSpace:touch];
+
+    [_tileMap stopActionByTag:kScrollLevelActions];
+    CGPoint touchLocation = [_tileMap convertTouchToNodeSpace:touch];
     self.startingTouchLocation = touchLocation;
+    self.scrollingTouchLocation = [self convertTouchToNodeSpace:touch];
+    
     struct timeval time;
     gettimeofday(&time, NULL);
     _startingTouchTime = (time.tv_sec * 1000) + (time.tv_usec / 1000);
@@ -157,39 +204,23 @@
 -(void)ccTouchMoved:(UITouch *)touch withEvent:(UIEvent *)event
 {
     _touchMoved = YES;
-    CGPoint touchLocation = [self convertTouchToNodeSpace:touch];
+    CGPoint touchLocation = [_tileMap convertTouchToNodeSpace:touch];
     CGPoint translation = ccp(self.startingTouchLocation.x - touchLocation.x, self.startingTouchLocation.y - touchLocation.y);
+    translation = ccpMult(translation, 0.6);
     [self translateViewBy:translation];
 }
 
 -(void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event
 {
     _beingTouched = NO;
-    CGPoint touchLocation = [self convertTouchToNodeSpace:touch];
+    CGPoint touchLocation = [_tileMap convertTouchToNodeSpace:touch];
+    CGPoint scrolledToLocation = [self convertTouchToNodeSpace:touch];
+    
     if (!_touchMoved)
     {
-        BOOL inLevelSelectNode = NO;
-        NSUInteger level;
-        for (NSValue *levelSelectNode in [self levelSelectNodes])
+        if ([self checkTouchInLevelSelect:touchLocation])
         {
-            if (CGRectContainsPoint([levelSelectNode CGRectValue], touchLocation))
-            {
-                inLevelSelectNode = YES;
-                level = [[[self levelSelectIndex] objectAtIndex:[[self levelSelectNodes] indexOfObject:levelSelectNode]] integerValue];
-            }
-        }
-        
-        if (inLevelSelectNode)
-        {
-            CCLOG(@"LOAD LEVEL %i", level);
-            if (level == 1)
-            {
-                [[GameManager sharedManager] runGameScene:kTiledScene];
-            }
-            else if (level == 2)
-            {
-                [[GameManager sharedManager] runGameScene:kTitleScreenScene];
-            }
+            [self loadLevelAtTouchLocation:touchLocation];
         }
     }
     else
@@ -200,10 +231,8 @@
         long unsigned int currentTime = (time.tv_sec * 1000) + (time.tv_usec / 1000);
         unsigned int deltaTime = currentTime - _startingTouchTime;
         
-        CGPoint velocity = ccp((self.startingTouchLocation.x - touchLocation.x)/deltaTime, (self.startingTouchLocation.y - touchLocation.y)/deltaTime);
-        CCLOG(@"VELOCITY X: %g Y: %g", velocity.x, velocity.y);
-        velocity = ccpMult(velocity, 1000.0);
-        CCLOG(@"ADJUSTED VELOCITY X: %g Y: %g", velocity.x, velocity.y);
+        CGPoint velocity = ccp((self.scrollingTouchLocation.x - scrolledToLocation.x)/deltaTime, (self.scrollingTouchLocation.y - scrolledToLocation.y)/deltaTime);
+        velocity = ccpMult(velocity, 25.0);
         [self scrollViewBy:velocity];
     }
     
