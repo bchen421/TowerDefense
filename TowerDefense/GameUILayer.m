@@ -72,22 +72,22 @@
     
     if (newPosition.x > 0)
     {
-        newPosition.x = MIN(newPosition.x / 2.0, 10.0);
+        newPosition.x = MIN(newPosition.x / 4.0, 25.0);
     }
     else if (newPosition.x < -(levelSize.width - screenSize.width))
     {
         float diff = newPosition.x - -(levelSize.width - screenSize.width);
-        newPosition.x = MAX(newPosition.x - diff/2.0, -(levelSize.width - screenSize.width + 10.0));
+        newPosition.x = MAX(newPosition.x - diff/4.0, -(levelSize.width - screenSize.width + 25.0));
     }
     
     if (newPosition.y > 0)
     {
-        newPosition.y = MIN(newPosition.y / 2.0, 10.0);
+        newPosition.y = MIN(newPosition.y / 4.0, 25.0);
     }
     else if (newPosition.y < -(levelSize.height - screenSize.height))
     {
         float diff = newPosition.y - -(levelSize.height - screenSize.height);
-        newPosition.y = MAX(newPosition.y - diff/2.0, -(levelSize.height - screenSize.height + 10.0));
+        newPosition.y = MAX(newPosition.y - diff/4.0, -(levelSize.height - screenSize.height + 25.0));
     }
     
     newPosition.x = round(newPosition.x);
@@ -145,7 +145,7 @@
     CGPoint touchLocation = [[currentScene tileMap] convertTouchToNodeSpace:touch];
     
     self.startingTouchLocation = touchLocation;
-    self.scrollingTouchLocation = [currentScene convertTouchToNodeSpace:touch];
+    self.scrollingTouchLocation = [self convertTouchToNodeSpace:touch];
     
     return YES;
 }
@@ -156,6 +156,7 @@
     _touchMoved = YES;
     CGPoint touchLocation = [[currentScene tileMap] convertTouchToNodeSpace:touch];
     CGPoint translation = ccp(self.startingTouchLocation.x - touchLocation.x, self.startingTouchLocation.y - touchLocation.y);
+    translation = ccpMult(translation, 0.6);
     [self translateViewBy:translation];
 }
 
@@ -164,7 +165,7 @@
     _beingTouched = NO;
     GameScene *currentScene = [[GameManager sharedManager] currentRunningGameScene];
     CGPoint touchLocation = [[currentScene tileMap] convertTouchToNodeSpace:touch];
-    CGPoint scrolledToLocation = [currentScene convertTouchToNodeSpace:touch];
+    CGPoint scrolledToLocation = [self convertTouchToNodeSpace:touch];
     
     if (!_touchMoved)
     {
@@ -183,7 +184,7 @@
         CCLOG(@"TIME: %lu", currentTime);
         
         CGPoint velocity = ccp((self.scrollingTouchLocation.x - scrolledToLocation.x)/deltaTime, (self.scrollingTouchLocation.y - scrolledToLocation.y)/deltaTime);
-        velocity = ccpMult(velocity, 100.0);
+        velocity = ccpMult(velocity, 25.0);
         [self scrollViewBy:velocity];
     }
 }
