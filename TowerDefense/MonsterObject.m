@@ -17,6 +17,10 @@
 -(void)updateStateWithDeltaTime:(ccTime)deltaTime andListOfGameObjects:(CCArray*)listOfGameObjects
 {
     [super updateStateWithDeltaTime:deltaTime andListOfGameObjects:listOfGameObjects];
+    if (!self.assignedPath)
+    {
+        [self findAssignedPath];
+    }
 }
 
 -(void)changeState:(MonsterState)newState
@@ -40,6 +44,32 @@
 }
 
 #pragma mark - Movement Helper Methods
+-(void)findAssignedPath
+{
+    CCLOG(@"TRYING TO FIND ASSIGNED PATH");
+    GameScene *currentScene = [[GameManager sharedManager] currentRunningGameScene];
+    CGPoint currentTile = [currentScene tileMapCoordForPosition:self.position];
+    NSUInteger tileGID = [[currentScene metadataLayer] tileGIDAt:currentTile];
+    
+    if (tileGID)
+    {
+        NSDictionary *properties = [[currentScene tileMap] propertiesForGID:tileGID];
+        if (properties)
+        {
+            self.assignedPath = [[properties valueForKey:_assignedPath] boolValue];
+        }
+        else
+        {
+            self.assignedPath = nil;
+        }
+    }
+    else
+    {
+        self.assignedPath = nil;
+    }
+}
+
+
 -(BOOL)tileCoordIsMoveable:(CGPoint)coord
 {
     GameScene *currentScene = [[GameManager sharedManager] currentRunningGameScene];

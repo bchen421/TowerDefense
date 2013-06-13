@@ -34,17 +34,17 @@
  </tileset>
  <layer name="background" width="30" height="20">
   <data encoding="base64" compression="zlib">
-   eJyTY2BgkMOCFYFYCYiVcchTEzMCMRMQM6PZiyxOC3s5oTQ3mr3I4rSwVxCIhYBYGM1eZPHRcB4N59FwHg3n0XAeDefRcKYdpnU7BwCZpz/B
+   eJyTY2BgkMOCFYFYCQkr41BHDcwIxExAzIzDXmR5atrLCaW5cdiLLE9NewWBWAiIhXHYiyw/Gs6j4TwazqPhPBrOo+E8Gs7Ux7Ru5wAAsvRAYQ==
   </data>
  </layer>
  <layer name="metadata" width="30" height="20">
   <data encoding="base64" compression="zlib">
-   eJztlEEKwCAMBPOlVf//trYH6WJjTtn04kBAFFwzqGY+7S5s1jJoQXVxLjNo3KmG5bLmeij6jjzPMyFYy4J9zv1hX8/ZuR6eZ2Uu91vt+UFxnyNg7zuqRPlfrbBPbObVVPb7V+7xXMPxrOECIEoN8Q==
+   eJxjYMANjIDYGErTE9DTXhMC9pow0B6MhvNoOFMLjIbzaDgPJ3tHw3k0nIeyvQBVLA49
   </data>
  </layer>
  <objectgroup name="objectData" width="30" height="20">
-  <object name="spawnPoint1" x="224" y="0" width="32" height="32"/>
-  <object name="goalPoint1" x="224" y="608" width="32" height="32"/>
-  <object name="spawnPoint2" x="224" y="0" width="32" height="32"/>
+  <object name="spawnPoint1a" x="224" y="0" width="32" height="32"/>
+  <object name="spawnPoint1b" x="256" y="0" width="32" height="32"/>
+  <object name="spawnPoint1c" x="288" y="0" width="32" height="32"/>
  </objectgroup>
 </map>

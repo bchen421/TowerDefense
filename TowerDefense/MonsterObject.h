@@ -39,6 +39,7 @@
 -(void)changeState:(MonsterState)newState;
 -(void)takeDamage:(NSInteger)amount;
 -(void)hasDied;
+-(void)findAssignedPath;
 -(BOOL)tileCoordIsMoveable:(CGPoint)coord;
 -(CGPoint)findNextMovableTile;
 -(void)moveTowardsGoal;

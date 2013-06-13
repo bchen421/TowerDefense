@@ -96,7 +96,7 @@
     {
         _towerID = kBlueTower;
         _attackRate = 1.0;
-        _attackRange = 100.0;
+        _attackRange = 175.0;
         [self createRangeFinder];
         [self changeState:kTowerIdle];
     }
