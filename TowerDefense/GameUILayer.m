@@ -13,7 +13,7 @@
 @implementation GameUILayer
 @synthesize touchedTowerNode = _touchedTowerNode, startingTouchLocation = _startingTouchLocation, scrollingTouchLocation = _scrollingTouchLocation;
 
-#pragma mark - Private Helper Methods
+#pragma mark - Internal Helper Methods
 -(BOOL)checkTouchInTower:(CGPoint)touchLocation
 {
     GameScene *currentScene = [[GameManager sharedManager] currentRunningGameScene];
@@ -36,56 +36,29 @@
     }
     
     return returnValue;
-    
-    /*
-     if (CGRectContainsPoint(levelBoundingBox, touchLocation))
-     {
-     NSUInteger tileGID = [[currentScene metadataLayer] tileGIDAt:tileCoord];
-     if (tileGID)
-     {
-     NSDictionary *properties = [[currentScene tileMap] propertiesForGID:tileGID];
-     if (properties)
-     {
-     _inTowerNode = [[properties valueForKey:@"towerNode"] boolValue];
-     BOOL retina = [[[[currentScene tileMap] properties] valueForKey:@"retina"] boolValue];
-     if (retina)
-     {
-     CGSize tileSize = [[currentScene tileMap] tileSize];
-     CGPoint originPoint = [[currentScene metadataLayer] positionAt:tileCoord];
-     self.touchedTowerNode = CGRectMake(originPoint.x, originPoint.y, tileSize.width/2.0, tileSize.height/2.0);
-     }
-     else
-     {
-     CGSize tileSize = [[currentScene tileMap] tileSize];
-     CGPoint originPoint = [[currentScene metadataLayer] positionAt:tileCoord];
-     self.touchedTowerNode = CGRectMake(originPoint.x, originPoint.y, tileSize.width, tileSize.height);
-     }
-     }
-     }
-     }
-*/
 }
 
 -(CGPoint)towerNodeAtTouchLocation:(CGPoint)touchLocation
 {
     GameScene *currentScene = [[GameManager sharedManager] currentRunningGameScene];
     CGPoint tileCoord = [currentScene tileMapCoordForPosition:touchLocation];
-    
+    CGPoint towerLocation;
     BOOL retina = [[[[currentScene tileMap] properties] valueForKey:@"retina"] boolValue];
     if (retina)
     {
         CGSize tileSize = [[currentScene tileMap] tileSize];
         CGPoint originPoint = [[currentScene metadataLayer] positionAt:tileCoord];
         self.touchedTowerNode = CGRectMake(originPoint.x, originPoint.y, tileSize.width/2.0, tileSize.height/2.0);
+        towerLocation = CGPointMake(originPoint.x + tileSize.width/4.0, originPoint.y + tileSize.height/4.0);
     }
     else
     {
         CGSize tileSize = [[currentScene tileMap] tileSize];
         CGPoint originPoint = [[currentScene metadataLayer] positionAt:tileCoord];
-        self.touchedTowerNode = CGRectMake(originPoint.x, originPoint.y, tileSize.width, tileSize.height);
+        towerLocation = CGPointMake(originPoint.x + tileSize.width/2.0, originPoint.y + tileSize.height/2.0);
     }
     
-    CGPoint towerLocation = CGPointMake(self.touchedTowerNode.origin.x + self.touchedTowerNode.size.width/2.0, self.touchedTowerNode.origin.y + self.touchedTowerNode.size.height/2.0);
+    return towerLocation;
 }
 
 #pragma mark - Game Tilemap View Management
@@ -159,17 +132,16 @@
 #pragma mark - Touch Management
 -(BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
+    CCLOG(@"TOUCH BEGAN");
+    _beingTouched = YES;
+    _touchMoved = NO;
+    
     GameScene *currentScene = [[GameManager sharedManager] currentRunningGameScene];
     struct timeval time;
     gettimeofday(&time, NULL);
     _startingTouchTime = (time.tv_sec * 1000) + (time.tv_usec / 1000);
     // POC code
     [[currentScene tileMap] stopAllActions];
-    //[currentScene stopAllActions];
-    
-    _beingTouched = YES;
-    _touchMoved = NO;
-    _inTowerNode = NO;
     CGPoint touchLocation = [[currentScene tileMap] convertTouchToNodeSpace:touch];
     
     self.startingTouchLocation = touchLocation;
@@ -198,13 +170,7 @@
     {
         if ([self checkTouchInTower:touchLocation])
         {
-        }
-        
-        
-        if (CGRectContainsPoint(self.touchedTowerNode, touchLocation))
-        {
-            CGPoint towerLocation = CGPointMake(self.touchedTowerNode.origin.x + self.touchedTowerNode.size.width/2.0, self.touchedTowerNode.origin.y + self.touchedTowerNode.size.height/2.0);
-            [[GameManager sharedManager] spawnTower:kBlueTower forScene:currentScene atLocation:towerLocation];
+            [[GameManager sharedManager] spawnTower:kBlueTower forScene:currentScene atLocation:[self towerNodeAtTouchLocation:touchLocation]];
         }
     }
     else
