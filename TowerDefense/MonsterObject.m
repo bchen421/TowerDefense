@@ -64,6 +64,10 @@
             {
                 [self setAssignedPath:@"walkableB"];
             }
+            else if ([[properties valueForKey:@"walkableC"] boolValue])
+            {
+                [self setAssignedPath:@"walkableC"];
+            }
         }
         else
         {

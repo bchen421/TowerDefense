@@ -7,26 +7,36 @@
   <image source="tiles.png" width="265" height="199"/>
  </tileset>
  <tileset firstgid="49" name="metadatatiles" tilewidth="32" tileheight="32">
-  <image source="metadatatiles.png" width="64" height="64"/>
+  <image source="metadatatiles.png" width="96" height="64"/>
   <tile id="0">
    <properties>
     <property name="walkableA" value="YES"/>
     <property name="walkableB" value="YES"/>
+    <property name="walkableC" value="YES"/>
    </properties>
   </tile>
   <tile id="1">
    <properties>
     <property name="walkableA" value="YES"/>
     <property name="walkableB" value="NO"/>
+    <property name="walkableC" value="NO"/>
    </properties>
   </tile>
   <tile id="2">
    <properties>
     <property name="walkableA" value="NO"/>
-    <property name="walkableB" value="YES"/>
+    <property name="walkableB" value="NO"/>
+    <property name="walkableC" value="YES"/>
    </properties>
   </tile>
   <tile id="3">
+   <properties>
+    <property name="walkableA" value="NO"/>
+    <property name="walkableB" value="YES"/>
+    <property name="walkableC" value="NO"/>
+   </properties>
+  </tile>
+  <tile id="4">
    <properties>
     <property name="towerNode" value="YES"/>
    </properties>
@@ -39,7 +49,7 @@
  </layer>
  <layer name="metadata" width="30" height="20">
   <data encoding="base64" compression="zlib">
-   eJxjYMANjIDYGErTE9DTXhMC9pow0B6MhvNoOFMLjIbzaDgPJ3tHw3k0nIeyvQBVLA49
+   eJxjYMANjIDYBIiN8aihBaCnvSYE7DVhoD0YDefRcKYWGA3n0XAeTvaOhvNoOA9lewEUyw5l
   </data>
  </layer>
  <objectgroup name="objectData" width="30" height="20">

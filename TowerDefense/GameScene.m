@@ -109,14 +109,6 @@
     [[self sceneSpriteBatchNode] addChild:newMonster z:20];
 }
 
--(void)spawnMonster:(MonsterID)monsterID atLocation:(CGPoint)startLocation
-{
-    MonsterObject *newMonster = [[GameManager sharedManager] spawnMonster:monsterID];
-    [newMonster setPosition:startLocation];
-    
-    [[self sceneSpriteBatchNode] addChild:newMonster z:20];
-}
-
 -(void)checkAndLoadMobSpawns
 {
     if (_currentWave >= [_mobSpawns count])

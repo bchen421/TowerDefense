@@ -35,7 +35,6 @@
 @property (readwrite, retain) CCSpriteBatchNode *sceneSpriteBatchNode;
 @property (nonatomic, readonly) NSMutableArray *mobSpawns;
 
--(void)spawnMonster:(MonsterID)monsterID atLocation:(CGPoint)startLocation;
 -(void)spawnNextMonsterAtLocation:(NSString *)location;
 -(void)checkAndLoadMobSpawns;
 -(void)deployFormation:(NSDictionary *)deployment;
