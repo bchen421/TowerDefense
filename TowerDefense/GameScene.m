@@ -75,11 +75,44 @@
 }
 
 #pragma mark - Monster Spawning
--(void)spawnMonster:(MonsterID)monsterID atLocation:(CGPoint)startLocation onPath:(NSString *)pathName
+-(void)deployFormation:(NSDictionary *)deployment
+{
+    NSString *formation = [deployment objectForKey:@"formation"];
+    NSString *loc = [deployment objectForKey:@"loc"];
+    NSString *locA = [loc stringByAppendingFormat:@"a"];
+    NSString *locB = [loc stringByAppendingFormat:@"b"];
+    NSString *locC = [loc stringByAppendingFormat:@"c"];
+        
+    if ([formation isEqualToString:@"tripleOrc"])
+    {
+        _nextMonsterID = kOrc;
+        float delay = 0.5;
+                
+        CCAction *spawnAction = [CCSequence actions:[CCCallFuncO actionWithTarget:self selector:@selector(spawnNextMonsterAtLocation:) object:locA], [CCDelayTime actionWithDuration:delay], [CCCallFuncO actionWithTarget:self selector:@selector(spawnNextMonsterAtLocation:) object:locB], [CCDelayTime actionWithDuration:delay], [CCCallFuncO actionWithTarget:self selector:@selector(spawnNextMonsterAtLocation:) object:locC], nil];
+        [self runAction:spawnAction];
+    }
+    else if ([formation isEqualToString:@"triangleOrcs"])
+    {
+        _nextMonsterID = kOrc;
+        float delay = 0.5;
+        
+        CCAction *spawnAction = [CCSequence actions:[CCCallFuncO actionWithTarget:self selector:@selector(spawnNextMonsterAtLocation:) object:locB], [CCDelayTime actionWithDuration:delay], [CCCallFuncO actionWithTarget:self selector:@selector(spawnNextMonsterAtLocation:) object:locA], [CCCallFuncO actionWithTarget:self selector:@selector(spawnNextMonsterAtLocation:) object:locC], nil];
+        [self runAction:spawnAction];
+    }
+}
+
+-(void)spawnNextMonsterAtLocation:(NSString *)location
+{
+    MonsterObject *newMonster = [[GameManager sharedManager] spawnMonster:_nextMonsterID];
+    [newMonster setPosition:[self locationForDataObject:location]];
+    
+    [[self sceneSpriteBatchNode] addChild:newMonster z:20];
+}
+
+-(void)spawnMonster:(MonsterID)monsterID atLocation:(CGPoint)startLocation
 {
     MonsterObject *newMonster = [[GameManager sharedManager] spawnMonster:monsterID];
     [newMonster setPosition:startLocation];
-    [newMonster setAssignedPath:pathName];
     
     [[self sceneSpriteBatchNode] addChild:newMonster z:20];
 }
@@ -96,12 +129,8 @@
     
     if (_spawnTimer >= loadTime)
     {
-        MonsterID mobID = [[nextSpawn objectForKey:@"type"] integerValue];
-        CGPoint spawnLoc = [self locationForDataObject:[nextSpawn objectForKey:@"location"]];
-        NSString *path = [nextSpawn objectForKey:@"path"];
-        [self spawnMonster:mobID atLocation:spawnLoc onPath:path];
+        [self deployFormation:nextSpawn];
         _currentWave += 1;
-        _spawnTimer = 0;
     }
 }
 

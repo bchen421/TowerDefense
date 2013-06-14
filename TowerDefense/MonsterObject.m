@@ -56,7 +56,14 @@
         NSDictionary *properties = [[currentScene tileMap] propertiesForGID:tileGID];
         if (properties)
         {
-            self.assignedPath = [[properties valueForKey:_assignedPath] boolValue];
+            if ([[properties valueForKey:@"walkableA"] boolValue])
+            {
+                [self setAssignedPath:@"walkableA"];
+            }
+            else if ([[properties valueForKey:@"walkableB"] boolValue])
+            {
+                [self setAssignedPath:@"walkableB"];
+            }
         }
         else
         {

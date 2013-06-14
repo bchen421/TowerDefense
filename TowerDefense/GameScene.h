@@ -23,6 +23,8 @@
     
     NSMutableArray *_mobSpawns;
     NSUInteger _currentWave;
+    
+    MonsterID _nextMonsterID;
 }
 
 @property (readonly) CCTMXTiledMap *tileMap;
@@ -33,8 +35,10 @@
 @property (readwrite, retain) CCSpriteBatchNode *sceneSpriteBatchNode;
 @property (nonatomic, readonly) NSMutableArray *mobSpawns;
 
--(void)spawnMonster:(MonsterID)monsterID atLocation:(CGPoint)startLocation onPath:(NSString *)pathName;
+-(void)spawnMonster:(MonsterID)monsterID atLocation:(CGPoint)startLocation;
+-(void)spawnNextMonsterAtLocation:(NSString *)location;
 -(void)checkAndLoadMobSpawns;
+-(void)deployFormation:(NSDictionary *)deployment;
 -(CGPoint)positionForTileCoord:(CGPoint)tileCoord;
 -(CGPoint)tileMapCoordForPosition:(CGPoint)position;
 -(CGPoint)locationForDataObject:(NSString *)dataObject;

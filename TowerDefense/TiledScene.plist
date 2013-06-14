@@ -3,44 +3,36 @@
 <plist version="1.0">
 <array>
 	<dict>
-		<key>path</key>
-		<string>walkableA</string>
-		<key>location</key>
+		<key>formation</key>
+		<string>tripleOrc</string>
+		<key>loc</key>
 		<string>spawnPoint1</string>
 		<key>time</key>
 		<integer>10</integer>
-		<key>type</key>
-		<integer>1</integer>
 	</dict>
 	<dict>
-		<key>path</key>
-		<string>walkableB</string>
-		<key>location</key>
+		<key>formation</key>
+		<string>triangleOrcs</string>
+		<key>loc</key>
 		<string>spawnPoint1</string>
 		<key>time</key>
-		<integer>0</integer>
-		<key>type</key>
-		<integer>1</integer>
+		<integer>15</integer>
 	</dict>
 	<dict>
-		<key>path</key>
-		<string>walkableA</string>
-		<key>location</key>
+		<key>formation</key>
+		<string>tripleOrc</string>
+		<key>loc</key>
 		<string>spawnPoint1</string>
 		<key>time</key>
-		<integer>4</integer>
-		<key>type</key>
-		<integer>1</integer>
+		<integer>20</integer>
 	</dict>
 	<dict>
-		<key>path</key>
-		<string>walkableB</string>
-		<key>location</key>
+		<key>formation</key>
+		<string>tripleOrc</string>
+		<key>loc</key>
 		<string>spawnPoint1</string>
 		<key>time</key>
-		<integer>0</integer>
-		<key>type</key>
-		<integer>1</integer>
+		<integer>25</integer>
 	</dict>
 </array>
 </plist>
