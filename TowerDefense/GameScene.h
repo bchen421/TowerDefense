@@ -37,6 +37,7 @@
 
 -(void)spawnNextMonsterAtLocation:(NSString *)location;
 -(void)checkAndLoadMobSpawns;
+-(void)checkAndLoadTowerSpawns;
 -(void)deployFormation:(NSDictionary *)deployment;
 -(CGPoint)positionForTileCoord:(CGPoint)tileCoord;
 -(CGPoint)tileMapCoordForPosition:(CGPoint)position;

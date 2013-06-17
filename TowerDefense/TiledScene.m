@@ -40,7 +40,7 @@
 -(void)onEnterTransitionDidFinish
 {
     [super onEnterTransitionDidFinish];
-    
+        
     // Setup UI layer
     _gameUILayer = [GameUILayer node];
     [self addChild:_gameUILayer z:2];
@@ -53,7 +53,7 @@
     [self scheduleUpdate];
     //[self schedule:@selector(gameTime) interval:0.1f];
     
-    // Temp Location for mob loading
+    // Start Mob Spawning
     [self checkAndLoadMobSpawns];
 }
 
@@ -100,6 +100,9 @@
         _label.anchorPoint = ccp(1, 1);
         _label.position = ccp(screenSize.width - 20, screenSize.height - 20);
         [self addChild:_label z:2];
+        
+        // Load Tower Nodes
+        [self checkAndLoadTowerSpawns];
     }
     
     return self;

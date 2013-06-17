@@ -163,16 +163,13 @@
 -(void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event
 {
     _beingTouched = NO;
-    GameScene *currentScene = [[GameManager sharedManager] currentRunningGameScene];
-    CGPoint touchLocation = [[currentScene tileMap] convertTouchToNodeSpace:touch];
+    //GameScene *currentScene = [[GameManager sharedManager] currentRunningGameScene];
+    //CGPoint touchLocation = [[currentScene tileMap] convertTouchToNodeSpace:touch];
     CGPoint scrolledToLocation = [self convertTouchToNodeSpace:touch];
     
     if (!_touchMoved)
     {
-        if ([self checkTouchInTower:touchLocation])
-        {
-            [[GameManager sharedManager] spawnTower:kBlueTower forScene:currentScene atLocation:[self towerNodeAtTouchLocation:touchLocation]];
-        }
+        
     }
     else
     {
@@ -192,7 +189,7 @@
 #pragma mark - Touch Delegate Management
 - (void) onEnterTransitionDidFinish
 {
-    [[[CCDirector sharedDirector] touchDispatcher] addTargetedDelegate:self priority:1 swallowsTouches:YES];
+    [[[CCDirector sharedDirector] touchDispatcher] addTargetedDelegate:self priority:2 swallowsTouches:YES];
 }
 
 - (void) onExit

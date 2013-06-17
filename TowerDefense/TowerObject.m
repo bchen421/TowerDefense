@@ -91,7 +91,6 @@
 }
 
 #pragma mark - Touch Management
-#pragma mark - Touch Management
 -(BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
     CGPoint touchLocation = [parent_ convertTouchToNodeSpace:touch];

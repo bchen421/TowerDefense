@@ -13,6 +13,35 @@
 
 @synthesize tileMap = _tileMap, backgroundLayer = _backgroundLayer, metadataLayer = _metadataLayer, objectData = _objectData, gameUILayer = _gameUILayer, sceneSpriteBatchNode = _sceneSpriteBatchNode, mobSpawns = _mobSpawns;
 
+#pragma mark - Tower Loading Management
+-(void)checkAndLoadTowerSpawns
+{
+    BOOL retina = [[[[self tileMap] properties] valueForKey:@"retina"] boolValue];
+    for (NSDictionary *tmxObject in [[self objectData] objects])
+    {
+        NSString *tmxObjectName = [tmxObject valueForKey:@"name"];
+        if ([tmxObjectName isEqualToString:@"towerSpawn"])
+        {
+            float width = [[tmxObject valueForKey:@"width"] floatValue];
+            float height = [[tmxObject valueForKey:@"height"] floatValue];
+            int x = [[tmxObject valueForKey:@"x"] integerValue];
+            int y = [[tmxObject valueForKey:@"y"] integerValue];
+            CGPoint towerLocation;
+            
+            if (retina)
+            {
+                towerLocation = CGPointMake(x + width/4.0, y + height/4.0);
+            }
+            else
+            {
+                towerLocation = CGPointMake(x + width/2.0, y + height/2.0);
+            }
+            
+            [[GameManager sharedManager] spawnTower:kBlueTower forScene:self atLocation:towerLocation];
+        }
+    }
+}
+
 #pragma mark - Metadata Management
 -(CGPoint)positionForTileCoord:(CGPoint)tileCoord
 {
