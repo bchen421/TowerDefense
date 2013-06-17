@@ -11,55 +11,7 @@
 #import "GameManager.h"
 
 @implementation GameUILayer
-@synthesize touchedTowerNode = _touchedTowerNode, startingTouchLocation = _startingTouchLocation, scrollingTouchLocation = _scrollingTouchLocation;
-
-#pragma mark - Internal Helper Methods
--(BOOL)checkTouchInTower:(CGPoint)touchLocation
-{
-    GameScene *currentScene = [[GameManager sharedManager] currentRunningGameScene];
-    CGSize levelSize = [[GameManager sharedManager] dimensionsOfCurrentScene];
-    CGRect levelBoundingBox = CGRectMake(0.0, 0.0, levelSize.width, levelSize.height);
-    CGPoint tileCoord = [currentScene tileMapCoordForPosition:touchLocation];
-    BOOL returnValue = NO;
-
-    if (CGRectContainsPoint(levelBoundingBox, touchLocation))
-    {
-        NSUInteger tileGID = [[currentScene metadataLayer] tileGIDAt:tileCoord];
-        if (tileGID)
-        {
-            NSDictionary *properties = [[currentScene tileMap] propertiesForGID:tileGID];
-            if (properties)
-            {
-                returnValue = [[properties valueForKey:@"towerNode"] boolValue];
-            }
-        }
-    }
-    
-    return returnValue;
-}
-
--(CGPoint)towerNodeAtTouchLocation:(CGPoint)touchLocation
-{
-    GameScene *currentScene = [[GameManager sharedManager] currentRunningGameScene];
-    CGPoint tileCoord = [currentScene tileMapCoordForPosition:touchLocation];
-    CGPoint towerLocation;
-    BOOL retina = [[[[currentScene tileMap] properties] valueForKey:@"retina"] boolValue];
-    if (retina)
-    {
-        CGSize tileSize = [[currentScene tileMap] tileSize];
-        CGPoint originPoint = [[currentScene metadataLayer] positionAt:tileCoord];
-        self.touchedTowerNode = CGRectMake(originPoint.x, originPoint.y, tileSize.width/2.0, tileSize.height/2.0);
-        towerLocation = CGPointMake(originPoint.x + tileSize.width/4.0, originPoint.y + tileSize.height/4.0);
-    }
-    else
-    {
-        CGSize tileSize = [[currentScene tileMap] tileSize];
-        CGPoint originPoint = [[currentScene metadataLayer] positionAt:tileCoord];
-        towerLocation = CGPointMake(originPoint.x + tileSize.width/2.0, originPoint.y + tileSize.height/2.0);
-    }
-    
-    return towerLocation;
-}
+@synthesize startingTouchLocation = _startingTouchLocation, scrollingTouchLocation = _scrollingTouchLocation;
 
 #pragma mark - Game Tilemap View Management
 -(void)translateViewBy:(CGPoint)translation
