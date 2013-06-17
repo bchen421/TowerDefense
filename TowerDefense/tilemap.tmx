@@ -44,12 +44,12 @@
  </tileset>
  <layer name="background" width="30" height="20">
   <data encoding="base64" compression="zlib">
-   eJyTY2BgkMOCFYFYCQkr41BHDcwIxExAzIzDXmR5atrLCaW5cdiLLE9NewWBWAiIhXHYiyw/Gs6j4TwazqPhPBrOo+E8Gs7Ux7Ru5wAAsvRAYQ==
+   eJyTY2BgkMOCFYFYCQkr41BHDcwIxExAzIzDXmR5atrLyQAB3DjsRZanpr2CQCwExMI47EWWHw3n0XAeDefRcB4N59FwHg1n6mNat3MA86s++Q==
   </data>
  </layer>
  <layer name="metadata" width="30" height="20">
   <data encoding="base64" compression="zlib">
-   eJxjYMANjIDYBIiN8aihBaCnvSYE7DVhoD0YDefRcKYWGA3n0XAeTvaOhvNoOA9lewEUyw5l
+   eJxjYMANjIDYBIiN8aihBaCnvaYE7DVloD0YDefRcKYWGA3n0XAeTvaOhvNoOA9lewFOWw5x
   </data>
  </layer>
  <objectgroup name="objectData" width="30" height="20">
