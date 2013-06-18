@@ -37,7 +37,7 @@
                 towerLocation = CGPointMake(x + width/2.0, y + height/2.0);
             }
             
-            [[GameManager sharedManager] spawnTower:kBlueTower forScene:self atLocation:towerLocation];
+            [[GameManager sharedManager] spawnTower:kTowerNode forScene:self atLocation:towerLocation];
         }
     }
 }

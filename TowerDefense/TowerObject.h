@@ -27,6 +27,8 @@
 @property (nonatomic,readwrite) CGFloat attackRange;
 @property (nonatomic,assign,readwrite) MonsterObject *currentTarget;
 
++(TowerObject *)spawnTower;
+
 -(void)changeState:(TowerState)newState;
 -(void)findTargetFrom:(CCArray *)listOfGameObjects;
 -(void)attackCurrentTarget;

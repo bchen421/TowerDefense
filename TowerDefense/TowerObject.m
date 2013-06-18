@@ -96,6 +96,7 @@
     CGPoint touchLocation = [parent_ convertTouchToNodeSpace:touch];
     if (CGRectContainsPoint([self boundingBox], touchLocation))
     {
+        CCLOG(@"TOWER WAS TOUCHED");
         return YES;
     }
     else
@@ -106,19 +107,7 @@
 
 -(void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event
 {
-    CGPoint touchLocation = [parent_ convertTouchToNodeSpace:touch];
-    if (CGRectContainsPoint([self boundingBox], touchLocation))
-    {
-        CCLOG(@"TOWER WAS TOUCHED");
-        if (_rangeFinder.visible)
-        {
-            [_rangeFinder setVisible:NO];
-        }
-        else
-        {
-            [_rangeFinder setVisible:YES];
-        }
-    }
+    CCLOG(@"TOWER TOUCH ENDED, I AM A STUB, OVERRIDE ME IF YOU PLEASE");
 }
 
 #pragma mark - Touch Delegate Management
@@ -155,6 +144,14 @@
         _currentTarget = nil;
     }
     return self;
+}
+
+#pragma mark - Class Methods
++(TowerObject *)spawnTower
+{
+    CCLOG(@"STUB METHOD, PLEASE OVERRIDE ME");
+    
+    return nil;
 }
 
 @end

@@ -80,6 +80,23 @@
     [self runAction:attackActions];
 }
 
+#pragma mark - Touch Management
+-(void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event
+{
+    CGPoint touchLocation = [parent_ convertTouchToNodeSpace:touch];
+    if (CGRectContainsPoint([self boundingBox], touchLocation))
+    {
+        if (_rangeFinder.visible)
+        {
+            [_rangeFinder setVisible:NO];
+        }
+        else
+        {
+            [_rangeFinder setVisible:YES];
+        }
+    }
+}
+
 #pragma mark - Tower Factory
 +(TowerObject *)spawnTower
 {

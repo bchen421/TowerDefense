@@ -17,8 +17,8 @@
 #import "OrcMonster.h"
 
 // Tower Headers
+#import "TowerNode.h"
 #import "BlueTower.h"
-
 
 @implementation GameManager
 static GameManager * _sharedGameManager = nil;
@@ -30,6 +30,10 @@ static GameManager * _sharedGameManager = nil;
     
     switch (towerID)
     {
+        case kTowerNode:
+            newTower = [TowerNode spawnTower];
+            break;
+            
         case kBlueTower:
             newTower = [BlueTower spawnTower];
             break;

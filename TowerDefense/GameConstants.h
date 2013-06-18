@@ -40,6 +40,7 @@ typedef enum
 typedef enum
 {
     kGenericTower,
+    kTowerNode,
     kBlueTower,
 } TowerID;
 
