@@ -30,7 +30,7 @@
             
             if (retina)
             {
-                towerLocation = CGPointMake(x + width/4.0, y + height/4.0);
+                towerLocation = CGPointMake((x/2.0) + (width/4.0), (y/2.0) + (height/4.0));
             }
             else
             {
