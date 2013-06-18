@@ -11,6 +11,12 @@
 
 @implementation TowerNode
 
+#pragma mark - State Management
+-(void)updateStateWithDeltaTime:(ccTime)deltaTime andListOfGameObjects:(CCArray*)listOfGameObjects
+{
+    [super updateStateWithDeltaTime:deltaTime andListOfGameObjects:listOfGameObjects];    
+}
+
 #pragma mark - Touch Management
 -(void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event
 {
