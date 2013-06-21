@@ -27,15 +27,17 @@
     MonsterID _nextMonsterID;
 }
 
-@property (readonly) CCTMXTiledMap *tileMap;
-@property (readonly) CCTMXLayer *backgroundLayer;
-@property (readonly) CCTMXLayer *metadataLayer;
-@property (readonly) CCTMXObjectGroup *objectData;
-@property (readonly) GameUILayer *gameUILayer;
-@property (readwrite, retain) CCSpriteBatchNode *sceneSpriteBatchNode;
+@property (nonatomic, readonly) CCTMXTiledMap *tileMap;
+@property (nonatomic, readonly) CCTMXLayer *backgroundLayer;
+@property (nonatomic, readonly) CCTMXLayer *metadataLayer;
+@property (nonatomic, readonly) CCTMXObjectGroup *objectData;
+@property (nonatomic, readonly) GameUILayer *gameUILayer;
+@property (nonatomic, readonly) CCSpriteBatchNode *sceneSpriteBatchNode;
 @property (nonatomic, readonly) NSMutableArray *mobSpawns;
 
+-(id)initWithTileMap:(NSString *)map spriteAtlas:(NSString *)spriteAtlas andMobs:(NSString *)mobs;
 -(void)spawnNextMonsterAtLocation:(NSString *)location;
+- (void)displaySecs:(float)secs;
 -(void)checkAndLoadMobSpawns;
 -(void)checkAndLoadTowerSpawns;
 -(void)deployFormation:(NSDictionary *)deployment;

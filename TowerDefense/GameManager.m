@@ -9,7 +9,6 @@
 // Layer Headers
 #import "GameManager.h"
 #import "MainMenuScene.h"
-#import "TiledScene.h"
 #import "TitleScreenScene.h"
 #import "MapScreenScene.h"
 
@@ -107,6 +106,7 @@ static GameManager * _sharedGameManager = nil;
     _currentSceneID = sceneID;
     
     id sceneToRun = nil;
+    GameScene *newScene = nil;
     switch (sceneID)
     {
         case kNoScene:
@@ -126,8 +126,9 @@ static GameManager * _sharedGameManager = nil;
             break;
         
         case kTiledScene:
-            //sceneToRun = [TiledScene node];
-            sceneToRun = [CCTransitionFade transitionWithDuration:1.0f scene:[TiledScene node] withColor:ccWHITE];
+            newScene = [[GameScene alloc] initWithTileMap:@"tilemap" spriteAtlas:@"sandboxAtlas" andMobs:@"TiledScene"];
+            sceneToRun = [CCTransitionFade transitionWithDuration:1.0f scene:newScene withColor:ccWHITE];
+            //sceneToRun = [CCTransitionFade transitionWithDuration:1.0f scene:[TiledScene node] withColor:ccWHITE];
             break;
         
         default:

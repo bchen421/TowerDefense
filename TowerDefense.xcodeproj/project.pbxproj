@@ -16,7 +16,6 @@
 		8F216E301720FA2400A0730D /* OrcMonster.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F216E2F1720FA2400A0730D /* OrcMonster.m */; };
 		8F3520211730CB5E0017AC00 /* tiles.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F3520201730CB5E0017AC00 /* tiles.png */; };
 		8F3520231730CCAA0017AC00 /* tilemap.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 8F3520221730CCAA0017AC00 /* tilemap.tmx */; };
-		8F35202717314E6E0017AC00 /* TiledScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F35202617314E6E0017AC00 /* TiledScene.m */; };
 		8F51EF9D1738900300BDE25E /* metadatatiles-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F51EF9B1738900300BDE25E /* metadatatiles-hd.png */; };
 		8F51EF9E1738900300BDE25E /* metadatatiles.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F51EF9C1738900300BDE25E /* metadatatiles.png */; };
 		8F5B3F5417512D8E00831C3A /* TiledScene.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F5B3F5317512D8E00831C3A /* TiledScene.plist */; };
@@ -182,8 +181,6 @@
 		8F216E2F1720FA2400A0730D /* OrcMonster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrcMonster.m; sourceTree = "<group>"; };
 		8F3520201730CB5E0017AC00 /* tiles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tiles.png; sourceTree = "<group>"; };
 		8F3520221730CCAA0017AC00 /* tilemap.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = tilemap.tmx; sourceTree = "<group>"; };
-		8F35202517314E6E0017AC00 /* TiledScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TiledScene.h; sourceTree = "<group>"; };
-		8F35202617314E6E0017AC00 /* TiledScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TiledScene.m; sourceTree = "<group>"; };
 		8F51EF9B1738900300BDE25E /* metadatatiles-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "metadatatiles-hd.png"; sourceTree = "<group>"; };
 		8F51EF9C1738900300BDE25E /* metadatatiles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = metadatatiles.png; sourceTree = "<group>"; };
 		8F5B3F5317512D8E00831C3A /* TiledScene.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TiledScene.plist; sourceTree = "<group>"; };
@@ -548,16 +545,6 @@
 				8F51EF9B1738900300BDE25E /* metadatatiles-hd.png */,
 			);
 			name = "Tile Maps";
-			sourceTree = "<group>";
-		};
-		8F35202417314E550017AC00 /* TiledSandbox */ = {
-			isa = PBXGroup;
-			children = (
-				8F35202517314E6E0017AC00 /* TiledScene.h */,
-				8F35202617314E6E0017AC00 /* TiledScene.m */,
-				8F5B3F5317512D8E00831C3A /* TiledScene.plist */,
-			);
-			name = TiledSandbox;
 			sourceTree = "<group>";
 		};
 		8F65B083171C43CC0065AA48 = {
@@ -1041,7 +1028,7 @@
 			children = (
 				8FCBD19D172769D0008A75AC /* GameScene.h */,
 				8FCBD19E172769D1008A75AC /* GameScene.m */,
-				8F35202417314E550017AC00 /* TiledSandbox */,
+				8F5B3F5317512D8E00831C3A /* TiledScene.plist */,
 			);
 			name = Levels;
 			sourceTree = "<group>";
@@ -1365,7 +1352,6 @@
 				8FA4E38E172A1B9500603CB6 /* BlueTower.m in Sources */,
 				8FA4E391172A257000603CB6 /* GameUILayer.m in Sources */,
 				8FCECDB3172F3A100038E521 /* TowerProjectile.m in Sources */,
-				8F35202717314E6E0017AC00 /* TiledScene.m in Sources */,
 				8F65F98B173D2A07005F143E /* TitleScreenScene.m in Sources */,
 				8F65F98F173D2A63005F143E /* TitleScreenLayer.m in Sources */,
 				8FDD69DC174270B9006A8BD8 /* MapScreenScene.m in Sources */,
