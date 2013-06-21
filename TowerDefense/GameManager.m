@@ -128,7 +128,6 @@ static GameManager * _sharedGameManager = nil;
         case kTiledScene:
             newScene = [[GameScene alloc] initWithTileMap:@"tilemap" spriteAtlas:@"sandboxAtlas" andMobs:@"TiledScene"];
             sceneToRun = [CCTransitionFade transitionWithDuration:1.0f scene:newScene withColor:ccWHITE];
-            //sceneToRun = [CCTransitionFade transitionWithDuration:1.0f scene:[TiledScene node] withColor:ccWHITE];
             break;
         
         default:
