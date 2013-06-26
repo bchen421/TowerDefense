@@ -15,6 +15,7 @@
 -(void)updateStateWithDeltaTime:(ccTime)deltaTime andListOfGameObjects:(CCArray*)listOfGameObjects
 {
     [super updateStateWithDeltaTime:deltaTime andListOfGameObjects:listOfGameObjects];
+
     if (self.currentHP <= 0 && (self.monsterState != kMonsterDead))
     {
         [self changeState:kMonsterDead];
@@ -42,7 +43,7 @@
             break;
         
         case kMonsterMoving:
-            //CCLOG(@"OrcMonster is starting to move");
+            CCLOG(@"OrcMonster is starting to move");
             [self moveTowardsGoal];
             break;
             

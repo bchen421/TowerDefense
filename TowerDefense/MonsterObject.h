@@ -18,7 +18,6 @@
     CGFloat _movementSpeed;
     CGPoint _goalLocation;
     
-    CGPoint _previousLocationTile;
     NSString *_assignedPath;
     CGPoint _nextDestination;
     BOOL _doneMoving;
@@ -33,7 +32,6 @@
 @property (nonatomic,readwrite) CGFloat movementSpeed;
 @property (nonatomic,readwrite) CGPoint goalLocation;
 
-@property (nonatomic,readwrite) CGPoint previousLocationTile;
 @property (nonatomic,copy,readwrite) NSString *assignedPath;
 @property (nonatomic,readwrite) CGPoint nextDestination;
 @property (nonatomic,readwrite) BOOL doneMoving;
@@ -45,7 +43,6 @@
 -(void)hasDied;
 -(void)findAssignedPath;
 -(BOOL)tileCoordIsMoveable:(CGPoint)coord;
--(CGPoint)findNextMovableTile;
 -(void)createTravelPathArray;
 -(void)moveTowardsGoal;
 

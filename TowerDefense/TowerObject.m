@@ -76,7 +76,7 @@
         yValue = (monster.position.y - (monster.boundingBox.size.height/2.0));
     }
     
-    CGPoint adjustedMonsterLocation = CGPointMake(xValue, yValue);
+    CGPoint adjustedMonsterLocation = ccp(xValue, yValue);
     
     monsterDistance = ccpDistance(self.position, adjustedMonsterLocation);
     
@@ -128,7 +128,7 @@
     float rangeFinderScale = _attackRange/25.0;
     [_rangeFinder setScale:rangeFinderScale];
     [self addChild:_rangeFinder];
-    [_rangeFinder setPosition:CGPointMake(self.boundingBox.size.width/2.0, self.boundingBox.size.height/2.0)];
+    [_rangeFinder setPosition:ccp(self.boundingBox.size.width/2.0, self.boundingBox.size.height/2.0)];
     [_rangeFinder setVisible:NO];
 }
 

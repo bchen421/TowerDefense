@@ -59,11 +59,11 @@
             
             if (retina)
             {
-                towerLocation = CGPointMake((x/2.0) + (width/4.0), (y/2.0) + (height/4.0));
+                towerLocation = ccp((x/2.0) + (width/4.0), (y/2.0) + (height/4.0));
             }
             else
             {
-                towerLocation = CGPointMake(x + width/2.0, y + height/2.0);
+                towerLocation = ccp(x + width/2.0, y + height/2.0);
             }
             
             [[GameManager sharedManager] spawnTower:kTowerNode forScene:self atLocation:towerLocation];
@@ -81,11 +81,11 @@
     
     if (retina)
     {
-        return CGPointMake(position.x + tileSize.width/4.0, position.y + tileSize.height/4.0);
+        return ccp(position.x + tileSize.width/4.0, position.y + tileSize.height/4.0);
     }
     else
     {
-        return CGPointMake(position.x + tileSize.width/2.0, position.y + tileSize.height/2.0);
+        return ccp(position.x + tileSize.width/2.0, position.y + tileSize.height/2.0);
     }
 }
 
@@ -164,7 +164,7 @@
     MonsterObject *newMonster = [[GameManager sharedManager] spawnMonster:_nextMonsterID];
     [newMonster setPosition:[self locationForDataObject:location]];
     
-    [[self sceneSpriteBatchNode] addChild:newMonster z:20];    
+    [[self sceneSpriteBatchNode] addChild:newMonster z:20];
 }
 
 -(void)checkAndLoadMobSpawns

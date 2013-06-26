@@ -65,11 +65,11 @@
     
     if (retina)
     {
-        return CGPointMake(position.x + tileSize.width/4.0, position.y + tileSize.height/4.0);
+        return ccp(position.x + tileSize.width/4.0, position.y + tileSize.height/4.0);
     }
     else
     {
-        return CGPointMake(position.x + tileSize.width/2.0, position.y + tileSize.height/2.0);
+        return ccp(position.x + tileSize.width/2.0, position.y + tileSize.height/2.0);
     }
 }
 
