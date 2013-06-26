@@ -22,6 +22,8 @@
     NSString *_assignedPath;
     CGPoint _nextDestination;
     BOOL _doneMoving;
+    NSMutableArray *_pathArray;
+    NSUInteger _currentPathIndex;
 }
 
 @property (nonatomic,readwrite) MonsterID monsterID;
@@ -35,6 +37,8 @@
 @property (nonatomic,copy,readwrite) NSString *assignedPath;
 @property (nonatomic,readwrite) CGPoint nextDestination;
 @property (nonatomic,readwrite) BOOL doneMoving;
+@property (nonatomic,readonly) NSMutableArray *pathArray;
+@property (nonatomic,readonly) NSUInteger currentPathIndex;
 
 -(void)changeState:(MonsterState)newState;
 -(void)takeDamage:(NSInteger)amount;
@@ -42,6 +46,7 @@
 -(void)findAssignedPath;
 -(BOOL)tileCoordIsMoveable:(CGPoint)coord;
 -(CGPoint)findNextMovableTile;
+-(void)createTravelPathArray;
 -(void)moveTowardsGoal;
 
 @end

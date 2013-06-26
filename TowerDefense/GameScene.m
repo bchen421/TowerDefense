@@ -164,7 +164,7 @@
     MonsterObject *newMonster = [[GameManager sharedManager] spawnMonster:_nextMonsterID];
     [newMonster setPosition:[self locationForDataObject:location]];
     
-    [[self sceneSpriteBatchNode] addChild:newMonster z:20];
+    [[self sceneSpriteBatchNode] addChild:newMonster z:20];    
 }
 
 -(void)checkAndLoadMobSpawns

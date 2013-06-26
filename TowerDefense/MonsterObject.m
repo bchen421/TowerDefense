@@ -11,7 +11,7 @@
 #import "GameManager.h"
 
 @implementation MonsterObject
-@synthesize monsterID = _monsterID, monsterState = _monsterState, maxHP = _maxHP, currentHP = _currentHP, movementSpeed = _movementSpeed, goalLocation = _goalLocation, previousLocationTile = _previousLocationTile, assignedPath = _assignedPath, nextDestination = _nextDestination, doneMoving = _doneMoving;
+@synthesize monsterID = _monsterID, monsterState = _monsterState, maxHP = _maxHP, currentHP = _currentHP, movementSpeed = _movementSpeed, goalLocation = _goalLocation, previousLocationTile = _previousLocationTile, assignedPath = _assignedPath, nextDestination = _nextDestination, doneMoving = _doneMoving, pathArray = _pathArray, currentPathIndex = _currentPathIndex;
 
 #pragma mark - State Management Methods
 -(void)updateStateWithDeltaTime:(ccTime)deltaTime andListOfGameObjects:(CCArray*)listOfGameObjects
@@ -20,6 +20,7 @@
     if (!self.assignedPath)
     {
         [self findAssignedPath];
+        [self createTravelPathArray];
     }
 }
 
@@ -161,6 +162,76 @@
         [self setDoneMoving:YES];
         return CGPointMake(-1.0, -1.0);
     }
+}
+
+-(CGPoint)findNextMovableTileFromTile:(CGPoint)currentTile andPreviousTile:(CGPoint)previousTile
+{    
+    CGPoint southTile = CGPointMake(currentTile.x, currentTile.y + 1.0);
+    CGPoint northTile = CGPointMake(currentTile.x, currentTile.y - 1.0);
+    CGPoint westTile = CGPointMake(currentTile.x - 1.0, currentTile.y);
+    CGPoint eastTile = CGPointMake(currentTile.x + 1.0, currentTile.y);
+    CGPoint southWestTile = CGPointMake(currentTile.x - 1.0, currentTile.y + 1.0);
+    CGPoint southEastTile = CGPointMake(currentTile.x + 1.0, currentTile.y + 1.0);
+    CGPoint northWestTile = CGPointMake(currentTile.x - 1.0, currentTile.y - 1.0);
+    CGPoint northEastTile = CGPointMake(currentTile.x + 1.0, currentTile.y - 1.0);
+    
+    
+    if ([self tileCoordIsMoveable:southTile] && (!CGPointEqualToPoint(southTile, previousTile)))
+        return southTile;
+    else if ([self tileCoordIsMoveable:westTile] && (!CGPointEqualToPoint(westTile, previousTile)))
+        return westTile;
+    else if ([self tileCoordIsMoveable:eastTile] && (!CGPointEqualToPoint(eastTile, previousTile)))
+        return eastTile;
+    else if ([self tileCoordIsMoveable:northTile] && (!CGPointEqualToPoint(northTile, previousTile)))
+        return northTile;
+    else if ([self tileCoordIsMoveable:southWestTile] && (!CGPointEqualToPoint(southWestTile, previousTile)))
+        return southWestTile;
+    else if ([self tileCoordIsMoveable:southEastTile] && (!CGPointEqualToPoint(southEastTile, previousTile)))
+        return southEastTile;
+    else if ([self tileCoordIsMoveable:northWestTile] && (!CGPointEqualToPoint(northWestTile, previousTile)))
+        return northWestTile;
+    else if ([self tileCoordIsMoveable:northEastTile] && (!CGPointEqualToPoint(northEastTile, previousTile)))
+        return northEastTile;
+    else
+    {
+        CCLOG(@"No adjacent moveable tiles found!");
+        [self setDoneMoving:YES];
+        return CGPointMake(-1.0, -1.0);
+    }
+}
+
+-(void)createTravelPathArray
+{
+    _pathArray = [[NSMutableArray alloc] initWithCapacity:0];
+    _currentPathIndex = 0;
+    GameScene *currentScene = [[GameManager sharedManager] currentRunningGameScene];
+    CGPoint startingPoint = [currentScene tileMapCoordForPosition:self.position];
+    NSLog(@"X: %g, Y:%g", startingPoint.x, startingPoint.y);
+    NSValue *startingTile = [NSValue valueWithCGPoint:[currentScene tileMapCoordForPosition:self.position]];
+    CGPoint previousTile = ccp(-1,-1);
+    
+    [_pathArray addObject:startingTile];
+    BOOL doneCreating = NO;
+    
+    while (!doneCreating)
+    {
+        CGPoint currentTile = [[_pathArray objectAtIndex:[self currentPathIndex]] CGPointValue];
+        NSValue *nextTile = [NSValue valueWithCGPoint:[self findNextMovableTileFromTile:currentTile andPreviousTile:previousTile]];
+        if (CGPointEqualToPoint(CGPointMake(-1.0, -1.0), [nextTile CGPointValue]))
+        {
+            doneCreating = YES;
+        }
+        else
+        {
+            [_pathArray addObject:nextTile];
+            previousTile = currentTile;
+            _currentPathIndex += 1;
+        }
+    }
+    
+    _currentPathIndex = 0;
+    
+    CCLOG(@"%@", [_pathArray description]);
 }
 
 -(void)moveTowardsGoal
