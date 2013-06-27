@@ -16,7 +16,7 @@
 		<key>loc</key>
 		<string>spawnPoint1</string>
 		<key>time</key>
-		<integer>100000000</integer>
+		<integer>2</integer>
 	</dict>
 	<dict>
 		<key>formation</key>
@@ -24,7 +24,7 @@
 		<key>loc</key>
 		<string>spawnPoint1</string>
 		<key>time</key>
-		<integer>100000000</integer>
+		<integer>3</integer>
 	</dict>
 	<dict>
 		<key>formation</key>
@@ -32,7 +32,7 @@
 		<key>loc</key>
 		<string>spawnPoint1</string>
 		<key>time</key>
-		<integer>100000000</integer>
+		<integer>4</integer>
 	</dict>
 </array>
 </plist>

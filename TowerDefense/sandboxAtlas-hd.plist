@@ -7,15 +7,15 @@
             <key>orc.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,170},{64,63}}</string>
+                <string>{{2,170},{64,64}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{64,63}}</string>
+                <string>{{0,0},{64,64}}</string>
                 <key>sourceSize</key>
-                <string>{64,63}</string>
+                <string>{64,64}</string>
             </dict>
             <key>projectile.png</key>
             <dict>
@@ -66,7 +66,7 @@
             <key>size</key>
             <string>{128,256}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:72db5d608d5cd3cb1ae3bb221afe7d3f$</string>
+            <string>$TexturePacker:SmartUpdate:4935e9d07ff635f9da39137d9e13c953$</string>
             <key>textureFileName</key>
             <string>sandboxAtlas-hd.png</string>
         </dict>

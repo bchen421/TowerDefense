@@ -85,6 +85,8 @@
     
     // and add the scene to the stack. The director will run it when it automatically when the view is displayed.
     [[CCDirector sharedDirector] setProjection:kCCDirectorProjection2D];
+    [[CCDirector sharedDirector] setDepthTest:NO];
+
     [[GameManager sharedManager] runGameScene:kTitleScreenScene];
 	
 	return YES;

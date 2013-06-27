@@ -44,6 +44,6 @@
 -(void)findAssignedPath;
 -(BOOL)tileCoordIsMoveable:(CGPoint)coord;
 -(void)createTravelPathArray;
--(void)moveTowardsGoal;
+-(void)moveTowardsGoalWithDeltaTime:(ccTime)dt;
 
 @end

@@ -15,6 +15,8 @@
 -(void)updateStateWithDeltaTime:(ccTime)deltaTime andListOfGameObjects:(CCArray*)listOfGameObjects
 {
     [super updateStateWithDeltaTime:deltaTime andListOfGameObjects:listOfGameObjects];
+    
+    // State change checking section
 
     if (self.currentHP <= 0 && (self.monsterState != kMonsterDead))
     {
@@ -26,9 +28,15 @@
         [self changeState:kMonsterIdle];
     }
         
-    if ( ((self.monsterState == kMonsterMoving) || (self.monsterState == kMonsterIdle)) && (![self doneMoving]) && ([self numberOfRunningActions] == 0))
+    if ( (self.monsterState == kMonsterIdle) && (![self doneMoving]) && ([self numberOfRunningActions] == 0))
     {
         [self changeState:kMonsterMoving];
+    }
+    
+    // State Management
+    if (self.monsterState == kMonsterMoving)
+    {
+        [self moveTowardsGoalWithDeltaTime:deltaTime];
     }
 }
 
@@ -44,7 +52,7 @@
         
         case kMonsterMoving:
             CCLOG(@"OrcMonster is starting to move");
-            [self moveTowardsGoal];
+            //[self moveTowardsGoal];
             break;
             
         case kMonsterDead:

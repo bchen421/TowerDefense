@@ -190,7 +190,7 @@
     CCLOG(@"%@", [_pathArray description]);
 }
 
--(void)moveTowardsGoal
+-(void)moveTowardsGoalWithDeltaTime:(ccTime)dt
 {
     GameScene *currentScene = [[GameManager sharedManager] currentRunningGameScene];
     
@@ -203,19 +203,26 @@
     
     self.nextDestination = [[[self pathArray] objectAtIndex:(_currentPathIndex + 1)] CGPointValue];
     self.nextDestination = [currentScene positionForTileCoord:self.nextDestination];
-            
-    CCAction *moveAction;
-    CGPoint offSet;
-    float distance;
-    float travelTime;
     
-    offSet.x = ABS(self.position.x - self.nextDestination.x);
-    offSet.y = ABS(self.position.y - self.nextDestination.y);
-    distance = sqrt((offSet.x * offSet.x) + (offSet.y * offSet.y));
-    travelTime = (distance / self.movementSpeed);
+    CGPoint offSet;
+    CGPoint travelPoint;
+    float time2Travel;
+    float distance;
         
-    moveAction = [CCSequence actions:[CCMoveTo actionWithDuration:travelTime position:self.nextDestination], [CCCallFunc actionWithTarget:self selector:@selector(incrementPathIndex)], nil];
-    [self runAction:moveAction];
+    offSet.x = self.nextDestination.x - self.position.x;
+    offSet.y = self.nextDestination.y - self.position.y;
+    distance = sqrt((offSet.x * offSet.x) + (offSet.y * offSet.y));
+    time2Travel = [self movementSpeed] / distance;
+    travelPoint.x = offSet.x * time2Travel;
+    travelPoint.y = offSet.y * time2Travel;
+        
+    // Move monster towards player
+    self.position = ccp((self.position.x + (travelPoint.x * dt)), self.position.y + (travelPoint.y * dt) );
+    
+    if ((ABS(offSet.x) <= 2.0) && (ABS(offSet.y) <= 2.0))
+    {
+        _currentPathIndex += 1;
+    }
 }
 
 -(void)incrementPathIndex
@@ -233,7 +240,7 @@
         _monsterState = kMonsterIdle;
         _maxHP = 1;
         _currentHP = 1;
-        _movementSpeed = 25.0;
+        _movementSpeed = 40.0;
         
         _assignedPath = nil;
         _nextDestination = ccp(0,0);
@@ -241,7 +248,6 @@
         _pathArray = [[NSMutableArray alloc] initWithCapacity:0];
         _currentPathIndex = 0;
         [[self texture] setAliasTexParameters];
-
     }
     return self;
 }

@@ -230,6 +230,7 @@
         // Setup Sprite Atlas for gameplay layer
         [[CCSpriteFrameCache sharedSpriteFrameCache]addSpriteFramesWithFile:spriteAtlasPlist];
         _sceneSpriteBatchNode = [CCSpriteBatchNode batchNodeWithFile:spriteAtlasPng];
+        [[_sceneSpriteBatchNode texture] setAliasTexParameters];
         [[self tileMap] addChild:_sceneSpriteBatchNode z:100];
         
         // Timer Test code
