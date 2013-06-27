@@ -80,6 +80,11 @@
     return animationToReturn;
 }
 
+-(void)initAnimations
+{
+    CCLOG(@"Stub Method, override me");
+}
+
 
 #pragma mark - Initialization
 -(id)initWithSpriteFrame:(CCSpriteFrame *)spriteFrame

@@ -11,6 +11,8 @@
 
 @implementation OrcMonster
 
+@synthesize walkingAnim = _walkingAnim;
+
 #pragma mark - State Management Methods
 -(void)updateStateWithDeltaTime:(ccTime)deltaTime andListOfGameObjects:(CCArray*)listOfGameObjects
 {
@@ -85,6 +87,11 @@
 }
 
 #pragma mark - Initialization
+-(void)initAnimations
+{
+    [self setWalkingAnim:[self loadPlistForAnimationWithName:@"walkingAnim" andClassName:NSStringFromClass([self class])]];
+}
+
 -(id)initWithSpriteFrame:(CCSpriteFrame*)spriteFrame
 {
     if (self = [super initWithSpriteFrame:spriteFrame])

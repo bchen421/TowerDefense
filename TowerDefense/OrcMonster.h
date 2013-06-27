@@ -12,8 +12,10 @@
 
 @interface OrcMonster : MonsterObject
 {
-    
+    CCAnimation *_walkingAnim;
 }
+
+@property (nonatomic,readwrite,retain) CCAnimation *walkingAnim;
 
 +(MonsterObject *)spawnOrc;
 +(MonsterObject *)spawnBigOrc;
