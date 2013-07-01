@@ -4,7 +4,7 @@
 <array>
 	<dict>
 		<key>formation</key>
-		<string>tripleOrc</string>
+		<string>singleOrc</string>
 		<key>loc</key>
 		<string>spawnPoint1</string>
 		<key>time</key>
@@ -16,7 +16,7 @@
 		<key>loc</key>
 		<string>spawnPoint1</string>
 		<key>time</key>
-		<integer>2</integer>
+		<integer>1000</integer>
 	</dict>
 	<dict>
 		<key>formation</key>
@@ -24,7 +24,7 @@
 		<key>loc</key>
 		<string>spawnPoint1</string>
 		<key>time</key>
-		<integer>3</integer>
+		<integer>1000</integer>
 	</dict>
 	<dict>
 		<key>formation</key>
@@ -32,7 +32,7 @@
 		<key>loc</key>
 		<string>spawnPoint1</string>
 		<key>time</key>
-		<integer>4</integer>
+		<integer>1000</integer>
 	</dict>
 </array>
 </plist>

@@ -157,6 +157,11 @@
         CCAction *spawnAction = [CCSequence actions:[CCCallFuncO actionWithTarget:self selector:@selector(spawnNextMonsterAtLocation:) object:locB], [CCDelayTime actionWithDuration:delay], [CCCallFuncO actionWithTarget:self selector:@selector(spawnNextMonsterAtLocation:) object:locA], [CCCallFuncO actionWithTarget:self selector:@selector(spawnNextMonsterAtLocation:) object:locC], nil];
         [self runAction:spawnAction];
     }
+    else if ([formation isEqualToString:@"singleOrc"])
+    {
+        _nextMonsterID = kOrc;
+        [self spawnNextMonsterAtLocation:locA];
+    }
 }
 
 -(void)spawnNextMonsterAtLocation:(NSString *)location

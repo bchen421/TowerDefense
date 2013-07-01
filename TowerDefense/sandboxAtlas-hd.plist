@@ -4,16 +4,16 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>orc.png</key>
+            <key>orc_left.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,170},{64,64}}</string>
+                <string>{{2,170},{64,62}}</string>
                 <key>offset</key>
-                <string>{0,0}</string>
+                <string>{0,-1}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{64,64}}</string>
+                <string>{{0,2},{64,62}}</string>
                 <key>sourceSize</key>
                 <string>{64,64}</string>
             </dict>
@@ -66,7 +66,7 @@
             <key>size</key>
             <string>{128,256}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:4935e9d07ff635f9da39137d9e13c953$</string>
+            <string>$TexturePacker:SmartUpdate:9099f88b60388a9681712ed1a34b0c13$</string>
             <key>textureFileName</key>
             <string>sandboxAtlas-hd.png</string>
         </dict>

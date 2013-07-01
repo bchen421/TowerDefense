@@ -211,6 +211,14 @@
         
     offSet.x = self.nextDestination.x - self.position.x;
     offSet.y = self.nextDestination.y - self.position.y;
+    if (ABS(offSet.y) <= 1)
+    {
+        travelPoint.y = 0;
+    }
+    if (ABS(offSet.x) <= 1)
+    {
+        travelPoint.x = 0;
+    }
     distance = sqrt((offSet.x * offSet.x) + (offSet.y * offSet.y));
     time2Travel = [self movementSpeed] / distance;
     travelPoint.x = offSet.x * time2Travel;

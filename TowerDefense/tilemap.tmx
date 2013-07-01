@@ -41,17 +41,12 @@
     <property name="towerNode" value="YES"/>
    </properties>
   </tile>
+  <tile id="5">
+   <properties>
+    <property name="walkableA" value="YES"/>
+   </properties>
+  </tile>
  </tileset>
- <layer name="background" width="30" height="20">
-  <data encoding="base64" compression="zlib">
-   eJyTY2BgkMOCFYFYCQkr41BHDcwIxExAzIzDXmR5atrLyQAB3DjsRZanpr2CQCwExMI47EWWHw3n0XAeDefRcB4N59FwHg1n6mNat3MA86s++Q==
-  </data>
- </layer>
- <layer name="metadata" width="30" height="20">
-  <data encoding="base64" compression="zlib">
-   eJxjYMANjIDYBIiN8aihBaCnvaYE7DVloD0YDefRcKYWGA3n0XAeTvaOhvNoOA9lewFOWw5x
-  </data>
- </layer>
  <objectgroup name="objectData" width="30" height="20">
   <object name="spawnPoint1a" x="224" y="0" width="32" height="32"/>
   <object name="spawnPoint1b" x="256" y="0" width="32" height="32"/>
@@ -69,4 +64,14 @@
   <object name="towerSpawn" x="128" y="160" width="32" height="32"/>
   <object name="towerSpawn" x="128" y="64" width="32" height="32"/>
  </objectgroup>
+ <layer name="background" width="30" height="20">
+  <data encoding="base64" compression="zlib">
+   eJyTY2BgkMOCFRkgQAmKlXGoowZmBGImIGbGYS+yPDXt5YTaxY3DXmR5atorCMRCQCyMw15k+dFwHg3n0XAeDefRcB4N59Fwpj6G2UsrAACvkDmw
+  </data>
+ </layer>
+ <layer name="metadata" width="30" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYMANzIDYBIiN8aihBaCnvaYE7DVloD0YDefRcKYWGA3n0XAeTvaOhvNoONPDXlphAIJVEv4=
+  </data>
+ </layer>
 </map>

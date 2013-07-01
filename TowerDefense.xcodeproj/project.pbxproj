@@ -166,6 +166,7 @@
 		8FD785461743C313002836FD /* mapscreen-hd.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 8FD785441743C313002836FD /* mapscreen-hd.tmx */; };
 		8FD785471743C313002836FD /* mapscreen.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 8FD785451743C313002836FD /* mapscreen.tmx */; };
 		8FDD69DC174270B9006A8BD8 /* MapScreenScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDD69DB174270B9006A8BD8 /* MapScreenScene.m */; };
+		8FE979FA17807DED00C43007 /* OrcMonster.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FE979F917807DED00C43007 /* OrcMonster.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -478,6 +479,7 @@
 		8FD785451743C313002836FD /* mapscreen.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = mapscreen.tmx; sourceTree = "<group>"; };
 		8FDD69DA174270B9006A8BD8 /* MapScreenScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapScreenScene.h; sourceTree = "<group>"; };
 		8FDD69DB174270B9006A8BD8 /* MapScreenScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapScreenScene.m; sourceTree = "<group>"; };
+		8FE979F917807DED00C43007 /* OrcMonster.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = OrcMonster.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -519,6 +521,7 @@
 				8F216E2C1720F84900A0730D /* MonsterObject.m */,
 				8F216E2E1720FA2400A0730D /* OrcMonster.h */,
 				8F216E2F1720FA2400A0730D /* OrcMonster.m */,
+				8FE979F917807DED00C43007 /* OrcMonster.plist */,
 			);
 			name = Monsters;
 			sourceTree = "<group>";
@@ -1229,6 +1232,7 @@
 				8FD785461743C313002836FD /* mapscreen-hd.tmx in Resources */,
 				8FD785471743C313002836FD /* mapscreen.tmx in Resources */,
 				8F5B3F5417512D8E00831C3A /* TiledScene.plist in Resources */,
+				8FE979FA17807DED00C43007 /* OrcMonster.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
