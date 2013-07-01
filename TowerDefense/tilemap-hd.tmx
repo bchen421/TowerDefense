@@ -49,13 +49,13 @@
  </layer>
  <layer name="metadata" width="30" height="20">
   <data encoding="base64" compression="zlib">
-   eJztlTEOACAIA30T+P+36cJiUMG0YbFJN+VEAVvbS6b7tB7WMCRE38TI98atytfeN2PE3bzkUVGHdtaqHkBwszWC4EbrSpw9CK4ezOZ6+tzPZXBXNnJmROIYG/kvRGNZPyPEnPEDnNUm3g==
+   eJztlUsOABAQQ51puP/Z2Ewi4lO0sdGkO+YhnRHCWFaciuNkjUI118hGuUwhXJVX3LRpxtuc3ONFDv2sr3vgts5ORhhcNFfW2cPgxonV3J4+93MV3JbNnBlIHWcz/wW0lvczQ8oZnwFXrycT
   </data>
  </layer>
  <objectgroup name="objectData" width="30" height="20">
-  <object name="spawnPoint1a" x="448" y="0" width="64" height="64"/>
-  <object name="spawnPoint1b" x="512" y="0" width="64" height="64"/>
-  <object name="spawnPoint1c" x="576" y="0" width="64" height="64"/>
+  <object name="spawnPoint1a" type="spawnPoint" x="448" y="0" width="64" height="64"/>
+  <object name="spawnPoint1b" type="spawnPoint" x="512" y="0" width="64" height="64"/>
+  <object name="spawnPoint1c" type="spawnPoint" x="576" y="0" width="64" height="64"/>
   <object name="towerSpawn" x="256" y="128" width="64" height="64"/>
   <object name="towerSpawn" x="256" y="320" width="64" height="64"/>
   <object name="towerSpawn" x="256" y="512" width="64" height="64"/>

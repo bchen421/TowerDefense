@@ -23,8 +23,9 @@
     
     NSMutableArray *_mobSpawns;
     NSUInteger _currentWave;
-    
     MonsterID _nextMonsterID;
+    
+    NSMutableDictionary *_mobPathingDict;
 }
 
 @property (nonatomic, readonly) CCTMXTiledMap *tileMap;
@@ -40,6 +41,7 @@
 - (void)displaySecs:(float)secs;
 -(void)checkAndLoadMobSpawns;
 -(void)checkAndLoadTowerSpawns;
+-(void)generateMobPaths;
 -(void)deployFormation:(NSDictionary *)deployment;
 -(CGPoint)positionForTileCoord:(CGPoint)tileCoord;
 -(CGPoint)tileMapCoordForPosition:(CGPoint)position;

@@ -45,5 +45,6 @@
 -(BOOL)tileCoordIsMoveable:(CGPoint)coord;
 -(void)createTravelPathArray;
 -(void)moveTowardsGoalWithDeltaTime:(ccTime)dt;
+-(CGPoint)findNextMovableTileFromTile:(CGPoint)currentTile andPreviousTile:(CGPoint)previousTile;
 
 @end
