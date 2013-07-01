@@ -12,7 +12,7 @@
 
 @implementation GameScene
 
-@synthesize tileMap = _tileMap, backgroundLayer = _backgroundLayer, metadataLayer = _metadataLayer, objectData = _objectData, gameUILayer = _gameUILayer, sceneSpriteBatchNode = _sceneSpriteBatchNode, mobSpawns = _mobSpawns;
+@synthesize tileMap = _tileMap, backgroundLayer = _backgroundLayer, metadataLayer = _metadataLayer, objectData = _objectData, gameUILayer = _gameUILayer, sceneSpriteBatchNode = _sceneSpriteBatchNode, mobSpawns = _mobSpawns, mobPathingDict = _mobPathingDict;
 
 #pragma mark - Scene Update Management
 -(void)update:(ccTime)deltaTime
@@ -333,6 +333,7 @@
 {
     MonsterObject *newMonster = [[GameManager sharedManager] spawnMonster:_nextMonsterID];
     [newMonster setPosition:[self locationForDataObject:location]];
+    [newMonster setSpawnPoint:location];
     
     [[self sceneSpriteBatchNode] addChild:newMonster z:20];
 }

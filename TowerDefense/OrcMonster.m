@@ -42,6 +42,15 @@
     }
 }
 
+- (void) moveMe:(ccTime)dt
+{
+    // State Management
+    if (self.monsterState == kMonsterMoving)
+    {
+       [self moveTowardsGoalWithDeltaTime:dt];
+    }
+}
+
 -(void)changeState:(MonsterState)newState
 {
     self.monsterState = newState;
@@ -55,7 +64,7 @@
         case kMonsterMoving:
             CCLOG(@"OrcMonster is starting to move");
             //id walkingAction = nil;
-            //walkingAction = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:_walkingAnim restoreOriginalFrame:NO]];
+            //walkingAction = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:_walkingAnim]];
             //[self runAction:walkingAction];
 
             break;
@@ -102,7 +111,7 @@
         _monsterID = kOrc;
         _maxHP = 30;
         _currentHP = 30;
-        _movementSpeed = 25.0;
+        _movementSpeed = 30.0;
         //[self initAnimations];
         [self changeState:kMonsterIdle];
     }

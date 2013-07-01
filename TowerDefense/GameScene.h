@@ -35,6 +35,7 @@
 @property (nonatomic, readonly) GameUILayer *gameUILayer;
 @property (nonatomic, readonly) CCSpriteBatchNode *sceneSpriteBatchNode;
 @property (nonatomic, readonly) NSMutableArray *mobSpawns;
+@property (nonatomic, readonly) NSMutableDictionary *mobPathingDict;
 
 -(id)initWithTileMap:(NSString *)map spriteAtlas:(NSString *)spriteAtlas andMobs:(NSString *)mobs;
 -(void)spawnNextMonsterAtLocation:(NSString *)location;

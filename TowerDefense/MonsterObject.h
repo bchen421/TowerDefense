@@ -18,7 +18,7 @@
     CGFloat _movementSpeed;
     CGPoint _goalLocation;
     
-    NSString *_assignedPath;
+    NSString *_spawnPoint;
     CGPoint _nextDestination;
     BOOL _doneMoving;
     NSMutableArray *_pathArray;
@@ -32,7 +32,7 @@
 @property (nonatomic,readwrite) CGFloat movementSpeed;
 @property (nonatomic,readwrite) CGPoint goalLocation;
 
-@property (nonatomic,copy,readwrite) NSString *assignedPath;
+@property (nonatomic,copy,readwrite) NSString *spawnPoint;
 @property (nonatomic,readwrite) CGPoint nextDestination;
 @property (nonatomic,readwrite) BOOL doneMoving;
 @property (nonatomic,readonly) NSMutableArray *pathArray;
@@ -41,10 +41,6 @@
 -(void)changeState:(MonsterState)newState;
 -(void)takeDamage:(NSInteger)amount;
 -(void)hasDied;
--(void)findAssignedPath;
--(BOOL)tileCoordIsMoveable:(CGPoint)coord;
--(void)createTravelPathArray;
 -(void)moveTowardsGoalWithDeltaTime:(ccTime)dt;
--(CGPoint)findNextMovableTileFromTile:(CGPoint)currentTile andPreviousTile:(CGPoint)previousTile;
 
 @end
