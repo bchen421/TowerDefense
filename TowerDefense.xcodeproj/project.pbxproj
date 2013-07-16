@@ -1018,6 +1018,7 @@
 		8F65B231171C44BE0065AA48 /* Game Assets */ = {
 			isa = PBXGroup;
 			children = (
+				8FCBD19D172769D0008A75AC /* GameScene.h */,
 				8FFAFB3F171ED409001CD885 /* Sprite Sheets */,
 				8FBE24C6171D80C3001D38BB /* Images */,
 				8F35201F1730CA350017AC00 /* Tile Maps */,
@@ -1029,7 +1030,6 @@
 		8F65F987173D25E6005F143E /* Levels */ = {
 			isa = PBXGroup;
 			children = (
-				8FCBD19D172769D0008A75AC /* GameScene.h */,
 				8FCBD19E172769D1008A75AC /* GameScene.m */,
 				8F5B3F5317512D8E00831C3A /* TiledScene.plist */,
 			);

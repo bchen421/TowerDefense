@@ -19,5 +19,6 @@
 
 +(MonsterObject *)spawnOrc;
 +(MonsterObject *)spawnBigOrc;
+-(void)runWalkingAnimation;
 
 @end

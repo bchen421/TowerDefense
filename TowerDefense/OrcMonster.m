@@ -63,10 +63,9 @@
         
         case kMonsterMoving:
             CCLOG(@"OrcMonster is starting to move");
-            //id walkingAction = nil;
-            //walkingAction = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:_walkingAnim]];
-            //[self runAction:walkingAction];
-
+            id walkingAction = nil;
+            walkingAction = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:_walkingAnim]];
+            [self runAction:walkingAction];
             break;
             
         case kMonsterDead:
@@ -79,10 +78,17 @@
     }
 }
 
+#pragma mark - Animation Management Methods
+-(void)runWalkingAnimation
+{
+    // Check _nextDestination for heading, and set proper sprite prefix
+    //CGPoint currentPosition = self.position;
+}
+
 #pragma mark - Orc Factory
 +(MonsterObject *)spawnOrc
 {
-    MonsterObject *newOrc = [[OrcMonster alloc] initWithSpriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"orc_left.png"]];
+    MonsterObject *newOrc = [[OrcMonster alloc] initWithSpriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"goblin_front.png"]];
     [newOrc setScale:0.75];
     [newOrc setMonsterID:kOrc];
     
@@ -91,7 +97,7 @@
 
 +(MonsterObject *)spawnBigOrc
 {
-    MonsterObject *newOrc = [[OrcMonster alloc] initWithSpriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"orc_left.png"]];
+    MonsterObject *newOrc = [[OrcMonster alloc] initWithSpriteFrame:[[CCSpriteFrameCache sharedSpriteFrameCache]spriteFrameByName:@"goblin_front.png"]];
     [newOrc setScale:1.0];
     [newOrc setMonsterID:kBigOrc];
     
@@ -111,8 +117,8 @@
         _monsterID = kOrc;
         _maxHP = 30;
         _currentHP = 30;
-        _movementSpeed = 30.0;
-        //[self initAnimations];
+        _movementSpeed = 25.0;
+        [self initAnimations];
         [self changeState:kMonsterIdle];
     }
     

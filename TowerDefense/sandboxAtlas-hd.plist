@@ -4,23 +4,140 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>orc_left.png</key>
+            <key>balrog_walking01.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,170},{64,62}}</string>
+                <string>{{68,104},{46,48}}</string>
                 <key>offset</key>
-                <string>{0,-1}</string>
+                <string>{-9,-8}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,16},{46,48}}</string>
+                <key>sourceSize</key>
+                <string>{64,64}</string>
+            </dict>
+            <key>balrog_walking02.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{104,2},{48,46}}</string>
+                <key>offset</key>
+                <string>{-8,-9}</string>
                 <key>rotated</key>
                 <true/>
                 <key>sourceColorRect</key>
-                <string>{{0,2},{64,62}}</string>
+                <string>{{0,18},{48,46}}</string>
                 <key>sourceSize</key>
                 <string>{64,64}</string>
+            </dict>
+            <key>balrog_walking03.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,170},{52,52}}</string>
+                <key>offset</key>
+                <string>{-6,-6}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,12},{52,52}}</string>
+                <key>sourceSize</key>
+                <string>{64,64}</string>
+            </dict>
+            <key>balrog_walking04.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{56,170},{46,50}}</string>
+                <key>offset</key>
+                <string>{-9,-7}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,14},{46,50}}</string>
+                <key>sourceSize</key>
+                <string>{64,64}</string>
+            </dict>
+            <key>balrog_walking05.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{148,52},{46,46}}</string>
+                <key>offset</key>
+                <string>{-9,-9}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,18},{46,46}}</string>
+                <key>sourceSize</key>
+                <string>{64,64}</string>
+            </dict>
+            <key>goblin_front.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{116,102},{42,48}}</string>
+                <key>offset</key>
+                <string>{-3,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{42,48}}</string>
+                <key>sourceSize</key>
+                <string>{48,48}</string>
+            </dict>
+            <key>goblin_front_walk01.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{104,204},{42,46}}</string>
+                <key>offset</key>
+                <string>{-3,-1}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,2},{42,46}}</string>
+                <key>sourceSize</key>
+                <string>{48,48}</string>
+            </dict>
+            <key>goblin_front_walk02.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{104,154},{42,48}}</string>
+                <key>offset</key>
+                <string>{-3,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{42,48}}</string>
+                <key>sourceSize</key>
+                <string>{48,48}</string>
+            </dict>
+            <key>goblin_front_walk03.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{104,52},{42,48}}</string>
+                <key>offset</key>
+                <string>{-3,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{42,48}}</string>
+                <key>sourceSize</key>
+                <string>{48,48}</string>
+            </dict>
+            <key>goblin_front_walk04.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{152,2},{42,46}}</string>
+                <key>offset</key>
+                <string>{-3,-1}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,2},{42,46}}</string>
+                <key>sourceSize</key>
+                <string>{48,48}</string>
             </dict>
             <key>projectile.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{104,2},{8,8}}</string>
+                <string>{{2,224},{8,8}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -64,9 +181,9 @@
             <key>realTextureFileName</key>
             <string>sandboxAtlas-hd.png</string>
             <key>size</key>
-            <string>{128,256}</string>
+            <string>{256,256}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:9099f88b60388a9681712ed1a34b0c13$</string>
+            <string>$TexturePacker:SmartUpdate:7de027771ab56348d64060de05b48945$</string>
             <key>textureFileName</key>
             <string>sandboxAtlas-hd.png</string>
         </dict>

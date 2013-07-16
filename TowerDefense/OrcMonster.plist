@@ -5,11 +5,11 @@
 	<key>walkingAnim</key>
 	<dict>
 		<key>delay</key>
-		<integer>6</integer>
+		<integer>12</integer>
 		<key>animationFrames</key>
-		<string>01,01,02,03,03</string>
+		<string>01,02,03,04</string>
 		<key>filenamePrefix</key>
-		<string>orc_left_walk</string>
+		<string>goblin_front_walk</string>
 	</dict>
 </dict>
 </plist>
